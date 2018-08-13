@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "DisApi",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/parks": {
+            "get": {
+                "tags": [
+                    "Parks"
+                ],
+                "summary": "Returns a list of all parks at Walt Disney World",
+                "description": "Returns a list of the four parks at the Orlando location of Disney",
+                "operationId": "getParks",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/parks/{parkId}": {
+            "get": {
+                "tags": [
+                    "Park"
+                ],
+                "summary": "Find park by ID",
+                "description": "Returns a single park with details",
+                "operationId": "getParkById",
+                "parameters": [
+                    {
+                        "name": "parkId",
+                        "in": "path",
+                        "description": "ID of park to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "$/schemas/park"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "http://homestead.test/api/documentation#schemas/park"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplier"
+                    },
+                    "404": {
+                        "description": "Park not found"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/rides": {
+            "get": {
+                "tags": [
+                    "Rides"
+                ],
+                "summary": "Returns a list of all the rides at Walt Disney World",
+                "description": "Returns a list of the rides at all four parks at the Orlando location of Disney",
+                "operationId": "getRides",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    }
+}

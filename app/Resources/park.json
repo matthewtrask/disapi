@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "type": "park",
+      "id": "1",
+      "attributes": {
+        "parkName": "Magic Kingdom"
+      },
+      "relationships": {
+        "detail": {
+          "links": {
+            "self": "http:\/\/disapi.io\/api\/v1\/park\/1\/relationships\/detail",
+            "related": "http:\/\/disapi.io\/api\/v1\/park\/1\/detail"
+          }
+        }
+      },
+      "links": {
+        "self": "http:\/\/disapi.io\/api\/v1\/park\/1"
+      }
+    },
+    {
+      "type": "park",
+      "id": "2",
+      "attributes": {
+        "parkName": "Epcot"
+      },
+      "relationships": {
+        "detail": {
+          "links": {
+            "self": "http:\/\/disapi.io\/api\/v1\/park\/2\/relationships\/detail",
+            "related": "http:\/\/disapi.io\/api\/v1\/park\/2\/detail"
+          }
+        }
+      },
+      "links": {
+        "self": "http:\/\/disapi.io\/api\/v1\/park\/2"
+      }
+    },
+    {
+      "type": "park",
+      "id": "3",
+      "attributes": {
+        "parkName": "Hollywood Studios"
+      },
+      "relationships": {
+        "detail": {
+          "links": {
+            "self": "http:\/\/disapi.io\/api\/v1\/park\/3\/relationships\/detail",
+            "related": "http:\/\/disapi.io\/api\/v1\/park\/3\/detail"
+          }
+        }
+      },
+      "links": {
+        "self": "http:\/\/disapi.io\/api\/v1\/park\/3"
+      }
+    },
+    {
+      "type": "park",
+      "id": "4",
+      "attributes": {
+        "parkName": "Animal Kingdom"
+      },
+      "relationships": {
+        "detail": {
+          "links": {
+            "self": "http:\/\/disapi.io\/api\/v1\/park\/4\/relationships\/detail",
+            "related": "http:\/\/disapi.io\/api\/v1\/park\/4\/detail"
+          }
+        }
+      },
+      "links": {
+        "self": "http:\/\/disapi.io\/api\/v1\/park\/4"
+      }
+    }
+  ]
+}
