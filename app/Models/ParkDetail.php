@@ -8,9 +8,22 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @OA\Schema(@OA\Xml(name="ParkDetail"))
+ */
 class ParkDetail extends Model
 {
     private const PARK_ID = 'park_id';
+
+    protected $fillable = [
+        'central_attraction',
+        'year_opened',
+        'ride_count',
+        'restaurant_count',
+        'size',
+        'resort_count',
+        'fireworks'
+    ];
 
     public function park() : BelongsTo
     {
@@ -27,7 +40,7 @@ class ParkDetail extends Model
         return $this->central_attraction;
     }
 
-    public function getOpeningYear() : int
+    public function getOpeningYear() : string
     {
         return $this->year_opened;
     }

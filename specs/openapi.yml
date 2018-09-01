@@ -1,0 +1,360 @@
+openapi: "3.0.1"
+info:
+  title: "Walt Disney World API"
+  version: "0.1.0"
+  contact:
+    name: Developer Support
+    url: disapi.co/support
+    email: support@disapi.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://disapi.io/api
+  description: Production
+
+tags:
+  - name: parks
+    description: |
+      Endpoints for getting and working with the parks
+  - name: restaurants
+    description: |
+      Endpoints for getting and working with the restaurants
+  - name: rides
+    description: |
+      Endpoints for getting and working with the rides
+paths:
+  /rides:
+    get:
+      summary: List rides
+      description: |
+        Get a list of rides at all parks
+      operationId: getRides
+      tags:
+        - rides
+      responses:
+        200:
+          $ref: '#/components/responses/RidesResponse'
+  /rides/{id}:
+     get:
+       summary: Get ride by ID
+       operationId: getRide
+       tags:
+         - rides
+       responses:
+         200:
+           $ref: '#/components/responses/RideResponse'
+  /restaurants:
+    get:
+      summary: List rides
+      description: |
+        Get a list of rides at all parks
+      operationId: getRestaurants
+      tags:
+        - rides
+      responses:
+        200:
+          $ref: '#/components/responses/RestaurantsResponse'
+  /parks:
+    get:
+      summary: List parks
+      description: |
+        Get a list of all parks
+      operationId: getParks
+      tags:
+        - parks
+      responses:
+        200:
+          $ref: '#/components/responses/ParksResponse'
+  /parks/{parkId}/rides:
+    get:
+      summary: Park specific rides
+      description: |
+        Get all rides for a specific park
+      operationId: getParkRides
+      tags:
+        - parks
+      responses:
+        200:
+          $ref: '#/components/responses/ParkRidesResponse'
+components:
+  schemas:
+    Rides:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - name
+    Ride:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Restaurants:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - name
+    Parks:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - name
+    Park:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    RideDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        yearOpened:
+          type: integer
+        rideType:
+          type: string
+        rideVehicle:
+          type: string
+        interactiveQueue:
+          type: boolean
+        ridePhoto:
+          type: boolean
+        singleRider:
+          type: boolean
+        heightRestriction:
+          type: boolean
+    RestaurantDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quickService:
+          type: boolean
+        tableService:
+          type: boolean
+        alcohol:
+          type: boolean
+        diningPlan:
+          type: boolean
+        mealTypes:
+          type: array
+          items:
+            type: string
+        foodTypes:
+          type: array
+          items:
+            type: string
+  parameters:
+    restaurantId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |
+        The ID of the restaurant
+    rideId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |
+        The ID of the ride
+    parkId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |
+        The ID of the park
+  responses:
+    RidesResponse:
+      description: A list a rides
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rides'
+                minLength: 1
+          examples:
+            ridesArray:
+              $ref: '#/components/examples/RidesResponse'
+    RideResponse:
+      description: A singluar ride by id
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RideDetail'
+                minLength: 1
+          examples:
+            ridesArray:
+              $ref: '#/components/examples/RideDetailResponse'
+    RestaurantsResponse:
+      description: A list a rides
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurants'
+                minLength: 1
+          examples:
+            categoriesArray:
+              $ref: '#/components/examples/RestaurantsResponse'
+    ParksResponse:
+      description: A list a rides
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Parks'
+                minLength: 1
+          examples:
+            rides:
+              $ref: '#/components/links/ParkRides'
+            restaurants:
+              $ref: '#/components/links/ParkRestaurants'
+    ParkRidesResponse:
+      description: A list of rides for the specified park
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rides'
+
+  examples:
+    RidesResponse:
+      summary: An example response of rides
+      value:
+        data:
+          - id: 1
+            name: Walt Disney World Railroad
+          - id: 2
+            name: Jungle Cruise
+          - id: 3
+            name: The Magic Carpets of Aladdin
+    RestaurantsResponse:
+      summary: An example response of restaurants
+      value:
+        data:
+          - id: 1
+            name: Aloha Isle
+          - id: 2
+            name: Auntie Gravity's Galactic Goodies
+          - id: 3
+            name: Be Our Guest Restaurant
+    ParksResponse:
+      summary: An exmaple response of parks
+      value:
+        data:
+          - id: 1
+            name: Magic Kingdom
+          - id: 2
+            name: Epcot
+          - id: 3
+            name: Hollywood Studios
+    RideDetailResponse:
+      summary: An example response of a ride
+      value:
+        data:
+          - id: 1
+            name: Walt Disney World Railroad
+            yearOpened: 1971
+            rideType: Transport
+            rideVehicle: Train
+            interactiveQueue: false
+            ridePhoto: false
+            singleRider: false
+            heightRestriction: false
+          - id: 2
+            name: Walt Disney World Railroad
+            yearOpened: 1971
+            rideType: Transport
+            rideVehicle: Train
+            interactiveQueue: false
+            ridePhoto: false
+            singleRider: false
+            heightRestriction: false
+    RestaurantDetailResponse:
+      summary: An example response of a restaurant
+      value:
+        data:
+          - id: 1
+            name: Aloha Isle,
+            quickService: true,
+            tableService: false,
+            alcohol: false,
+            "diningPlan": true,
+            mealTypes: [
+                Snacks,
+            ]
+            foodTypes: [
+                Snacks,
+                Dole Whip
+            ]
+          - id: 2
+            name: Walt Disney World Railroad
+            yearOpened: 1971
+            rideType: Transport
+            rideVehicle: Train
+            interactiveQueue: false
+            ridePhoto: false
+            singleRider: false
+            heightRestriction: false
+  links:
+    ParkRides:
+      operationId: getParkRides
+      parameters:
+        id: $response.body#/data/0/id
+      description: |
+        Using the id of the park can, you can get its rides
+        by ising it as the `id` parameter in `GET /parks/{id}/rides`
+    ParkRestaurants:
+      operationId: getParkRestaurants
+      parameters:
+        id: $response.body#/data/0/id
+      description: |
+        Using the id of the park can, you can get its restaurants
+        by using it as the `id` parameter in `GET /parks/{id}/restaurants`

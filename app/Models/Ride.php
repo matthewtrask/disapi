@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Model\Park;
-use App\Schemas\RideDetailSchema;
-use Countable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @OA\Schema(@OA\Xml(name="Ride"))
+ */
 class Ride extends Model
 {
     private const MK_ID = 1;
@@ -52,5 +53,15 @@ class Ride extends Model
     public function getShowRelationship() : bool
     {
         return $this->showRelationship;
+    }
+
+    public function setParkId(int $parkId) : void
+    {
+        $this->park_id = $parkId;
+    }
+
+    public function setName(string $name) : void
+    {
+        $this->name = $name;
     }
 }

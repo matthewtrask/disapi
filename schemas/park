@@ -1,9 +1,0 @@
-/**
- * @OA\Schema(
- *   schema="product_status",
- *   type="string",
- *   description="The status of a product",
- *   enum={"available", "discontinued"},
- *   default="available"
- * )
- */

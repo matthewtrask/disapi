@@ -2,112 +2,78 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\RideRequest;
 use App\Model\Park;
 use App\Models\Ride;
 use App\Models\RideDetail;
+use App\Repositories\RidesRepository;
 use App\Schemas\ParkSchema;
 use App\Schemas\RideDetailSchema;
 use App\Schemas\RideSchema;
+use App\Schemas\RidesSchema;
+use App\Transformers\Api\RidesTransformer;
+use App\Transformers\Api\RideTransformer;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Encoder\EncoderOptions;
 use Neomerx\JsonApi\Encoder\Parameters\EncodingParameters;
 
 class RidesController extends AbstractApiController
 {
-    /** @var Response */
-    private $response;
+    /** @var RidesRepository */
+    private $ridesRepository;
 
-    public function __construct(Response $response)
+    public function __construct(Response $response, RidesRepository $ridesRepository)
     {
-        $this->response = $response;
+        parent::__construct($response);
+        $this->ridesRepository = $ridesRepository;
     }
 
-    /**
-     * @OA\Info(title="DisApi", version="0.1")
-     * @OA\Get(
-     *     path="/api/rides",
-     *     tags={"Rides"},
-     *     summary="Returns a list of all the rides at Walt Disney World",
-     *     description="Returns a list of the rides at all four parks at the Orlando location of Disney",
-     *     operationId="getRides",
-     *     @OA\Response(
-     *         response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent(
-     *              @OA\AdditionalProperties(
-     *                  type="integer",
-     *                  format="int32"
-     *              )
-     *          )
-     *     ),
-     *     security={
-     *         {"api_key": {}}
-     *     }
-     * )
-     */
     public function index() : Response
     {
-        $rides = Ride::all();
+        $rides = $this->ridesRepository->get();
+        $manager = $this->createManager();
 
-        $params = new EncodingParameters([
-            'park',
-        ]);
+        $resources = new Collection($rides, new RidesTransformer(), 'Rides');
+        $resources->setMeta($this->createMetaData());
 
-        $rides->map(function ($ride) {
-            $ride->setShowRelationship(true);
-        });
+        $data = $manager->createData($resources)->toArray();
 
-        $encoder = Encoder::instance([
-            Ride::class => RideSchema::class,
-            Park::class => ParkSchema::class,
-        ], new EncoderOptions(JSON_PRETTY_PRINT));
+        $etag = $this->createEtag($data);
 
-        $data = $encoder->withJsonApiVersion()
-            ->withMeta($this->metaInformation($rides))
-            ->encodeData($rides, $params);
-
-        $eTag = md5($data);
-
-        return $this->response
-            ->header('accept', 'application/vnd.api+json')
-            ->header('content-type', 'application/vnd.api+json')
-            ->setContent($data)
-            ->setStatusCode(200)
-            ->setEtag($eTag)
-            ->setDate(new DateTime());
+        return $this->ridesResponse($data, $etag);
     }
 
-    public function fetch(Request $request)
+    public function fetch(Request $request) : Response
     {
-        $ride = Ride::find($request->id);
+        $ride = $this->ridesRepository->fetch($request->id);
 
-        $params = new EncodingParameters([
-            'detail',
-            'park'
-        ]);
+        if (is_null($ride)) {
+            return $this->rideNotFoundResponse($request->id);
+        }
 
-        $ride->setShowRelationship(true);
+        $manager = $this->createManager();
 
-        $encoder = Encoder::instance([
-            Ride::class => RideSchema::class,
-            RideDetail::class => RideDetailSchema::class,
-            Park::class => ParkSchema::class,
-        ], new EncoderOptions(JSON_PRETTY_PRINT));
 
-        $data = $encoder->withJsonApiVersion()
-            ->withMeta($this->metaInformation($ride))
-            ->encodeData($ride, $params);
-        $eTag = md5($data);
+        if ($request->query('includes') === 'park') {
+            $manager->parseIncludes('park');
+        }
 
-        return $this->response
-            ->header('accept', 'application/vnd.api+json')
-            ->header('content-type', 'application/vnd.api+json')
-            ->setContent($data)
-            ->setStatusCode(200)
-            ->setEtag($eTag)
-            ->setDate(new DateTime());
+        $resource = new Item($ride, new RideTransformer(), 'Rides');
+        $resource->setMeta($this->createMetaData());
+
+        $data = $manager->createData($resource)->toArray();
+        $etag = $this->createEtag($data);
+
+        return $this->ridesResponse($data, $etag);
+    }
+
+    public function destroy(Request $request) : Response
+    {
+        $this->ridesRepository->destroy($request->id);
     }
 }

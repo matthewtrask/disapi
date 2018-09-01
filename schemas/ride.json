@@ -1,0 +1,41 @@
+{
+  "data": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "parkId": {
+        "type": "string"
+      },
+      "openingYear": {
+        "type": "string"
+      },
+      "rideType": {
+        "type": "string"
+      },
+      "rideVehicle": {
+        "type": "string"
+      },
+      "interactiveQueue": {
+        "type": "boolean"
+      },
+      "giftStoreFinish": {
+        "type": "boolean"
+      },
+      "singleRider": {
+        "type": "boolean"
+      },
+      "ridePhoto": {
+        "type": "boolean"
+      },
+      "heightRestriction": {
+        "type": "boolean"
+      }
+    },
+    "required": "['id', 'name', 'parkId', 'openingYear', 'rideType', 'rideVehicle', 'interactiveQueue', 'giftStoreFinish', 'singleRider', 'ridePhoto', 'heightRestriction']"
+  }
+}

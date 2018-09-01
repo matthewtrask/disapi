@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "parkId": {
+        "type": "string"
+      }
+    },
+    "required": "['id', 'name']"
+  }
+}

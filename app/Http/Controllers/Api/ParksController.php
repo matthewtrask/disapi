@@ -2,140 +2,74 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Model\Park;
-use App\Model\ParkDetail;
-use App\Schemas\ParkDetailSchema;
-use App\Schemas\ParkSchema;
-use DateTime;
+use App\Factories\ResponseFactory;
+use App\Http\Requests\Api\ParkRequest;
+use App\Repositories\ParksRepository;
+use App\Transformers\Api\ParksTransformer;
+use App\Transformers\Api\ParkTransformer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use Neomerx\JsonApi\Encoder\Encoder;
-use Neomerx\JsonApi\Encoder\EncoderOptions;
-use Neomerx\JsonApi\Encoder\Parameters\EncodingParameters;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 class ParksController extends AbstractApiController
 {
-    /** @var Response */
-    private $response;
+    /** @var ParksRepository */
+    private $parksRepository;
 
-    public function __construct(Response $response)
+    public function __construct(ResponseFactory $responseFactory, ParksRepository $parksRepository)
     {
-        $this->response = $response;
+        parent::__construct($responseFactory);
+        $this->parksRepository = $parksRepository;
     }
 
-    /**
-     * @OA\Get(
-     *     path="/api/parks",
-     *     tags={"Parks"},
-     *     summary="Returns a list of all parks at Walt Disney World",
-     *     description="Returns a list of the four parks at the Orlando location of Disney",
-     *     operationId="getParks",
-     *     @OA\Response(
-     *         response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent(
-     *              @OA\AdditionalProperties(
-     *                  type="integer",
-     *                  format="int32"
-     *              )
-     *          )
-     *     ),
-     *     security={
-     *         {"api_key": {}}
-     *     }
-     * )
-     */
     public function index() : Response
     {
-        $parks = Park::all();
+        $parks = $this->parksRepository->get();
+        $manager = $this->createManager();
 
-        $encoder = Encoder::instance([
-            Park::class => ParkSchema::class,
-        ], new EncoderOptions(JSON_PRETTY_PRINT));
+        $resources = new Collection($parks, new ParksTransformer(), 'parks');
+        $resources->setMeta($this->createMetaData());
 
-        $data = $encoder
-            ->withJsonApiVersion()
-            ->withMeta($this->metaInformation($parks))
-            ->encodeData($parks);
 
-        $eTag = md5($data);
+        $data = $manager->createData($resources)->toArray();
+        $etag = $this->createEtag($data);
 
-        return $this->response
-            ->header('accept', 'application/vnd.api+json')
-            ->header('content-type', 'application/vnd.api+json')
-            ->setContent($data)
-            ->setStatusCode(200)
-            ->setEtag($eTag)
-            ->setDate(new DateTime());
+        return $this->parksResponse($data, $etag);
     }
 
-    /**
-     * @OA\Get(
-     *     path="/api/parks/{parkId}",
-     *     tags={"Park"},
-     *     summary="Find a park by the id",
-     *     description="Returns a single park with details",
-     *     operationId="getParkById",
-     *     @OA\Parameter(
-     *         name="parkId",
-     *         in="path",
-     *         description="ID of park to return",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="integer",
-     *             format="int64"
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="successful operation",
-     *         @OA\JsonContent(ref="http://homestead.test/api/documentation#schemas/park"),
-     *         @OA\MediaType(
-     *             mediaType="application/vnd.api+json",
-     *             @OA\Schema(ref="$/schemas/park"),
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Invalid ID supplier"
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Park not found"
-     *     ),
-     *     security={
-     *         {"api_key": {}}
-     *     }
-     * )
-     */
     public function fetch(Request $request) : Response
     {
-        $park = Park::find($request->id);
+        $park = $this->parksRepository->fetch($request->id);
 
-        $params = new EncodingParameters([
-            'detail',
-        ]);
+        if (!$park) {
+            return $this->parkNotFoundResponse($request->id);
+        }
 
-        $park->setShowRelationship(true);
+        $manager = $this->createManager();
 
-        $encoder = Encoder::instance([
-            Park::class => ParkSchema::class,
-            ParkDetail::class   => ParkDetailSchema::class,
-        ], new EncoderOptions(JSON_PRETTY_PRINT, 'http://disapi.io/api/v1'));
+        $resource = new Item($park, new ParkTransformer(), 'parks');
+        $resource->setMeta($this->createMetaData());
 
-        $data = $encoder->withJsonApiVersion()
-            ->withMeta($this->metaInformation($park))
-            ->encodeData($park, $params);
+        if ($request->query('includes') === 'restaurants') {
+            $manager->parseIncludes('restaurants');
+        }
 
-        $eTag = md5($data);
+        if ($request->query('includes') === 'rides') {
+            $manager->parseIncludes('rides');
+        }
 
-        return $this->response
-            ->header('accept', 'application/vnd.api+json')
-            ->header('content-type', 'application/vnd.api+json')
-            ->setContent($data)
-            ->setStatusCode(200)
-            ->setEtag($eTag)
-            ->setDate(new DateTime());
+        $data = $manager->createData($resource)->toArray();
+
+        $etag = $this->createEtag($data);
+
+        return $this->parksResponse($data, $etag);
+    }
+
+    public function create(ParkRequest $request) : Response
+    {
+        $park = $this->parksRepository->create($request);
+
+        return $this->parkCreatedResponse($park);
     }
 }

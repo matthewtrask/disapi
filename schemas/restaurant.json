@@ -1,0 +1,38 @@
+{
+  "data": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "quickService": {
+        "type": "boolean"
+      },
+      "tableService": {
+        "type": "boolean"
+      },
+      "alcohol": {
+        "type": "boolean"
+      },
+      "diningPlan": {
+        "type": "boolean"
+      },
+      "mealTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "foodTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": "['id', 'name', 'quickService', 'tableService', 'alcohol', 'diningPlan', 'size', 'mealTypes', 'foodTypes']"
+  }
+}

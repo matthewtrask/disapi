@@ -1,0 +1,35 @@
+{
+  "data": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "centralAttraction": {
+        "type": "string"
+      },
+      "yearOpened": {
+        "type": "string"
+      },
+      "rideCount": {
+        "type": "integer"
+      },
+      "restaurantCount": {
+        "type": "integer"
+      },
+      "size": {
+        "type": "boolean"
+      },
+      "resortCount": {
+        "type": "boolean"
+      },
+      "fireworks": {
+        "type": "boolean"
+      }
+    },
+    "required": "['id', 'name', 'centralAttraction', 'yearOpened', 'rideCount', 'restaurantCount', 'size', 'resortCount', 'fireworks']"
+  }
+}

@@ -5,16 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @OA\Schema(@OA\Xml(name="RideDetail"))
+ */
 class RideDetail extends Model implements \Countable
 {
+    protected $fillable = [
+        'park_id',
+        'opening_year',
+        'ride_type',
+        'ride_type',
+        'ride_vehicle',
+        'interactive_queue',
+        'gift_store_finish',
+        'single_rider',
+        'ride_photo',
+        'height_restricted',
+    ];
+
     public function getId() : string
     {
         return (string) $this->id;
     }
 
-    public function getYearOpen() : int
+    public function getOpeningYear() : string
     {
-        return $this->opening_year;
+        return (string) $this->opening_year;
     }
 
     public function getRideType() : string
@@ -27,26 +43,27 @@ class RideDetail extends Model implements \Countable
         return $this->ride_vehicle;
     }
 
-    public function getInteractiveQueue() : int
+    public function getInteractiveQueue() : bool
     {
         return $this->interactive_queue;
     }
 
-    public function getGiftStoreFinish() : int
+    public function getGiftStoreFinish() : bool
     {
         return $this->gift_store_finish;
     }
 
-    public function getSingleRider() : int
+    public function getSingleRider() : bool
     {
         return $this->single_rider;
     }
 
-    public function getRidePhoto() : int
+    public function getRidePhoto() : bool
     {
         return $this->ride_photo;
     }
-    public function getHeightRestriction() : int
+
+    public function getHeightRestriction() : bool
     {
         return $this->height_restricted;
     }
@@ -56,7 +73,7 @@ class RideDetail extends Model implements \Countable
         return $this->belongsTo(Ride::class, 'ride_id', 'id');
     }
 
-    public function count()
+    public function count() : int
     {
         return $this->count();
     }
