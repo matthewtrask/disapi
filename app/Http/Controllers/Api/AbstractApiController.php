@@ -89,4 +89,9 @@ abstract class AbstractApiController extends Controller
     {
         return $this->responseFactory->createRestaurantNotFoundResponse($id);
     }
+
+    protected function parkDeletedResponse() : Response
+    {
+        return $this->responseFactory->createParkDeletedResponse();
+    }
 }

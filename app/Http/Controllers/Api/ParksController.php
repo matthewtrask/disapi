@@ -72,4 +72,17 @@ class ParksController extends AbstractApiController
 
         return $this->parkCreatedResponse($park);
     }
+
+    public function destroy(Request $request) : Response
+    {
+        $park = $this->parksRepository->fetch($request->id);
+
+        if (!$park) {
+            return $this->parkNotFoundResponse($request->id);
+        }
+
+        $this->parksRepository->destroy($park->getId());
+
+        return $this->parkDeletedResponse();
+    }
 }

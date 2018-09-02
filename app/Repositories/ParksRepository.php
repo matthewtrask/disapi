@@ -10,14 +10,22 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ParksRepository
 {
+    /** @var Park $park */
+    private $park;
+
+    public function __construct(Park $park)
+    {
+        $this->park = $park;
+    }
+
     public function get() : Collection
     {
-        return Park::all();
+        return $this->park->all();
     }
 
     public function fetch(int $id) : ? Park
     {
-        return Park::find($id);
+        return $this->park->find($id);
     }
 
     public function create(ParkRequest $request) : Park
@@ -38,5 +46,14 @@ class ParksRepository
         ]);
 
         return $park;
+    }
+
+    public function destroy(int $id)
+    {
+        $this->park->find($id);
+
+        $this->park->detail->delete();
+
+        return $this->park->delete();
     }
 }

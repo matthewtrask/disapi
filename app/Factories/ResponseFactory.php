@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace App\Factories;
 
 use App\Model\Park;
@@ -88,6 +87,33 @@ class ResponseFactory
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->setDate(new DateTime())
             ->setContent(sprintf('The ride with the id of %s does not exist', $id));
+    }
+
+    public function createParkDeletedResponse() : Response
+    {
+        return $this->createResponse()
+            ->setStatusCode(204)
+            ->header('accept', ConstantService::ACCEPT_TYPE)
+            ->header('content-type', ConstantService::CONTENT_TYPE)
+            ->setDate(new DateTime());
+    }
+
+    public function createRestaurantDeletedResponse() : Response
+    {
+        return $this->createResponse()
+            ->setStatusCode(204)
+            ->header('accept', ConstantService::ACCEPT_TYPE)
+            ->header('content-type', ConstantService::CONTENT_TYPE)
+            ->setDate(new DateTime());
+    }
+
+    public function createRideDeletedResponse() : Response
+    {
+        return $this->createResponse()
+            ->setStatusCode(204)
+            ->header('accept', ConstantService::ACCEPT_TYPE)
+            ->header('content-type', ConstantService::CONTENT_TYPE)
+            ->setDate(new DateTime());
     }
 
     private function createResponse() : Response
