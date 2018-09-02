@@ -13,7 +13,19 @@ class ResponseFactory
 {
     public function createParksResponse(array $data, string $etag) : Response
     {
-        $this->createResponse()
+        return $this->createResponse()
+            ->header('content-type', ConstantService::ACCEPT_TYPE)
+            ->header('accept', ConstantService::CONTENT_TYPE)
+            ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
+            ->setDate(new DateTime())
+            ->setEtag($etag)
+            ->setStatusCode(200)
+            ->setContent($data);
+    }
+
+    public function createResortsResponse(array $data, string $etag) : Response
+    {
+        return $this->createResponse()
             ->header('content-type', ConstantService::ACCEPT_TYPE)
             ->header('accept', ConstantService::CONTENT_TYPE)
             ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)

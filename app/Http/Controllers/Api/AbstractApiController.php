@@ -70,6 +70,11 @@ abstract class AbstractApiController extends Controller
         return $this->responseFactory->createRestaurantsResponse($data, $etag);
     }
 
+    protected function resortsResponse(array $data, string $etag) : Response
+    {
+        return $this->responseFactory->createResortsResponse($data, $etag);
+    }
+
     protected function parkCreatedResponse(Park $park) : Response
     {
         return $this->responseFactory->createParkCreatedResponse($park);

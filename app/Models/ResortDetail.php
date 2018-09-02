@@ -8,8 +8,76 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ResortDetail extends Model
 {
+    protected $fillable = [
+        'park_id',
+        'resort_type',
+        'transportation_options',
+        'category',
+        'num_of_rooms',
+        'quick_service_restaurants',
+        'table_service_restaurants',
+        'gift_shop',
+        'arcade',
+        'pool',
+    ];
+
     public function park() : BelongsTo
     {
-        return $this->belongsTo(Park::class, 'id', 'resort_id');
+        return $this->belongsTo(Park::class, 'id', 'park_id');
+    }
+
+    public function resort() : BelongsTo
+    {
+        return $this->belongsTo(Resort::class, 'id', 'resort_id');
+    }
+
+    public function getId()
+    {
+        return (string) $this->id;
+    }
+
+    public function getResortType() : string
+    {
+        return $this->resort_type;
+    }
+
+    public function getTransportationOptions() : array
+    {
+        return explode(',', $this->transport_options);
+    }
+
+    public function getCategory() : string
+    {
+        return $this->category;
+    }
+
+    public function getNumOfRooms() : int
+    {
+        return $this->num_of_rooms;
+    }
+
+    public function getQuickServiceRestaurants() : bool
+    {
+        return $this->quick_service_restaurants;
+    }
+
+    public function getTableServiceRestaurants() : bool
+    {
+        return $this->table_service_restaurants;
+    }
+
+    public function getGiftShop() : bool
+    {
+        return $this->gift_shop;
+    }
+
+    public function getArcade() : bool
+    {
+        return $this->arcade;
+    }
+
+    public function getPool() : bool
+    {
+        return $this->pool;
     }
 }

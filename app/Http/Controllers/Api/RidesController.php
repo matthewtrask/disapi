@@ -2,32 +2,21 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\Api\RideRequest;
-use App\Model\Park;
-use App\Models\Ride;
-use App\Models\RideDetail;
+use App\Factories\ResponseFactory;
 use App\Repositories\RidesRepository;
-use App\Schemas\ParkSchema;
-use App\Schemas\RideDetailSchema;
-use App\Schemas\RideSchema;
-use App\Schemas\RidesSchema;
 use App\Transformers\Api\RidesTransformer;
 use App\Transformers\Api\RideTransformer;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
-use Neomerx\JsonApi\Encoder\Encoder;
-use Neomerx\JsonApi\Encoder\EncoderOptions;
-use Neomerx\JsonApi\Encoder\Parameters\EncodingParameters;
 
 class RidesController extends AbstractApiController
 {
     /** @var RidesRepository */
     private $ridesRepository;
 
-    public function __construct(Response $response, RidesRepository $ridesRepository)
+    public function __construct(ResponseFactory $response, RidesRepository $ridesRepository)
     {
         parent::__construct($response);
         $this->ridesRepository = $ridesRepository;

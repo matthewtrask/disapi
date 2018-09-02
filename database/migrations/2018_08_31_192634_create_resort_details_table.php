@@ -20,6 +20,7 @@ class CreateResortDetailsTable extends Migration
             $table->string('resort_type');
             $table->string('transport_options');
             $table->string('category');
+            $table->integer('num_of_rooms');
             $table->integer('quick_service_restaurants');
             $table->integer('table_service_restaurants');
             $table->integer('gift_shop');

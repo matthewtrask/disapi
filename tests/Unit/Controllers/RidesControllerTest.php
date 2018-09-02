@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Controllers;
 
+use App\Factories\ResponseFactory;
 use App\Http\Controllers\Api\RidesController;
 use App\Repositories\RidesRepository;
 use Illuminate\Http\Response;
@@ -15,17 +16,17 @@ class RidesControllerTest extends TestCase
     /** @var RidesController */
     private $controller;
 
-    /** @var Response */
-    private $response;
+    /** @var ResponseFactory */
+    private $responseFactory;
 
     /** @var RidesRepository */
     private $ridesRepository;
 
     public function setUp()
     {
-        $this->response = $this->createMock(Response::class);
+        $this->responseFactory = $this->createMock(ResponseFactory::class);
         $this->ridesRepository = $this->createMock(RidesRepository::class);
-        $this->controller = new RidesController($this->response, $this->ridesRepository);
+        $this->controller = new RidesController($this->responseFactory, $this->ridesRepository);
     }
     
     public function testCanGetInstance()

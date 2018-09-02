@@ -12,8 +12,7 @@ class RidesEndpointTest extends TestCase
     public function testGetRides() : void
     {
         $response = $this->get('/api/rides');
-
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJsonSchema(base_path('schemas/rides.json'));
         $this->assertTrue(is_object($response));
     }

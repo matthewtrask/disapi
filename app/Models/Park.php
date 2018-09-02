@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Model;
 
+use App\Models\Resort;
 use App\Models\Restaurant;
 use App\Models\Ride;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +32,11 @@ class Park extends Model
     public function restaurants() : HasMany
     {
         return $this->hasMany(Restaurant::class, 'park_id', 'id');
+    }
+
+    public function resorts() : HasMany
+    {
+        return $this->hasMany(Resort::class, 'park_id', 'id');
     }
 
     public function getId() : string

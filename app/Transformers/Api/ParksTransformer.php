@@ -18,7 +18,6 @@ class ParksTransformer extends TransformerAbstract
     public function transform(Park $park) : array
     {
         return [
-            'type'   => self::PARKS_TYPE,
             'id'     => $park->getId(),
             'name'   => $park->getName(),
             'links'  => [

@@ -27,5 +27,8 @@ Route::delete('parks/{id}', ['uses' => 'Api\ParksController@destroy'])->where('i
 Route::get('rides', ['uses' => 'Api\RidesController@index']);
 Route::get('rides/{id}', ['uses' => 'Api\RidesController@fetch'])->where('id', '[0-9]+');
 
+Route::get('resorts', ['uses' => 'Api\ResortsController@index']);
+Route::get('resorts/{id}', ['uses' => 'Api\ResortsController@fetch'])->where('id', '[0-9]+');
+
 Route::get('restaurants', ['uses' => 'Api\RestaurantsController@index']);
 Route::get('restaurants/{id}', ['uses' => 'Api\RestaurantsController@fetch'])->where('id', '[0-9]+');
