@@ -14,6 +14,8 @@ use League\Fractal\Resource\Item;
 
 class ParksController extends AbstractApiController
 {
+    public const PARK = 'park';
+
     /** @var ParksRepository */
     private $parksRepository;
 
@@ -35,7 +37,7 @@ class ParksController extends AbstractApiController
         $data = $manager->createData($resources)->toArray();
         $etag = $this->createEtag($data);
 
-        return $this->parksResponse($data, $etag);
+        return $this->resourcesFoundResponse($data, $etag);
     }
 
     public function fetch(Request $request) : Response
@@ -43,7 +45,7 @@ class ParksController extends AbstractApiController
         $park = $this->parksRepository->fetch($request->id);
 
         if (!$park) {
-            return $this->parkNotFoundResponse($request->id);
+            return $this->resourceNotFoundResponse(self::PARK, $request->id);
         }
 
         $manager = $this->createManager();
@@ -51,26 +53,22 @@ class ParksController extends AbstractApiController
         $resource = new Item($park, new ParkTransformer(), 'parks');
         $resource->setMeta($this->createMetaData());
 
-        if ($request->query('includes') === 'restaurants') {
-            $manager->parseIncludes('restaurants');
-        }
-
-        if ($request->query('includes') === 'rides') {
-            $manager->parseIncludes('rides');
+        if ($request->query('includes')) {
+            $manager->parseIncludes($request->query('includes'));
         }
 
         $data = $manager->createData($resource)->toArray();
 
         $etag = $this->createEtag($data);
 
-        return $this->parksResponse($data, $etag);
+        return $this->resourcesFoundResponse($data, $etag);
     }
 
     public function create(ParkRequest $request) : Response
     {
         $park = $this->parksRepository->create($request);
 
-        return $this->parkCreatedResponse($park);
+        return $this->resourceCreatedResponse($park);
     }
 
     public function destroy(Request $request) : Response
@@ -78,11 +76,11 @@ class ParksController extends AbstractApiController
         $park = $this->parksRepository->fetch($request->id);
 
         if (!$park) {
-            return $this->parkNotFoundResponse($request->id);
+            return $this->resourceNotFoundResponse(self::PARK, $request->id);
         }
 
         $this->parksRepository->destroy($park->getId());
 
-        return $this->parkDeletedResponse();
+        return $this->resourceDeletedResponse();
     }
 }

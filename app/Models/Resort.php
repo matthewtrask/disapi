@@ -24,6 +24,11 @@ class Resort extends Model
         return $this->name;
     }
 
+    public function setName(string $name) : void
+    {
+        $this->name = $name;
+    }
+
     public function getId() : string
     {
         return (string) $this->id;
@@ -32,5 +37,10 @@ class Resort extends Model
     public function getParkId() : string
     {
         return (string) $this->park_id;
+    }
+
+    public function setParkId(int $parkId) : void
+    {
+        $this->park_id = $parkId;
     }
 }

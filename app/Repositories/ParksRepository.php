@@ -48,7 +48,7 @@ class ParksRepository
         return $park;
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id) : bool
     {
         $this->park->find($id);
 

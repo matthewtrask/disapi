@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 
 class ResponseFactory
 {
-    public function createParksResponse(array $data, string $etag) : Response
+    public function createResourcesFoundResponse(array $data, string $etag) : Response
     {
         return $this->createResponse()
             ->header('content-type', ConstantService::ACCEPT_TYPE)
@@ -23,103 +23,29 @@ class ResponseFactory
             ->setContent($data);
     }
 
-    public function createResortsResponse(array $data, string $etag) : Response
-    {
-        return $this->createResponse()
-            ->header('content-type', ConstantService::ACCEPT_TYPE)
-            ->header('accept', ConstantService::CONTENT_TYPE)
-            ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->setDate(new DateTime())
-            ->setEtag($etag)
-            ->setStatusCode(200)
-            ->setContent($data);
-    }
-
-    public function createRestaurantsResponse(array $data, string $etag) : Response
+    public function createResourceCreatedResponse(Object $object, string $type) : Response
     {
         return $this->createResponse()
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->setEtag($etag)
-            ->setDate(new DateTime())
-            ->setStatusCode(200)
-            ->setContent($data);
-    }
-
-    public function createRidesResponse(array $data, string $etag) : Response
-    {
-        return $this->createResponse()
-            ->header('accept', ConstantService::ACCEPT_TYPE)
-            ->header('content-type', ConstantService::CONTENT_TYPE)
-            ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->setEtag($etag)
-            ->setDate(new DateTime())
-            ->setStatusCode(200)
-            ->setContent($data);
-    }
-
-    public function createParkCreatedResponse(Park $park) : Response
-    {
-        return $this->createResponse()
-            ->header('accept', ConstantService::ACCEPT_TYPE)
-            ->header('content-type', ConstantService::CONTENT_TYPE)
-            ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->header('location', 'https://disapi.co/api/parks/' . $park->getId())
+            ->header('location', sprintf('https://disapi.co/api/$s/$s', $type, $object->getId()))
             ->setDate(new DateTime())
             ->setStatusCode(201)
-            ->setContent($park->getId());
+            ->setContent($object->getId());
     }
 
-    public function createRestaurantNotFoundResponse(int $id) : Response
+    public function createResourceNotFoundResponse(string $type, int $id) : Response
     {
         return $this->createResponse()
             ->setStatusCode(404)
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->setDate(new DateTime())
-            ->setContent(sprintf('The restaurant with the id of %s does not exist', $id));
+            ->setContent(sprintf('The resource type %s with the id of %s does not exist', $type, $id));
     }
 
-    public function createParkNotFoundResponse(int $id) : Response
-    {
-        return $this->createResponse()
-            ->setStatusCode(404)
-            ->header('accept', ConstantService::ACCEPT_TYPE)
-            ->header('content-type', ConstantService::CONTENT_TYPE)
-            ->setDate(new DateTime())
-            ->setContent(sprintf('The park with the id of %s does not exist', $id));
-    }
-
-    public function createRideNotFoundResponse(int $id) : Response
-    {
-        return $this->createResponse()
-            ->setStatusCode(404)
-            ->header('accept', ConstantService::ACCEPT_TYPE)
-            ->header('content-type', ConstantService::CONTENT_TYPE)
-            ->setDate(new DateTime())
-            ->setContent(sprintf('The ride with the id of %s does not exist', $id));
-    }
-
-    public function createParkDeletedResponse() : Response
-    {
-        return $this->createResponse()
-            ->setStatusCode(204)
-            ->header('accept', ConstantService::ACCEPT_TYPE)
-            ->header('content-type', ConstantService::CONTENT_TYPE)
-            ->setDate(new DateTime());
-    }
-
-    public function createRestaurantDeletedResponse() : Response
-    {
-        return $this->createResponse()
-            ->setStatusCode(204)
-            ->header('accept', ConstantService::ACCEPT_TYPE)
-            ->header('content-type', ConstantService::CONTENT_TYPE)
-            ->setDate(new DateTime());
-    }
-
-    public function createRideDeletedResponse() : Response
+    public function createResourceDeletedResponse() : Response
     {
         return $this->createResponse()
             ->setStatusCode(204)

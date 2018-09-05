@@ -55,48 +55,23 @@ abstract class AbstractApiController extends Controller
         ];
     }
 
-    protected function parksResponse(array $data, string $etag) : Response
+    protected function resourcesFoundResponse(array $data, string $etag) : Response
     {
-        return $this->responseFactory->createParksResponse($data, $etag);
+        return $this->responseFactory->createResourcesFoundResponse($data, $etag);
     }
 
-    protected function ridesResponse(array $data, string $etag) : Response
+    protected function resourceCreatedResponse(Park $park) : Response
     {
-        return $this->responseFactory->createRidesResponse($data, $etag);
+        return $this->responseFactory->createResourceCreatedResponse($park);
     }
 
-    protected function restaurantsResponse(array $data, string $etag) : Response
+    protected function resourceNotFoundResponse(string $type, int $id) : Response
     {
-        return $this->responseFactory->createRestaurantsResponse($data, $etag);
+        return $this->responseFactory->createResourceNotFoundResponse($type, $id);
     }
 
-    protected function resortsResponse(array $data, string $etag) : Response
+    protected function resourceDeletedResponse() : Response
     {
-        return $this->responseFactory->createResortsResponse($data, $etag);
-    }
-
-    protected function parkCreatedResponse(Park $park) : Response
-    {
-        return $this->responseFactory->createParkCreatedResponse($park);
-    }
-
-    protected function rideNotFoundResponse(int $id) : Response
-    {
-        return $this->responseFactory->createRideNotFoundResponse($id);
-    }
-
-    protected function parkNotFoundResponse(int $id) : Response
-    {
-        return $this->responseFactory->createParkNotFoundResponse($id);
-    }
-
-    protected function restaurantNotFoundResponse(int $id) : Response
-    {
-        return $this->responseFactory->createRestaurantNotFoundResponse($id);
-    }
-
-    protected function parkDeletedResponse() : Response
-    {
-        return $this->responseFactory->createParkDeletedResponse();
+        return $this->responseFactory->createResourceDeletedResponse();
     }
 }

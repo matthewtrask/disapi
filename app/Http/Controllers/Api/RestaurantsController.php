@@ -13,6 +13,8 @@ use League\Fractal\Resource\Item;
 
 class RestaurantsController extends AbstractApiController
 {
+    public const RESTAURANT = 'restaurant';
+
     /** @var RestaurantsRespository */
     private $restaurantsRepository;
 
@@ -34,7 +36,7 @@ class RestaurantsController extends AbstractApiController
         $data = $manager->createData($resources)->toArray();
         $etag = $this->createEtag($data);
 
-        return $this->restaurantsResponse($data, $etag);
+        return $this->resourcesFoundResponse($data, $etag);
     }
 
     public function fetch(Request $request) : Response
@@ -42,7 +44,7 @@ class RestaurantsController extends AbstractApiController
         $restaurant = $this->restaurantsRepository->fetch($request->id);
 
         if (!$restaurant) {
-            return $this->restaurantNotFoundResponse($request->id);
+            return $this->resourceNotFoundResponse(self::RESTAURANT, $request->id);
         }
 
         $manager = $this->createManager();
@@ -57,13 +59,13 @@ class RestaurantsController extends AbstractApiController
         $data = $manager->createData($item)->toArray();
         $etag = $this->createEtag($data);
 
-        return $this->restaurantsResponse($data, $etag);
+        return $this->resourcesFoundResponse($data, $etag);
     }
 
     public function destroy(Request $request) : Response
     {
         $this->restaurantsRepository->destroy($request->id);
 
-        return $this->createRestaurantDestroyedResponse($request->id);
+        return $this->resourceDeletedResponse();
     }
 }

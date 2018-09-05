@@ -6,24 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class RideRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    public function getId() : int
-    {
-        return $this->get('id');
-    }
-
     public function getName() : string
     {
         return $this->get('name');
+    }
+
+    public function getParkId() : int
+    {
+        return $this->get('parkId');
     }
 
     public function getOpeningYear() : int
@@ -74,7 +69,16 @@ class RideRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|int',
+            'name'              => 'required|string',
+            'parkId'            => 'required|int',
+            'openingYear'       => 'required|int',
+            'rideType'          => 'required|string',
+            'rideVehicle'       => 'required|string',
+            'interactiveQueue'  => 'required|boolean',
+            'giftStoreFinish'   => 'required|boolean',
+            'singleRider'       => 'required|boolean',
+            'ridePhoto'         => 'required|boolean',
+            'heightRestriction' => 'required|boolean',
         ];
     }
 }

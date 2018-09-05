@@ -15,68 +15,150 @@ servers:
 
 tags:
   - name: parks
-    description: |
-      Endpoints for getting and working with the parks
+    description: Endpoints for getting and working with the parks
+  - name: resorts
+    description: Endpoints for getting and working with the resorts
   - name: restaurants
-    description: |
-      Endpoints for getting and working with the restaurants
+    description: Endpoints for getting and working with the restaurants
   - name: rides
-    description: |
-      Endpoints for getting and working with the rides
+    description: Endpoints for getting and working with the rides
 paths:
+  /resorts:
+    get:
+      summary: List resorts at Walt Disney World
+      description: Get a list of resorts at Walt Disney World
+      operationId: getResorts
+      tags:
+        - resorts
+      responses:
+        200:
+          $ref: '#/components/responses/ResortsResponse'
+    post:
+      summary: Create a new resort resource
+      operationId: createResort
+      description: Create a new resort resource for the Walt Disney World Resort
+      tags:
+        - resorts
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResortForm'
+      responses:
+              201:
+                description: Created
+  /resorts/{id}:
+    get:
+       summary: List a specific resort resource by ID
+       description: Get a specific resort resource by ID
+       operationId: getResort
+       tags:
+         - resorts
+       responses:
+         200:
+           $ref: '#/components/responses/ResortResponse'
+         404:
+           description: Resource could not be found
+    delete:
+      summary: Delete resort resource by ID
+      operationId: deleteResort
+      tags:
+        - resorts
+      responses:
+        204:
+          description: No Content
+        404:
+          description: Resource Not Found
   /rides:
     get:
-      summary: List rides
+      summary: List rides at Walt Disney World
       description: |
-        Get a list of rides at all parks
+        Get a list of rides at all Walt Disney World Parks
       operationId: getRides
       tags:
         - rides
       responses:
         200:
           $ref: '#/components/responses/RidesResponse'
+    post:
+      summary: Create a new ride resource
+      description: Create a new ride resource for the Walt Disney World Resort
+      operationId: createRides
+      tags:
+        - rides
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RideForm'
+      responses:
+        201:
+          description: Created
   /rides/{id}:
      get:
        summary: Get ride by ID
+       description: Get a ride at Walt Disney World by ID
        operationId: getRide
        tags:
          - rides
        responses:
          200:
            $ref: '#/components/responses/RideResponse'
+         404:
+           description: Resource Not Found
+     delete:
+       summary: Delete ride resource by ID
+       operationId: deleteRide
+       tags:
+         - rides
+       responses:
+         204:
+           description: No Content
+         404:
+           description: Resource Not Found
   /restaurants:
     get:
-      summary: List rides
-      description: |
-        Get a list of rides at all parks
+      summary: List restaurants at Walt Disney World
+      description: Get a list of restaurants at all parks
       operationId: getRestaurants
       tags:
-        - rides
+        - restaurants
       responses:
         200:
           $ref: '#/components/responses/RestaurantsResponse'
   /parks:
     get:
       summary: List parks
-      description: |
-        Get a list of all parks
+      description: Get a list of all parks at Walt Disney World
       operationId: getParks
       tags:
         - parks
       responses:
         200:
           $ref: '#/components/responses/ParksResponse'
-  /parks/{parkId}/rides:
+  /parks/{id}:
     get:
-      summary: Park specific rides
-      description: |
-        Get all rides for a specific park
-      operationId: getParkRides
+      summary: List a park by ID
+      description: Get a park at Walt Disney World by ID
+      operationId: getPark
       tags:
         - parks
       responses:
         200:
-          $ref: '#/components/responses/ParkRidesResponse'
+          $ref: '#/components/responses/ParkResponse'
+        404:
+          description: Resource Not Found
+    delete:
+      summary: Remove a resource from the collection
+      description: Remove a resource from the collection by ID
+      operationId: deletePark
+      tags:
+        - parks
+      responses:
+        204:
+          description: No Content
+        404:
+          description: Resource Not Found
 components:
   schemas:
     Rides:
@@ -86,48 +168,14 @@ components:
           type: string
         name:
           type: string
-      required:
-        - name
     Ride:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
-    Restaurants:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      required:
-        - name
-    Parks:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      required:
-        - name
-    Park:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    RideDetail:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        yearOpened:
+        parkId:
+          type: integer
+        openingYear:
           type: integer
         rideType:
           type: string
@@ -135,13 +183,157 @@ components:
           type: string
         interactiveQueue:
           type: boolean
-        ridePhoto:
+        giftStoreFinish:
           type: boolean
         singleRider:
-          type: boolean
+          type: integer
+        ridePhoto:
+          type: integer
         heightRestriction:
+          type: integer
+    RideForm:
+      type: object
+      required:
+        - name
+          parkId
+          openingYear
+          rideType
+          rideVehicle
+          interactiveQueue
+          giftShopFinish
+          singleRider
+          ridePhoto
+          heightRestriction
+      properties:
+        name:
+          type: string
+        parkId:
+          type: integer
+        openingYear:
+          type: integer
+        rideType:
+          type: string
+        rideVehicle:
+          type: string
+        interactiveQueue:
           type: boolean
-    RestaurantDetail:
+        giftStoreFinish:
+          type: boolean
+        singleRider:
+          type: integer
+        ridePhoto:
+          type: integer
+        heightRestriction:
+          type: integer
+    Resorts:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Resort:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        parkId:
+          type: integer
+        transportOptions:
+          type: array
+          items:
+            type: string
+        category:
+          type: string
+        numOfRooms:
+          type: integer
+        quickServiceRestaurants:
+          type: boolean
+        tableServiceRestaurants:
+          type: boolean
+        giftShop:
+          type: boolean
+        arcade:
+          type: boolean
+        pool:
+          type: boolean
+    ResortForm:
+      type: object
+      required:
+        - name
+          parkId
+          resortType
+          transportOptions
+          category
+          numOfRooms
+          quickServiceRestaurants
+          tableServiceRestaurants
+          giftShop
+          arcade
+          pool
+      properties:
+        name:
+          type: string
+        parkId:
+          type: integer
+        openingYear:
+          type: integer
+        resortType:
+          type: string
+        transportOptions:
+          type: string
+        category:
+          type: string
+        numOfRooms:
+          type: integer
+        quickServiceRestaurants:
+          type: boolean
+        tableServiceRestaurants:
+          type: boolean
+        giftShop:
+          type: boolean
+        arcade:
+          type: boolean
+        pool:
+          type: boolean
+    Parks:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Park:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        centralAttraction:
+          type: string
+        yearOpened:
+          type: string
+        rideCount:
+          type: integer
+        restaurantCount:
+          type: integer
+        size:
+          type: integer
+        resortCount:
+          type: integer
+        fireworks:
+          type: boolean
+    Restaurants:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Restaurant:
       type: object
       properties:
         id:
@@ -170,25 +362,29 @@ components:
       in: path
       required: true
       schema:
-        type: string
-      description: |
-        The ID of the restaurant
+        type: integer
+      description: The ID of the restaurant
+    resortId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: The ID of the resort
     rideId:
       name: id
       in: path
       required: true
       schema:
-        type: string
-      description: |
-        The ID of the ride
+        type: integer
+      description: The ID of the ride
     parkId:
       name: id
       in: path
       required: true
       schema:
-        type: string
-      description: |
-        The ID of the park
+        type: integer
+      description: The ID of the park
   responses:
     RidesResponse:
       description: A list a rides
@@ -206,7 +402,7 @@ components:
             ridesArray:
               $ref: '#/components/examples/RidesResponse'
     RideResponse:
-      description: A singluar ride by id
+      description: A singluar ride resource by ID
       content:
         application/json:
           schema:
@@ -215,11 +411,39 @@ components:
               data:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RideDetail'
+                  $ref: '#/components/schemas/Ride'
                 minLength: 1
           examples:
             ridesArray:
-              $ref: '#/components/examples/RideDetailResponse'
+              $ref: '#/components/examples/RideResponse'
+    ResortsResponse:
+      description: A list a resorts at Walt Disney World
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Resorts'
+          examples:
+            resortsArray:
+              $ref: '#/components/examples/ResortsResponse'
+    ResortResponse:
+      description: A singular resort resource by ID
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Resort'
+          examples:
+            resortArray:
+              $ref: '#/components/examples/ResortResponse'
     RestaurantsResponse:
       description: A list a rides
       content:
@@ -236,7 +460,7 @@ components:
             categoriesArray:
               $ref: '#/components/examples/RestaurantsResponse'
     ParksResponse:
-      description: A list a rides
+      description: A list a parks at Walt Disney World
       content:
         application/json:
           schema:
@@ -248,12 +472,10 @@ components:
                   $ref: '#/components/schemas/Parks'
                 minLength: 1
           examples:
-            rides:
-              $ref: '#/components/links/ParkRides'
-            restaurants:
-              $ref: '#/components/links/ParkRestaurants'
-    ParkRidesResponse:
-      description: A list of rides for the specified park
+            parksArray:
+              $ref: '#/components/examples/ParksResponse'
+    ParkResponse:
+      description: A park at Walt Disney World by ID
       content:
         application/json:
           schema:
@@ -262,11 +484,45 @@ components:
               data:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Rides'
-
+                  $ref: '#/components/schemas/Park'
+                minLength: 1
+          examples:
+            parkArray:
+              $ref: '#/components/examples/ParkResponse'
   examples:
+    ResortsResponse:
+      summary: An example response of resorts resource at Walt Disney World
+      value:
+        data:
+          - id: 1
+            name: All-Star Movies Resort
+            parkId: 4
+          - id: 2
+            name: All-Star Music Resort
+            parkId: 4
+          - id: 3
+            name: All-Star Sports Resort
+            parkId: 4
+    ResortResponse:
+      summary: An example response of a resort resource at Walt Disney World
+      value:
+        data:
+          - id: 1
+            name: All-Star Movies Resort
+            parkId: 4
+            resortType: Value,
+            transportationOptions: [
+                Bus
+            ]
+            category: Music,
+            numOfRooms: 1604,
+            quickServiceRestaurants: true,
+            tableServiceRestaurants: false,
+            giftShop: true,
+            arcade: true,
+            pool: true
     RidesResponse:
-      summary: An example response of rides
+      summary: An example response of rides resources at Walt Disney World
       value:
         data:
           - id: 1
@@ -275,27 +531,7 @@ components:
             name: Jungle Cruise
           - id: 3
             name: The Magic Carpets of Aladdin
-    RestaurantsResponse:
-      summary: An example response of restaurants
-      value:
-        data:
-          - id: 1
-            name: Aloha Isle
-          - id: 2
-            name: Auntie Gravity's Galactic Goodies
-          - id: 3
-            name: Be Our Guest Restaurant
-    ParksResponse:
-      summary: An exmaple response of parks
-      value:
-        data:
-          - id: 1
-            name: Magic Kingdom
-          - id: 2
-            name: Epcot
-          - id: 3
-            name: Hollywood Studios
-    RideDetailResponse:
+    RideResponse:
       summary: An example response of a ride
       value:
         data:
@@ -309,7 +545,7 @@ components:
             singleRider: false
             heightRestriction: false
           - id: 2
-            name: Walt Disney World Railroad
+            name: Aladdin's Magic Carpets
             yearOpened: 1971
             rideType: Transport
             rideVehicle: Train
@@ -317,7 +553,17 @@ components:
             ridePhoto: false
             singleRider: false
             heightRestriction: false
-    RestaurantDetailResponse:
+    RestaurantsResponse:
+      summary: An example response of restaurants at Walt Disney World
+      value:
+        data:
+          - id: 1
+            name: Aloha Isle
+          - id: 2
+            name: Auntie Gravity's Galactic Goodies
+          - id: 3
+            name: Be Our Guest Restaurant
+    RestaurantResponse:
       summary: An example response of a restaurant
       value:
         data:
@@ -326,7 +572,7 @@ components:
             quickService: true,
             tableService: false,
             alcohol: false,
-            "diningPlan": true,
+            diningPlan: true,
             mealTypes: [
                 Snacks,
             ]
@@ -335,14 +581,44 @@ components:
                 Dole Whip
             ]
           - id: 2
-            name: Walt Disney World Railroad
+            name: Auntie Gravity's Galactic Goodies
+            parkId: 1
+            quickService: true
+            tableService: false
+            alcohol: false
+            diningPlan: true
+            mealTypes: [
+                Snacks
+            ]
+            foodTypes: [
+                Snacks,
+                Ice Cream
+            ]
+    ParksResponse:
+      summary: An exmaple response of parks at Walt Disney World
+      value:
+        data:
+          - id: 1
+            name: Magic Kingdom
+          - id: 2
+            name: Epcot
+          - id: 3
+            name: Hollywood Studios
+          - id: 4
+            name: Animal Kingdom
+    ParkResponse:
+      summary: An exmaple response of a park at Walt Disney World
+      value:
+        data:
+          - id: 1
+            name: Magic Kingdom
+            centralAttraction: Cinderella's Castle
             yearOpened: 1971
-            rideType: Transport
-            rideVehicle: Train
-            interactiveQueue: false
-            ridePhoto: false
-            singleRider: false
-            heightRestriction: false
+            rideCount: 42
+            restaurantCount: 31
+            size: 107
+            resortCount: 6
+            fireworks: 1
   links:
     ParkRides:
       operationId: getParkRides

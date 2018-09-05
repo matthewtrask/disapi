@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
+use App\Http\Requests\Api\ResortsRequest;
 use App\Models\Resort;
+use App\Repositories\ResortsRepository;
 use App\Transformers\Api\ResortsTransformer;
 use App\Transformers\Api\ResortTransformer;
 use Illuminate\Http\Request;
@@ -13,7 +15,10 @@ use League\Fractal\Resource\Item;
 
 class ResortsController extends AbstractApiController
 {
-    public function __construct(ResponseFactory $responseFactory)
+    /** @var ResortsRepository $resortsRepository */
+    private $resortsRepository;
+
+    public function __construct(ResponseFactory $responseFactory, ResortsRepository $resortsRepository)
     {
         parent::__construct($responseFactory);
     }
@@ -35,7 +40,7 @@ class ResortsController extends AbstractApiController
 
         $etag = $this->createEtag($data);
 
-        return $this->resortsResponse($data, $etag);
+        return $this->resourcesFoundResponse($data, $etag);
     }
 
     public function fetch(Request $request) : Response
@@ -54,6 +59,13 @@ class ResortsController extends AbstractApiController
         $data = $manager->createData($resource)->toArray();
         $etag = $this->createEtag($data);
 
-        return $this->resortsResponse($data, $etag);
+        return $this->resourcesFoundResponse($data, $etag);
+    }
+
+    public function create(ResortsRequest $request) : Response
+    {
+        $resort = $this->resortsRepository->create($request);
+
+        return $this->resourceCreatedResponse($resort);
     }
 }
