@@ -12,7 +12,8 @@ before_script:
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate
-  - mysql -e homestead_test > data.sql
+  - mysql -e 'use homestead_test'
+  - mysql -e 'source data.sql'
 
 script:
 - vendor/bin/phpunit
