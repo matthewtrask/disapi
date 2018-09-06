@@ -12,11 +12,12 @@ before_script:
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate
+  - mysql -e homestead_test > data.sql
 
 script:
 - vendor/bin/phpunit
 - vendor/bin/phpcs app/ --colors
-- npm install speccy --dev
+- npm install speccy --only=dev
 - npm run speccy lint specs/openapi.yml
 
 services:

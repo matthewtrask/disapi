@@ -11,7 +11,7 @@ class ParksEndpointTest extends TestCase
     public function testParksEndpointSuccess() : void
     {
         $response = $this->get('/api/parks');
-        
+
         $response->assertOk();
         $response->assertSuccessful();
         $response->assertHeader('etag');
