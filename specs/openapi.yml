@@ -1,6 +1,7 @@
 openapi: "3.0.1"
 info:
   title: "Walt Disney World API"
+  description: An api that encompasses the Walt Disney World Resort parks, rides, resorts, and restaurants. This API follows the OpenAPI standard.
   version: "0.1.0"
   contact:
     name: Developer Support
@@ -128,7 +129,7 @@ paths:
           $ref: '#/components/responses/RestaurantsResponse'
   /parks:
     get:
-      summary: List parks
+      summary: List all parks at Walt Disney World
       description: Get a list of all parks at Walt Disney World
       operationId: getParks
       tags:
@@ -136,6 +137,20 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/ParksResponse'
+    post:
+      summary: Create a new park resource in the collection
+      description: Create a new park at Walt Disney World
+      operationId: createPark
+      tags:
+        - parks
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ParkForm'
+      responses:
+        201:
+          description: Created
   /parks/{id}:
     get:
       summary: List a park by ID
@@ -323,6 +338,34 @@ components:
         size:
           type: integer
         resortCount:
+          type: integer
+        fireworks:
+          type: boolean
+    ParkForm:
+      type: object
+      required:
+        - name
+          centralAttraction
+          yearOpened
+          rideCount
+          restaurantCount
+          resortCount
+          size
+          fireworks
+      properties:
+        name:
+          type: string
+        centralAttraction:
+          type: string
+        yearOpened:
+          type: integer
+        rideCount:
+          type: integer
+        restaurantCount:
+          type: integer
+        resortCount:
+          type: integer
+        size:
           type: integer
         fireworks:
           type: boolean

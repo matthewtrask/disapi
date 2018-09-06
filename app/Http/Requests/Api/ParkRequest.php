@@ -51,7 +51,7 @@ class ParkRequest extends FormRequest
         return $this->get('size');
     }
 
-    public function getFireworks() : int
+    public function getFireworks() : bool
     {
         return $this->get('fireworks');
     }
@@ -71,7 +71,7 @@ class ParkRequest extends FormRequest
             'restaurantCount'   => 'required|integer',
             'resortCount'       => 'required|integer',
             'size'              => 'required|integer',
-            'fireworks'         => 'required|integer',
+            'fireworks'         => 'required|boolean',
         ];
     }
 }

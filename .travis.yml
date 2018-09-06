@@ -11,4 +11,6 @@ before_script:
 
 script:
 - vendor/bin/phpunit
+- vendor/bin/phpcs app/ --colors
+- npm install speccy --dev
 - npm run speccy lint specs/openapi.yml
