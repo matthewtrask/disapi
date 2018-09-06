@@ -13,7 +13,7 @@ before_script:
   - php artisan key:generate
   - php artisan migrate
   - mysql -e 'use homestead_test;'
-  - mysql -e 'homestead_test < data.sql;'
+  - mysql -e 'homestead_test < ./data.sql;'
 
 script:
 - vendor/bin/phpunit
