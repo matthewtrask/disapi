@@ -46,8 +46,11 @@ paths:
             schema:
               $ref: '#/components/schemas/ResortForm'
       responses:
-              201:
-                description: Created
+        201:
+          description: Created'
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
   /resorts/{id}:
     get:
        summary: List a specific resort resource by ID
@@ -95,6 +98,9 @@ paths:
       responses:
         201:
           description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
   /rides/{id}:
      get:
        summary: Get ride by ID
