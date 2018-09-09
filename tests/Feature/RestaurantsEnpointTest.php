@@ -20,7 +20,7 @@ class RestaurantsEndpointTest extends TestCase
 
     public function testGetOneRestaurant() : void
     {
-        $rand = random_int(1, 8);
+        $rand = random_int(1, 3);
 
         $response = $this->get('/api/restaurants/' . $rand);
         $response->assertSuccessful();

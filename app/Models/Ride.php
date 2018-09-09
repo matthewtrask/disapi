@@ -12,11 +12,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Ride extends Model
 {
-    private const MK_ID = 1;
-    private const EP_ID = 2;
-    private const HS_ID = 3;
-    private const AK_ID = 4;
-
     /** @var bool */
     private $showRelationship = false;
 
