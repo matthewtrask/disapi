@@ -19,9 +19,7 @@ class RidesEndpointTest extends TestCase
 
     public function testGetOneRide() : void
     {
-        $rand = random_int(1, 48);
-
-        $response = $this->get('/api/rides/' . $rand);
+        $response = $this->get('/api/rides/1');
         $response->assertSuccessful();
         $response->assertStatus(200);
         $response->assertJsonSchema(base_path('schemas/ride.json'));

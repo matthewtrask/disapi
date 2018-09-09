@@ -251,5 +251,16 @@ class RideSeeder extends Seeder
             'name' => 'TriceraTop Spin',
             'park_id' => self::AK_ID,
         ]);
+
+        DB::table('ride_details')->insert([
+            'park_id' => self::MK_ID,
+            'opening_year' => 1971,
+            'ride_type' => 'Transport',
+            'ride_vehicle' => 'Train',
+            'interactive_queue' => 0,
+            'gift_store_finish' => 0,
+            'single_rider' => 0,
+            'height_restriction' => 0,
+        ]);
     }
 }
