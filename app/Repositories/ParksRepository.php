@@ -37,7 +37,28 @@ class ParksRepository
 
         $park->detail()->create([
             'central_attraction'    => $request->getCentralAttraction(),
-            'year_opened'          => $request->getYearOpened(),
+            'year_opened'           => $request->getYearOpened(),
+            'ride_count'            => $request->getRideCount(),
+            'restaurant_count'      => $request->getRestaurantCount(),
+            'size'                  => $request->getSize(),
+            'resort_count'          => $request->getResortCount(),
+            'fireworks'             => $request->getFireworks()
+        ]);
+
+        return $park;
+    }
+
+    public function edit(ParkRequest $request)
+    {
+        $park = $this->park->find($request->id);
+
+        $park->setName($request->getName());
+
+        $park->update();
+
+        $park->detail()->update([
+            'central_attraction'    => $request->getCentralAttraction(),
+            'year_opened'           => $request->getYearOpened(),
             'ride_count'            => $request->getRideCount(),
             'restaurant_count'      => $request->getRestaurantCount(),
             'size'                  => $request->getSize(),

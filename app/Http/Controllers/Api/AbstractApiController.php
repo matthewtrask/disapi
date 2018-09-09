@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
 use App\Http\Controllers\Controller;
-use App\Model\Park;
 use Illuminate\Http\Response;
 use League\Fractal\Manager;
 use League\Fractal\Serializer\JsonApiSerializer;
@@ -60,9 +59,14 @@ abstract class AbstractApiController extends Controller
         return $this->responseFactory->createResourcesFoundResponse($data, $etag);
     }
 
-    protected function resourceCreatedResponse(object $object) : Response
+    protected function resourceCreatedResponse(object $object, string $type) : Response
     {
-        return $this->responseFactory->createResourceCreatedResponse($object);
+        return $this->responseFactory->createResourceCreatedResponse($object, $type);
+    }
+
+    protected function resourceEditedResponse(object $object, string $type) : Response
+    {
+        return $this->responseFactory->createResourceEditedResponse($object, $type);
     }
 
     protected function resourceNotFoundResponse(string $type, int $id) : Response

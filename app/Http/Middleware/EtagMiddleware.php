@@ -1,13 +1,13 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class EtagMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next) : Response
     {
         // If this was not a get or head request, just return
         if (!$request->isMethod('get') && !$request->isMethod('head')) {

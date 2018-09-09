@@ -66,7 +66,7 @@ class RidesController extends AbstractApiController
 
     public function create(RideRequest $request)
     {
-        return 'hello';
+        //
     }
 
 

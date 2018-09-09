@@ -67,7 +67,7 @@ class RestaurantsController extends AbstractApiController
     {
         $restaurant = $this->restaurantsRepository->create($request);
 
-        return $this->resourceCreatedResponse($restaurant);
+        return $this->resourceCreatedResponse($restaurant, self::RESTAURANT);
     }
 
     public function destroy(Request $request) : Response

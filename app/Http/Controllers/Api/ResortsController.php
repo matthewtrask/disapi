@@ -15,6 +15,8 @@ use League\Fractal\Resource\Item;
 
 class ResortsController extends AbstractApiController
 {
+    private const RESORTS = 'resorts';
+
     /** @var ResortsRepository $resortsRepository */
     private $resortsRepository;
 
@@ -66,6 +68,6 @@ class ResortsController extends AbstractApiController
     {
         $resort = $this->resortsRepository->create($request);
 
-        return $this->resourceCreatedResponse($resort);
+        return $this->resourceCreatedResponse($resort, self::RESORTS);
     }
 }

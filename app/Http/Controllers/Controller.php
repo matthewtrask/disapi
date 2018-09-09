@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;

@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;

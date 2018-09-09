@@ -34,6 +34,8 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/ResortsResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
     post:
       summary: Create a new resort resource
       operationId: createResort
@@ -51,18 +53,22 @@ paths:
           headers:
             location:
               $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
   /resorts/{id}:
     get:
-       summary: List a specific resort resource by ID
-       description: Get a specific resort resource by ID
-       operationId: getResort
-       tags:
-         - resorts
-       responses:
-         200:
-           $ref: '#/components/responses/ResortResponse'
-         404:
-           description: Resource could not be found
+      summary: List a specific resort resource by ID
+      description: Get a specific resort resource by ID
+      operationId: getResort
+      tags:
+        - resorts
+      responses:
+        200:
+          $ref: '#/components/responses/ResortResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource could not be found
     delete:
       summary: Delete resort resource by ID
       operationId: deleteResort
@@ -71,6 +77,8 @@ paths:
       responses:
         204:
           description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
   /rides:
@@ -84,6 +92,8 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/RidesResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
     post:
       summary: Create a new ride resource
       description: Create a new ride resource for the Walt Disney World Resort
@@ -101,6 +111,8 @@ paths:
           headers:
             location:
               $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
   /rides/{id}:
      get:
        summary: Get ride by ID
@@ -111,6 +123,8 @@ paths:
        responses:
          200:
            $ref: '#/components/responses/RideResponse'
+         400:
+           description: The request you made could not be fulfilled right now.
          404:
            description: Resource Not Found
      delete:
@@ -121,6 +135,8 @@ paths:
        responses:
          204:
            description: No Content
+         400:
+           description: The request you made could not be fulfilled right now.
          404:
            description: Resource Not Found
   /restaurants:
@@ -133,6 +149,8 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/RestaurantsResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
     post:
       summary: Create a new restaurant resource
       description: Create a new restaurnat resource at Walt Disney World
@@ -150,6 +168,8 @@ paths:
           headers:
             location:
               $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
   /parks:
     get:
       summary: List all parks at Walt Disney World
@@ -160,6 +180,8 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/ParksResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
     post:
       summary: Create a new park resource in the collection
       description: Create a new park at Walt Disney World
@@ -177,6 +199,8 @@ paths:
           headers:
             location:
               $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
   /parks/{id}:
     get:
       summary: List a park by ID
@@ -187,8 +211,24 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/ParkResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+    put:
+      summary: Edit a resource by ID
+      description: Edit a park resource by an ID
+      operationId: editPark
+      tags:
+        - parks
+      responses:
+        200:
+          description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
     delete:
       summary: Remove a resource from the collection
       description: Remove a resource from the collection by ID
@@ -198,6 +238,8 @@ paths:
       responses:
         204:
           description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
 components:
@@ -490,7 +532,7 @@ components:
     Location:
       description: The location of the newly created resource
       schema:
-        type: integer
+        type: string
   responses:
     RidesResponse:
       description: A list a rides

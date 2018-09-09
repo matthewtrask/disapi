@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Factories;
 
-use App\Model\Park;
 use App\Services\ConstantService;
 use DateTime;
 use Illuminate\Http\Response;
@@ -33,6 +32,18 @@ class ResponseFactory
             ->setDate(new DateTime())
             ->setStatusCode(201)
             ->setContent($object->getId());
+    }
+
+    public function createResourceEditedResponse(Object $object, string $type) : Response
+    {
+        return $this->createResponse()
+            ->header('accept', ConstantService::ACCEPT_TYPE)
+            ->header('content-type', ConstantService::CONTENT_TYPE)
+            ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
+            ->header('location', sprintf('https://disapi.co/api/$s/$s', $type, $object->getId()))
+            ->setDate(new DateTime())
+            ->setStatusCode(200)
+            ->setContent($object);
     }
 
     public function createResourceNotFoundResponse(string $type, int $id) : Response

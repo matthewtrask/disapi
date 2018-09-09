@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace App\Http;
 
 use App\Http\Middleware\EtagMiddleware;

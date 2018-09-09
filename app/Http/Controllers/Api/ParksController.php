@@ -68,7 +68,14 @@ class ParksController extends AbstractApiController
     {
         $park = $this->parksRepository->create($request);
 
-        return $this->resourceCreatedResponse($park);
+        return $this->resourceCreatedResponse($park, self::PARK);
+    }
+    
+    public function edit(ParkRequest $request) : Response
+    {
+        $park = $this->parksRepository->edit($request);
+
+        return $this->resourceEditedResponse($park, self::PARK);
     }
 
     public function destroy(Request $request) : Response
