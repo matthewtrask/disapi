@@ -14,7 +14,6 @@ class RideTransformer extends TransformerAbstract
 
     public function transform(Ride $ride) : array
     {
-        dd($ride->detail);
         return [
             'id'                => $ride->getId(),
             'name'              => $ride->getName(),

@@ -253,6 +253,7 @@ class RideSeeder extends Seeder
         ]);
 
         DB::table('ride_details')->insert([
+            'ride_id' => 1,
             'park_id' => self::MK_ID,
             'opening_year' => 1971,
             'ride_type' => 'Transport',
