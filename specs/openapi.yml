@@ -127,6 +127,23 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/RestaurantsResponse'
+    post:
+      summary: Create a new restaurant resource
+      description: Create a new restaurnat resource at Walt Disney World
+      operationId: createRestaurant
+      tags:
+        - restaurants
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RestaurantForm'
+      responses:
+        201:
+          description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
   /parks:
     get:
       summary: List all parks at Walt Disney World
@@ -151,6 +168,9 @@ paths:
       responses:
         201:
           description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
   /parks/{id}:
     get:
       summary: List a park by ID
@@ -399,6 +419,38 @@ components:
           type: array
           items:
             type: string
+    RestaurantForm:
+      type: object
+      required:
+        - name
+          parkId
+          quickService
+          tableService
+          alcohol
+          diningPlan
+          mealTypes
+          foodTypes
+      properties:
+        name:
+          type: string
+        parkId:
+          type: integer
+        quickService:
+          type: boolean
+        tableService:
+          type: boolean
+        alcohol:
+          type: boolean
+        diningPlan:
+          type: boolean
+        mealTypes:
+          type: array
+          items:
+            type: string
+        foodTypes:
+          type: array
+          items:
+            type: string
   parameters:
     restaurantId:
       name: id
@@ -428,6 +480,11 @@ components:
       schema:
         type: integer
       description: The ID of the park
+  headers:
+    Location:
+      description: The location of the newly created resource
+      schema:
+        type: integer
   responses:
     RidesResponse:
       description: A list a rides

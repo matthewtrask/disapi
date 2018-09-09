@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
+use App\Http\Requests\Api\RestaurantRequest;
 use App\Repositories\RestaurantsRespository;
 use App\Transformers\Api\RestaurantsTransformer;
 use App\Transformers\Api\RestaurantTransformer;
@@ -60,6 +61,13 @@ class RestaurantsController extends AbstractApiController
         $etag = $this->createEtag($data);
 
         return $this->resourcesFoundResponse($data, $etag);
+    }
+
+    public function create(RestaurantRequest $request) : Response
+    {
+        $restaurant = $this->restaurantsRepository->create($request);
+
+        return $this->resourceCreatedResponse($restaurant);
     }
 
     public function destroy(Request $request) : Response

@@ -35,9 +35,19 @@ class Restaurant extends Model
         return $this->name;
     }
 
+    public function setName(string $name) : void
+    {
+        $this->name = $name;
+    }
+
     public function getParkId() : string
     {
         return (string) $this->park_id;
+    }
+
+    public function setParkId(int $parkId) : void
+    {
+        $this->park_id = $parkId;
     }
 
     public function setShowRelationship(bool $showRelationships) : void

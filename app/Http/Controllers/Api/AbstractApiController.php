@@ -60,9 +60,9 @@ abstract class AbstractApiController extends Controller
         return $this->responseFactory->createResourcesFoundResponse($data, $etag);
     }
 
-    protected function resourceCreatedResponse(Park $park) : Response
+    protected function resourceCreatedResponse(object $object) : Response
     {
-        return $this->responseFactory->createResourceCreatedResponse($park);
+        return $this->responseFactory->createResourceCreatedResponse($object);
     }
 
     protected function resourceNotFoundResponse(string $type, int $id) : Response
