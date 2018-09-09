@@ -22,7 +22,6 @@ class RidesEndpointTest extends TestCase
         $rand = random_int(1, 48);
 
         $response = $this->get('/api/rides/' . $rand);
-        dd($response);
         $response->assertSuccessful();
         $response->assertStatus(200);
         $response->assertJsonSchema(base_path('schemas/ride.json'));
