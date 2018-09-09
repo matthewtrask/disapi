@@ -17,19 +17,19 @@ class ParkSeeder extends Seeder
     public function run() : void
     {
         DB::table('parks')->insert([
-            'park' => self::MAGIC
+            'name' => self::MAGIC
         ]);
 
         DB::table('parks')->insert([
-            'park' => self::EPCOT
+            'name' => self::EPCOT
         ]);
 
         DB::table('parks')->insert([
-            'park' => self::HOLLYWOOD
+            'name' => self::HOLLYWOOD
         ]);
 
         DB::table('parks')->insert([
-            'park' => self::ANIMAL
+            'name' => self::ANIMAL
         ]);
 
         DB::table('park_details')->insert([
