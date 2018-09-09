@@ -35,44 +35,35 @@ class RestaurantsSeeder extends Seeder
             'table_service' => false,
             'alcohol' => false,
             'dining_plan' => true,
-            'meal_types' => [
-                'snacks',
-            ],
-            'food_types' => [
-                'Snacks',
-                'Dole Whip',
-            ],
+            'meal_types' => implode(',',['snacks']),
+            'food_types' => implode(',', ['Snacks','Dole Whip'])
         ]);
 
-        DB::table('restaurants')->insert([
+        DB::table('restaurant_details')->insert([
             'restaurant_id' => 2,
             'park_id' => ConstantService::MK_ID,
             'quick_service' => true,
             'table_service' => false,
             'alcohol' => false,
             'dining_plan' => true,
-            'meal_types' => [
-                'snacks',
-            ],
-            'food_types' => [
-                'Snacks',
-                'Ice Cream',
-            ],
+            'meal_types' => implode(',',['snacks']),
+            'food_types' => implode(',',['Snacks','Ice Cream']),
+
         ]);
 
-        DB::table('restaurants')->insert([
+        DB::table('restaurant_details')->insert([
             'restaurant_id' => 3,
             'park_id' => ConstantService::MK_ID,
             'quick_service' => true,
             'table_service' => true,
             'alcohol' => true,
             'dining_plan' => true,
-            'meal_types' => [
+            'meal_types' => implode(',',[
                 'Breakfast','Lunch','Dinner'
-            ],
-            'food_types' => [
+            ]),
+            'food_types' =>  implode(',',[
                 'Pastries','Breakfast Sandwiches','Steak','Sandwiches','Fish','Cakes','Pudding'
-            ],
+            ]),
 
         ]);
     }
