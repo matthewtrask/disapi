@@ -20,7 +20,7 @@ class RidesEndpointTest extends TestCase
     public function testGetOneRide() : void
     {
         $response = $this->get('/api/rides/1');
-
+        dd($response);
         $response->assertSuccessful();
         $response->assertStatus(200);
         $response->assertJsonSchema(base_path('schemas/ride.json'));
