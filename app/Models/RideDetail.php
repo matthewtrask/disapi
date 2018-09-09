@@ -28,7 +28,7 @@ class RideDetail extends Model implements \Countable
         return (string) $this->id;
     }
 
-    public function getOpeningYear() : string
+    public function getOpeningYear() : ? string
     {
         return (string) $this->opening_year;
     }
