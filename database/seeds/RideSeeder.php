@@ -260,7 +260,7 @@ class RideSeeder extends Seeder
             'interactive_queue' => 0,
             'gift_store_finish' => 0,
             'single_rider' => 0,
-            'height_restriction' => 0,
+            'height_restricted' => 0,
         ]);
     }
 }
