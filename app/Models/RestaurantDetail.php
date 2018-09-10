@@ -6,10 +6,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use function explode;
 
 class RestaurantDetail extends Model
 {
+    use SoftDeletes;
+
     /** @var string[] */
     protected $fillable = [
         'restaurant_id',

@@ -32,6 +32,7 @@ abstract class ApiController extends Controller
         return $manager;
     }
 
+    /** @param object[] $data */
     protected function createEtag(array $data) : string
     {
         return md5(json_encode($data));
@@ -57,6 +58,7 @@ abstract class ApiController extends Controller
         ];
     }
 
+    /** @param object[] $data */
     protected function resourcesFoundResponse(array $data, string $etag) : Response
     {
         return $this->responseFactory->createResourcesFoundResponse($data, $etag);

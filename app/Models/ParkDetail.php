@@ -7,9 +7,12 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ParkDetail extends Model
 {
+    use SoftDeletes;
+
     private const PARK_ID = 'park_id';
 
     /** @var string[] */

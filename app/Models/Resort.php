@@ -8,9 +8,12 @@ use App\Model\Park;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Resort extends Model
 {
+    use SoftDeletes;
+
     public function detail() : HasOne
     {
         return $this->hasOne(ResortDetail::class, 'resort_id', 'id');

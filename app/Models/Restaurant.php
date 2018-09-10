@@ -8,9 +8,12 @@ use App\Model\Park;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Restaurant extends Model
 {
+    use SoftDeletes;
+
     /** @var bool */
     private $showRelationship = false;
 

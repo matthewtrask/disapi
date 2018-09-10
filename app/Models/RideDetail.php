@@ -6,12 +6,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @OA\Schema(@OA\Xml(name="RideDetail"))
  */
 class RideDetail extends Model implements \Countable
 {
+    use SoftDeletes;
+
     /** @var string[] */
     protected $fillable = [
         'park_id',

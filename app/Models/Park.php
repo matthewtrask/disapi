@@ -10,9 +10,12 @@ use App\Models\Ride;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Park extends Model
 {
+    use SoftDeletes;
+
     /** @var bool */
     private $showRelationship = false;
 

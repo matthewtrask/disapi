@@ -11,6 +11,7 @@ use function sprintf;
 
 class ResponseFactory
 {
+    /** @param object[] $data */
     public function createResourcesFoundResponse(array $data, string $etag) : Response
     {
         return $this->createResponse()
