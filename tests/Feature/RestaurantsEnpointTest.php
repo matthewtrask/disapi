@@ -9,6 +9,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RestaurantsEndpointTest extends TestCase
 {
+    /** @var int $id */
+    private $id;
+
+    /** @var string[] */
+    private $request;
+
     public function testGetRestaurants() : void
     {
         $response = $this->get('/api/restaurants');
@@ -34,5 +40,24 @@ class RestaurantsEndpointTest extends TestCase
         $response = $this->get('/api/restaurants/1000');
 
         $response->assertStatus(404);
+    }
+
+    public function testCreateRestaurant() : void
+    {
+        $request = [
+            'name' => 'Test Restaurant',
+            'parkId' => 1,
+            'quickService' => 1,
+            'tableService' => 0,
+            'alcohol' => 0,
+            'diningPlan' => 1,
+            'mealTypes' => ['lunch','dinner'],
+            'foodTypes' => ['burgers','sandwiches'],
+        ];
+
+        $response = $this->call('POST', '/api/restaurants', $request);
+
+        $response->assertStatus(201);
+        $response->assertHeader('Location');
     }
 }

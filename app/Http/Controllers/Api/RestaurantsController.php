@@ -80,6 +80,11 @@ class RestaurantsController extends ApiController
 
     public function destroy(Request $request) : Response
     {
+        $restaurant = $this->restaurantsRepository->fetch((int) $request->id);
+
+        if (! $restaurant) {
+            return $this->resourceNotFoundResponse(self::RESTAURANT, (int) $request->id);
+        }
 
         $this->restaurantsRepository->destroy($request->id);
 

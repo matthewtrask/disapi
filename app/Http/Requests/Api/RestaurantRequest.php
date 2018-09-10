@@ -25,22 +25,22 @@ class RestaurantRequest extends FormRequest
 
     public function getQuickService() : bool
     {
-        return $this->get('quickService');
+        return (bool) $this->get('quickService');
     }
 
     public function getTableService() : bool
     {
-        return $this->get('tableService');
+        return (bool) $this->get('tableService');
     }
 
     public function getAlcohol() : bool
     {
-        return $this->get('alcohol');
+        return (bool) $this->get('alcohol');
     }
 
     public function getDiningPlan() : bool
     {
-        return $this->get('diningPlan');
+        return (bool) $this->get('diningPlan');
     }
 
     /** @return string[] */
