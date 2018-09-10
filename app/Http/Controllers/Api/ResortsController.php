@@ -23,6 +23,7 @@ class ResortsController extends AbstractApiController
     public function __construct(ResponseFactory $responseFactory, ResortsRepository $resortsRepository)
     {
         parent::__construct($responseFactory);
+        $this->resortsRepository = $resortsRepository;
     }
 
     public function index(Request $request) : Response
@@ -69,5 +70,25 @@ class ResortsController extends AbstractApiController
         $resort = $this->resortsRepository->create($request);
 
         return $this->resourceCreatedResponse($resort, self::RESORTS);
+    }
+
+    public function edit(ResortsRequest $request) : Response
+    {
+        $resort = $this->resortsRepository->edit($request);
+
+        return $this->resourceEditedResponse($resort, self::RESORTS);
+    }
+
+    public function destroy(Request $request) : Response
+    {
+        $resort = $this->resortsRepository->find($request->id);
+
+        if (!$resort) {
+            return $this->resourceNotFoundResponse(self::RESORTS, $request->id);
+        }
+
+        $this->resortsRepository->destroy($resort->getId());
+
+        return $this->resourceDeletedResponse();
     }
 }

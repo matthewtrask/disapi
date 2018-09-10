@@ -50,6 +50,31 @@ class ResortsRepository
         ]);
 
         return $resort;
+    }    
+    
+    public function edit(object $request) : Resort
+    {
+        $resort = $this->resort->find($request->id);
+
+        $resort->setName($request->get('name'));
+        $resort->setParkId($request->get('parkId'));
+
+        $resort->update();
+
+        $resort->detail()->update([
+            'park_id' => $request->get('parkId'),
+            'resort_type' => $request->get('resortType'),
+            'transport_options' => $request->get('transportOptions'),
+            'category' => $request->get('category'),
+            'num_of_rooms' => $request->get('numOfRooms'),
+            'quick_service_restaurants' => $request->get('quickServiceRestaurants'),
+            'table_service_restaurants' => $request->get('tableServiceRestaurants'),
+            'gift_shop' => $request->get('giftShop'),
+            'arcade' => $request->get('arcade'),
+            'pool' => $request->get('pool'),
+        ]);
+
+        return $resort;
     }
 
     public function destroy(int $id) : bool

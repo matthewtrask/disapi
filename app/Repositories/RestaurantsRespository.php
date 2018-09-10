@@ -51,6 +51,28 @@ class RestaurantsRespository
 
     }
 
+    public function edit(RestaurantRequest $request) : Restaurant
+    {
+        $restaurant = $this->restaurant->find($request->id);
+
+        $restaurant->setName($request->getName());
+        $restaurant->setParkId($request->getParkId());
+
+        $restaurant->update();
+
+        $restaurant->detail()->update([
+            'park_id' => $request->getParkId(),
+            'quick_service' => $request->getQuickService(),
+            'table_service' => $request->getTableService(),
+            'alcohol' => $request->getAlcohol(),
+            'dining_plan' => $request->getDiningPlan(),
+            'meal_types' => implode(',', $request->getMealTypes()),
+            'food_types' => implode(',', $request->getFoodTypes()),
+        ]);
+
+        return $restaurant;
+    }
+
     public function destroy(int $id) : bool
     {
         $this->restaurant->find($id);
