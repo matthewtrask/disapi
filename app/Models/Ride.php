@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Model\Park;
@@ -7,9 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-/**
- * @OA\Schema(@OA\Xml(name="Ride"))
- */
 class Ride extends Model
 {
     /** @var bool */
@@ -25,7 +24,7 @@ class Ride extends Model
         return $this->name;
     }
 
-    public function getParkId()
+    public function getParkId() : string
     {
         return (string) $this->park_id;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
@@ -12,7 +14,7 @@ use Illuminate\Http\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
-class RestaurantsController extends AbstractApiController
+class RestaurantsController extends ApiController
 {
     public const RESTAURANT = 'restaurant';
 
@@ -28,8 +30,7 @@ class RestaurantsController extends AbstractApiController
     public function index() : Response
     {
         $restaurants = $this->restaurantsRepository->get();
-
-        $manager = $this->createManager();
+        $manager     = $this->createManager();
 
         $resources = new Collection($restaurants, new RestaurantsTransformer(), 'Restaurants');
         $resources->setMeta($this->createMetaData());
@@ -44,7 +45,7 @@ class RestaurantsController extends AbstractApiController
     {
         $restaurant = $this->restaurantsRepository->fetch($request->id);
 
-        if (!$restaurant) {
+        if (! $restaurant) {
             return $this->resourceNotFoundResponse(self::RESTAURANT, $request->id);
         }
 

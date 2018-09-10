@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 class ResortsRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize() : bool
     {
         return true;
     }
@@ -66,12 +68,13 @@ class ResortsRequest extends FormRequest
         return $this->get('pool');
     }
 
+    /** @return string[] */
     public function rules() : array
     {
         return [
             'name'                      => 'required|string',
             'parkId'                    => 'required|int',
-            'resortType'                => "required|string",
+            'resortType'                => 'required|string',
             'transportOptions'          => 'required|string',
             'category'                  => 'required|string',
             'numOfRooms'                => 'required|int',
@@ -79,7 +82,7 @@ class ResortsRequest extends FormRequest
             'tableServiceRestaurants'   => 'required|bool',
             'giftShop'                  => 'required|bool',
             'arcade'                    => 'required|bool',
-            'pool'                      =>'required|bool',
+            'pool'                      => 'required|bool',
         ];
     }
 }

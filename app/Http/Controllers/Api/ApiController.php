@@ -9,8 +9,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use League\Fractal\Manager;
 use League\Fractal\Serializer\JsonApiSerializer;
+use function json_encode;
+use function md5;
 
-abstract class AbstractApiController extends Controller
+abstract class ApiController extends Controller
 {
     private const BASE_URL = 'https://disapi.co/api';
 
@@ -24,17 +26,18 @@ abstract class AbstractApiController extends Controller
 
     protected function createManager() : Manager
     {
-        $manager  = new Manager();
+        $manager = new Manager();
         $manager->setSerializer(new JsonApiSerializer(self::BASE_URL));
 
         return $manager;
     }
 
-    protected function createEtag($data) : string
+    protected function createEtag(string $data) : string
     {
         return md5(json_encode($data));
     }
 
+    /** @return string[] */
     protected function createMetaData() : array
     {
         return [
@@ -49,12 +52,12 @@ abstract class AbstractApiController extends Controller
                 'license' => [
                     'name' => 'MIT',
                     'url'  => 'https://opensource.org/licenses/MIT',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
-    protected function resourcesFoundResponse(array $data, string $etag) : Response
+    protected function resourcesFoundResponse(object $data, string $etag) : Response
     {
         return $this->responseFactory->createResourcesFoundResponse($data, $etag);
     }

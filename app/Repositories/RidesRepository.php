@@ -21,17 +21,19 @@ class RidesRepository
         return Ride::all();
     }
 
-    public function fetch(int $id) : ? Ride
+    public function fetch(int $id) : ?Ride
     {
         return Ride::find($id);
     }
 
-    public function create(RideRequest $object) : bool
+    public function create(RideRequest $object) : Ride
     {
         $ride = new Ride();
 
         $ride->setParkId($object->getId());
         $ride->setName($object->getName());
+
+        $ride->save();
 
         $ride->park()->save(new RideDetail([
             'park_id' => $object->getId(),
@@ -45,7 +47,31 @@ class RidesRepository
             'height_restricted' => $object->getHeightRestriction(),
         ]));
 
-        return $ride->save();
+        return $ride;
+    }
+
+    public function edit(RideRequest $object) : Ride
+    {
+        $ride = $this->ride->find($object->id);
+
+        $ride->setParkId($object->getId());
+        $ride->setName($object->getName());
+
+        $ride->update();
+
+        $ride->park()->update(new RideDetail([
+            'park_id' => $object->getId(),
+            'opening_year' => $object->getOpeningYear(),
+            'ride_type' => $object->getRideType(),
+            'ride_vehicle' => $object->getRideVehicle(),
+            'interactive_queue' => $object->getInteractiveQueue(),
+            'gift_store_finish' => $object->getGiftStoreFinish(),
+            'single_rider' => $object->getSingleRider(),
+            'ride_photo' => $object->getRidePhoto(),
+            'height_restricted' => $object->getHeightRestriction(),
+        ]));
+
+        return $ride;
     }
 
     public function destroy(int $id) : bool

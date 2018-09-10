@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
@@ -12,7 +14,7 @@ use Illuminate\Http\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
-class ParksController extends AbstractApiController
+class ParksController extends ApiController
 {
     public const PARK = 'park';
 
@@ -27,12 +29,11 @@ class ParksController extends AbstractApiController
 
     public function index() : Response
     {
-        $parks = $this->parksRepository->get();
+        $parks   = $this->parksRepository->get();
         $manager = $this->createManager();
 
         $resources = new Collection($parks, new ParksTransformer(), 'parks');
         $resources->setMeta($this->createMetaData());
-
 
         $data = $manager->createData($resources)->toArray();
         $etag = $this->createEtag($data);
@@ -44,7 +45,7 @@ class ParksController extends AbstractApiController
     {
         $park = $this->parksRepository->fetch($request->id);
 
-        if (!$park) {
+        if (! $park) {
             return $this->resourceNotFoundResponse(self::PARK, $request->id);
         }
 
@@ -70,7 +71,7 @@ class ParksController extends AbstractApiController
 
         return $this->resourceCreatedResponse($park, self::PARK);
     }
-    
+
     public function edit(ParkRequest $request) : Response
     {
         $park = $this->parksRepository->edit($request);
@@ -82,11 +83,11 @@ class ParksController extends AbstractApiController
     {
         $park = $this->parksRepository->fetch($request->id);
 
-        if (!$park) {
+        if (! $park) {
             return $this->resourceNotFoundResponse(self::PARK, $request->id);
         }
 
-        $this->parksRepository->destroy($park->getId());
+        $this->parksRepository->destroy((int) $park->getId());
 
         return $this->resourceDeletedResponse();
     }

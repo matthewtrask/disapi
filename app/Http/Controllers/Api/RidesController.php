@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
@@ -12,7 +14,7 @@ use Illuminate\Http\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
-class RidesController extends AbstractApiController
+class RidesController extends ApiController
 {
     public const RIDE = 'ride';
 
@@ -27,7 +29,7 @@ class RidesController extends AbstractApiController
 
     public function index() : Response
     {
-        $rides = $this->ridesRepository->get();
+        $rides   = $this->ridesRepository->get();
         $manager = $this->createManager();
 
         $resources = new Collection($rides, new RidesTransformer(), 'Rides');
@@ -44,12 +46,11 @@ class RidesController extends AbstractApiController
     {
         $ride = $this->ridesRepository->fetch($request->id);
 
-        if (is_null($ride)) {
+        if (! $ride) {
             return $this->resourceNotFoundResponse(self::RIDE, $request->id);
         }
 
         $manager = $this->createManager();
-
 
         if ($request->query('includes') === 'park') {
             $manager->parseIncludes('park');
@@ -64,9 +65,18 @@ class RidesController extends AbstractApiController
         return $this->resourcesFoundResponse($data, $etag);
     }
 
-    public function create(RideRequest $request)
+    public function create(RideRequest $request) : Response
     {
-        //
+        $ride = $this->ridesRepository->create($request);
+
+        return $this->resourceCreatedResponse($ride, self::RIDE);
+    }
+
+    public function edit(RideRequest $request) : Response
+    {
+        $ride = $this->ridesRepository->edit($request);
+
+        return $this->resourceCreatedResponse($ride, self::RIDE);
     }
 
 

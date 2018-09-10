@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class RideDetail extends Model implements \Countable
 {
+    /** @var string[] */
     protected $fillable = [
         'park_id',
         'opening_year',
@@ -28,7 +31,7 @@ class RideDetail extends Model implements \Countable
         return (string) $this->id;
     }
 
-    public function getOpeningYear() : ? string
+    public function getOpeningYear() : string
     {
         return (string) $this->opening_year;
     }

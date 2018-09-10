@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Transformers\Api;
 
 use App\Model\Park;
+use League\Fractal\Resource\Item;
 use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\TransformerAbstract;
 
 class ParkTransformer extends TransformerAbstract
 {
+    /** @var object[] */
+    protected $availableIncludes = ['rides'];
 
-    protected $availableIncludes = [
-        'rides',
-    ];
-
+    /** @return Item[] */
     public function transform(Park $park) : array
     {
         return [
@@ -29,13 +31,13 @@ class ParkTransformer extends TransformerAbstract
                 'rel' => 'self',
                 'href' => '/api/parks/{id}',
                 'self' => '/api/parks/' . $park->getId(),
-            ]
+            ],
         ];
     }
 
     protected function includeRides(Park $park) : ResourceInterface
     {
-        if (!$park->rides) {
+        if (! $park->rides) {
             return $this->null();
         }
 

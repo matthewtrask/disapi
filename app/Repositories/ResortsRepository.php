@@ -50,8 +50,8 @@ class ResortsRepository
         ]);
 
         return $resort;
-    }    
-    
+    }
+
     public function edit(object $request) : Resort
     {
         $resort = $this->resort->find($request->id);

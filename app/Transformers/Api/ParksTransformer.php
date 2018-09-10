@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Transformers\Api;
 
 use App\Model\Park;
@@ -8,13 +10,13 @@ use League\Fractal\TransformerAbstract;
 
 class ParksTransformer extends TransformerAbstract
 {
-    private const PARKS_TYPE = 'parks';
-
+    /** @var object[] */
     protected $availableIncludes = [
         'rides',
         'restaurants',
     ];
 
+    /** @return Collection[] */
     public function transform(Park $park) : array
     {
         return [
@@ -24,7 +26,7 @@ class ParksTransformer extends TransformerAbstract
                 'rel'  => 'self',
                 'href' => '/api/parks',
                 'self' => '/api/parks/' . $park->getId(),
-            ]
+            ],
         ];
     }
 

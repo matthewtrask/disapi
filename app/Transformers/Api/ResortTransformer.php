@@ -1,16 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Transformers\Api;
 
 use App\Models\Resort;
+use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
 class ResortTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = [
-        'park',
-    ];
+    /** @var object[] */
+    protected $availableIncludes = ['park' ];
 
+    /** @return Item[] */
     public function transform(Resort $resort) : array
     {
         return [
@@ -30,14 +33,14 @@ class ResortTransformer extends TransformerAbstract
                 'rel'  => 'self',
                 'href' => '/api/resorts',
                 'self' => '/api/resorts/' . $resort->getId(),
-            ]
+            ],
         ];
     }
 
 
     public function includePark(Resort $resort) : object
     {
-        if (!$resort->park) {
+        if (! $resort->park) {
             return $this->null();
         }
 

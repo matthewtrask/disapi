@@ -1,16 +1,21 @@
 <?php
+
+declare(strict_types=1);
+
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use function md5;
+use function str_replace;
 
 class EtagMiddleware
 {
     public function handle(Request $request, Closure $next) : Response
     {
         // If this was not a get or head request, just return
-        if (!$request->isMethod('get') && !$request->isMethod('head')) {
+        if (! $request->isMethod('get') && ! $request->isMethod('head')) {
             return $next($request);
         }
 
@@ -27,7 +32,7 @@ class EtagMiddleware
         $requestEtag = str_replace('"', '', $request->getETags());
 
         // Check to see if Etag has changed
-        if ($requestEtag && $requestEtag[0] == $etag) {
+        if ($requestEtag && $requestEtag[0] === $etag) {
             $response->setNotModified();
         }
 

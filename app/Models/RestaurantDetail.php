@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use function explode;
 
 class RestaurantDetail extends Model
 {
+    /** @var string[] */
     protected $fillable = [
         'restaurant_id',
         'park_id',
@@ -53,11 +57,13 @@ class RestaurantDetail extends Model
         return $this->dining_plan;
     }
 
+    /** @return string[] */
     public function getMealTypes() : array
     {
         return explode(',', $this->meal_types);
     }
 
+    /** @return string[] */
     public function getFoodTypes() : array
     {
         return explode(',', $this->food_types);

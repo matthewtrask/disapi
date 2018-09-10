@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Model;
 
@@ -8,13 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * @OA\Schema(@OA\Xml(name="ParkDetail"))
- */
 class ParkDetail extends Model
 {
     private const PARK_ID = 'park_id';
 
+    /** @var string[] */
     protected $fillable = [
         'central_attraction',
         'year_opened',
@@ -22,7 +20,7 @@ class ParkDetail extends Model
         'restaurant_count',
         'size',
         'resort_count',
-        'fireworks'
+        'fireworks',
     ];
 
     public function park() : BelongsTo

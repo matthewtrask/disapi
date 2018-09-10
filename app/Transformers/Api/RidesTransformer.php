@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Transformers\Api;
 
 use App\Models\Ride;
+use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
 class RidesTransformer extends TransformerAbstract
 {
     private const RIDE_TYPE = 'rides';
 
+    /** @return Item[] */
     public function transform(Ride $ride) : array
     {
         return [
@@ -21,7 +25,7 @@ class RidesTransformer extends TransformerAbstract
                 'href' => '/api/rides/{id}',
                 'self' => '/api/rides/' . $ride->getId(),
                 'park' => '/api/parks/' . $ride->getParkId(),
-            ]
+            ],
         ];
     }
 }

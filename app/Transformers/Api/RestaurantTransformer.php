@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Transformers\Api;
 
 use App\Models\Restaurant;
+use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
 class RestaurantTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = [
-        'park',
-    ];
+    /** @var object[] */
+    protected $availableIncludes = ['park'];
 
-    public function transform(Restaurant $restaurant)
+    /** @return Item[] */
+    public function transform(Restaurant $restaurant) : array
     {
         return [
             'id'            => $restaurant->getId(),
@@ -27,13 +30,13 @@ class RestaurantTransformer extends TransformerAbstract
                 'rel' => 'self',
                 'href' => '/api/restaurants/{id}',
                 'self' => '/api/restaurants/' . $restaurant->getId(),
-            ]
+            ],
         ];
     }
 
     public function includePark(Restaurant $restaurant) : object
     {
-        if (!$restaurant->park) {
+        if (! $restaurant->park) {
             return $this->null();
         }
 

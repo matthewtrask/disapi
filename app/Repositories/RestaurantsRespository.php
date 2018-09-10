@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Http\Requests\Api\RestaurantRequest;
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Collection;
+use function implode;
 
 class RestaurantsRespository
 {
@@ -23,7 +24,7 @@ class RestaurantsRespository
         return $this->restaurant->all();
     }
 
-    public function fetch(int $id) : ? Restaurant
+    public function fetch(int $id) : ?Restaurant
     {
         return $this->restaurant->find($id);
     }
@@ -48,7 +49,6 @@ class RestaurantsRespository
         ]);
 
         return $restaurant;
-
     }
 
     public function edit(RestaurantRequest $request) : Restaurant

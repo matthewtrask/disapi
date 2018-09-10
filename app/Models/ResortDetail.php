@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Model\Park;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use function explode;
 
 class ResortDetail extends Model
 {
+    /** @var string[] */
     protected $fillable = [
         'park_id',
         'resort_type',
@@ -31,7 +35,7 @@ class ResortDetail extends Model
         return $this->belongsTo(Resort::class, 'id', 'resort_id');
     }
 
-    public function getId()
+    public function getId() : string
     {
         return (string) $this->id;
     }
@@ -41,6 +45,7 @@ class ResortDetail extends Model
         return $this->resort_type;
     }
 
+    /** @return string[] */
     public function getTransportationOptions() : array
     {
         return explode(',', $this->transport_options);

@@ -23,7 +23,7 @@ class ParksRepository
         return $this->park->all();
     }
 
-    public function fetch(int $id) : ? Park
+    public function fetch(int $id) : ?Park
     {
         return $this->park->find($id);
     }
@@ -42,13 +42,13 @@ class ParksRepository
             'restaurant_count'      => $request->getRestaurantCount(),
             'size'                  => $request->getSize(),
             'resort_count'          => $request->getResortCount(),
-            'fireworks'             => $request->getFireworks()
+            'fireworks'             => $request->getFireworks(),
         ]);
 
         return $park;
     }
 
-    public function edit(ParkRequest $request)
+    public function edit(ParkRequest $request) : Park
     {
         $park = $this->park->find($request->id);
 
@@ -63,7 +63,7 @@ class ParksRepository
             'restaurant_count'      => $request->getRestaurantCount(),
             'size'                  => $request->getSize(),
             'resort_count'          => $request->getResortCount(),
-            'fireworks'             => $request->getFireworks()
+            'fireworks'             => $request->getFireworks(),
         ]);
 
         return $park;

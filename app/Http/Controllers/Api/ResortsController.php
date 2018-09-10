@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Factories\ResponseFactory;
@@ -13,7 +15,7 @@ use Illuminate\Http\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
-class ResortsController extends AbstractApiController
+class ResortsController extends ApiController
 {
     private const RESORTS = 'resorts';
 
@@ -83,7 +85,7 @@ class ResortsController extends AbstractApiController
     {
         $resort = $this->resortsRepository->find($request->id);
 
-        if (!$resort) {
+        if (! $resort) {
             return $this->resourceNotFoundResponse(self::RESORTS, $request->id);
         }
 
