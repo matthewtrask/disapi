@@ -7,6 +7,8 @@ php:
 before_script:
   - cp .env.travis .env
   - mysql -e 'create database homestead_test;'
+  - mysql -e "CREATE USER 'forge'@'localhost' IDENTIFIED BY ''";
+  - mysql -e "GRANT ALL PRIVILEGES ON * . * TO 'forge'@'localhost';"
   - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
