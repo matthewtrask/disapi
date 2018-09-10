@@ -43,7 +43,7 @@ class ParksController extends ApiController
 
     public function fetch(Request $request) : Response
     {
-        $park = $this->parksRepository->fetch($request->id);
+        $park = $this->parksRepository->fetch((int) $request->id);
 
         if (! $park) {
             return $this->resourceNotFoundResponse(self::PARK, $request->id);

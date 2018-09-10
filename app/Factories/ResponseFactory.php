@@ -11,7 +11,7 @@ use function sprintf;
 
 class ResponseFactory
 {
-    public function createResourcesFoundResponse(Object $data, string $etag) : Response
+    public function createResourcesFoundResponse(array $data, string $etag) : Response
     {
         return $this->createResponse()
             ->header('content-type', ConstantService::ACCEPT_TYPE)

@@ -21,7 +21,7 @@ class RidesRepository
         return Ride::all();
     }
 
-    public function fetch(int $id) : ?Ride
+    public function fetch(string $id) : ?Ride
     {
         return Ride::find($id);
     }

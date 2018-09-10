@@ -43,10 +43,10 @@ class RestaurantsController extends ApiController
 
     public function fetch(Request $request) : Response
     {
-        $restaurant = $this->restaurantsRepository->fetch($request->id);
+        $restaurant = $this->restaurantsRepository->fetch((int) $request->id);
 
         if (! $restaurant) {
-            return $this->resourceNotFoundResponse(self::RESTAURANT, $request->id);
+            return $this->resourceNotFoundResponse(self::RESTAURANT, (int) $request->id);
         }
 
         $manager = $this->createManager();
@@ -80,6 +80,7 @@ class RestaurantsController extends ApiController
 
     public function destroy(Request $request) : Response
     {
+
         $this->restaurantsRepository->destroy($request->id);
 
         return $this->resourceDeletedResponse();

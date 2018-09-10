@@ -48,27 +48,27 @@ class RideDetail extends Model implements \Countable
 
     public function getInteractiveQueue() : bool
     {
-        return $this->interactive_queue;
+        return (bool) $this->interactive_queue;
     }
 
     public function getGiftStoreFinish() : bool
     {
-        return $this->gift_store_finish;
+        return (bool) $this->gift_store_finish;
     }
 
     public function getSingleRider() : bool
     {
-        return $this->single_rider;
+        return (bool) $this->single_rider;
     }
 
     public function getRidePhoto() : bool
     {
-        return $this->ride_photo;
+        return (bool) $this->ride_photo;
     }
 
     public function getHeightRestriction() : bool
     {
-        return $this->height_restricted;
+        return (bool) $this->height_restricted;
     }
 
     public function ride() : BelongsTo

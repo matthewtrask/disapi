@@ -39,22 +39,22 @@ class RestaurantDetail extends Model
 
     public function getQuickService() : bool
     {
-        return $this->quick_service;
+        return (bool) $this->quick_service;
     }
 
     public function getTableService() : bool
     {
-        return $this->table_service;
+        return (bool) $this->table_service;
     }
 
     public function getAlcohol() : bool
     {
-        return $this->alcohol;
+        return (bool) $this->alcohol;
     }
 
     public function getDiningPlan() : bool
     {
-        return $this->dining_plan;
+        return (bool) $this->dining_plan;
     }
 
     /** @return string[] */
