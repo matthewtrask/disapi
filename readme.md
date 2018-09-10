@@ -4,6 +4,13 @@
 
 A RESTful OpenAPI spec API around the Walt Disney World Resort 
 
+#### To see ReDoc: 
+```
+yarn run speccy serve specs/openapi.yml
+```
+
+And then go to localhost:5000 to see the documentation
+
 #### Endpoints
 
 Work with the Parks Resource Collection
