@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Resort;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ResortsRepository
 {
@@ -17,9 +17,9 @@ class ResortsRepository
         $this->resort = $resort;
     }
 
-    public function get() : Collection
+    public function get() : LengthAwarePaginator
     {
-        return $this->resort->all();
+        return $this->resort->paginate(5);
     }
 
     public function find(int $id) : Resort

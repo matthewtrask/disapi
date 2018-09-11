@@ -12,6 +12,7 @@ use App\Transformers\Api\ResortsTransformer;
 use App\Transformers\Api\ResortTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
@@ -30,12 +31,14 @@ class ResortsController extends ApiController
 
     public function index(Request $request) : Response
     {
-        $resorts = Resort::all();
+        $resorts = $this->resortsRepository->get();
+        $collection = $resorts->getCollection();
 
         $manager = $this->createManager();
 
-        $resources = new Collection($resorts, new ResortsTransformer(), 'resorts');
+        $resources = new Collection($collection, new ResortsTransformer(), 'resorts');
         $resources->setMeta($this->createMetaData());
+        $resources->setPaginator(new IlluminatePaginatorAdapter($resorts));
 
         if ($request->query('include')) {
             $manager->parseIncludes($request->query('include'));

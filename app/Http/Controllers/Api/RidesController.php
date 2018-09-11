@@ -30,9 +30,9 @@ class RidesController extends ApiController
 
     public function index() : Response
     {
-        $rides   = $this->ridesRepository->get();
+        $rides      = $this->ridesRepository->get();
         $collection = $rides->getCollection();
-        $manager = $this->createManager();
+        $manager    = $this->createManager();
 
         $resources = new Collection($collection, new RidesTransformer(), 'Rides');
         $resources->setMeta($this->createMetaData());

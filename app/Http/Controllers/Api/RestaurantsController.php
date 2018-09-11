@@ -11,6 +11,7 @@ use App\Transformers\Api\RestaurantsTransformer;
 use App\Transformers\Api\RestaurantTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
@@ -30,10 +31,12 @@ class RestaurantsController extends ApiController
     public function index() : Response
     {
         $restaurants = $this->restaurantsRepository->get();
+        $collection  = $restaurants->getCollection();
         $manager     = $this->createManager();
 
-        $resources = new Collection($restaurants, new RestaurantsTransformer(), 'Restaurants');
+        $resources = new Collection($collection, new RestaurantsTransformer(), 'Restaurants');
         $resources->setMeta($this->createMetaData());
+        $resources->setPaginator(new IlluminatePaginatorAdapter($restaurants));
 
         $data = $manager->createData($resources)->toArray();
         $etag = $this->createEtag($data);
