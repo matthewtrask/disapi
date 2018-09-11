@@ -46,7 +46,7 @@ class ParksController extends ApiController
         $park = $this->parksRepository->fetch((int) $request->id);
 
         if (! $park) {
-            return $this->resourceNotFoundResponse(self::PARK, $request->id);
+            return $this->resourceNotFoundResponse($request->id, self::PARK);
         }
 
         $manager = $this->createManager();
@@ -84,7 +84,7 @@ class ParksController extends ApiController
         $park = $this->parksRepository->fetch($request->id);
 
         if (! $park) {
-            return $this->resourceNotFoundResponse(self::PARK, $request->id);
+            return $this->resourceNotFoundResponse($request->id, self::PARK);
         }
 
         $this->parksRepository->destroy((int) $park->getId());

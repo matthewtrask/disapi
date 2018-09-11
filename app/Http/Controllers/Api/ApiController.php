@@ -74,7 +74,7 @@ abstract class ApiController extends Controller
         return $this->responseFactory->createResourceEditedResponse($object, $type);
     }
 
-    protected function resourceNotFoundResponse(string $type, int $id) : Response
+    protected function resourceNotFoundResponse(int $id, string $type) : Response
     {
         return $this->responseFactory->createResourceNotFoundResponse($type, $id);
     }

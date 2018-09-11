@@ -49,7 +49,7 @@ class RestaurantsController extends ApiController
         $restaurant = $this->restaurantsRepository->fetch((int) $request->id);
 
         if (! $restaurant) {
-            return $this->resourceNotFoundResponse(self::RESTAURANT, (int) $request->id);
+            return $this->resourceNotFoundResponse((int)$request->id, self::RESTAURANT);
         }
 
         $manager = $this->createManager();
@@ -86,7 +86,7 @@ class RestaurantsController extends ApiController
         $restaurant = $this->restaurantsRepository->fetch((int) $request->id);
 
         if (! $restaurant) {
-            return $this->resourceNotFoundResponse(self::RESTAURANT, (int) $request->id);
+            return $this->resourceNotFoundResponse((int)$request->id, self::RESTAURANT);
         }
 
         $this->restaurantsRepository->destroy($request->id);

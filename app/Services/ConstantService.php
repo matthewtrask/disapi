@@ -20,6 +20,22 @@ class ConstantService
 
     public const AK_ID = 4;
 
+    public const MK = 'Magic Kingdom';
+
+    public const EP = 'Epcot';
+
+    public const HS = 'Hollywood Studios';
+
+    public const AK = 'Animal Kingdom';
+
+    public const PARK = 'park';
+
+    public const RIDE = 'ride';
+
+    public const RESORT = 'resort';
+
+    public const RESTAURANT = 'restaurant';
+
     public const MK_CENTRAL_ATTRACTION = 'Cinderella\'s Castle';
 
     public const EP_CENTRAL_ATTRACTION = 'Spaceship Earth';

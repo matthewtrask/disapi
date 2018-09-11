@@ -8,6 +8,7 @@ use App\Factories\ResponseFactory;
 use App\Http\Requests\Api\ResortsRequest;
 use App\Models\Resort;
 use App\Repositories\ResortsRepository;
+use App\Services\ConstantService;
 use App\Transformers\Api\ResortsTransformer;
 use App\Transformers\Api\ResortTransformer;
 use Illuminate\Http\Request;
@@ -55,6 +56,10 @@ class ResortsController extends ApiController
     {
         $resort = Resort::find($request->id);
 
+        if (! $resort) {
+            return $this->resourceNotFoundResponse((int) $request->id, ConstantService::RESORT);
+        }
+
         $manager = $this->createManager();
 
         $resource = new Item($resort, new ResortTransformer(), 'resort');
@@ -74,14 +79,20 @@ class ResortsController extends ApiController
     {
         $resort = $this->resortsRepository->create($request);
 
-        return $this->resourceCreatedResponse($resort, self::RESORTS);
+        return $this->resourceCreatedResponse($resort, ConstantService::RESORT);
     }
 
     public function edit(ResortsRequest $request) : Response
     {
+        $resort = $this->resortsRepository->find((int) $request->id);
+
+        if (! $resort) {
+            return $this->resourceNotFoundResponse($request->id, ConstantService::RESORT);
+        }
+
         $resort = $this->resortsRepository->edit($request);
 
-        return $this->resourceEditedResponse($resort, self::RESORTS);
+        return $this->resourceEditedResponse($resort, ConstantService::RESORT);
     }
 
     public function destroy(Request $request) : Response
@@ -89,10 +100,10 @@ class ResortsController extends ApiController
         $resort = $this->resortsRepository->find($request->id);
 
         if (! $resort) {
-            return $this->resourceNotFoundResponse(self::RESORTS, $request->id);
+            return $this->resourceNotFoundResponse($request->id, ConstantService::RESORT);
         }
 
-        $this->resortsRepository->destroy($resort->getId());
+        $this->resortsRepository->destroy((int) $resort->getId());
 
         return $this->resourceDeletedResponse();
     }

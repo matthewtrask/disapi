@@ -50,7 +50,7 @@ class RidesController extends ApiController
         $ride = $this->ridesRepository->fetch($request->id);
 
         if (! $ride) {
-            return $this->resourceNotFoundResponse(self::RIDE, (int) $request->id);
+            return $this->resourceNotFoundResponse((int)$request->id, self::RIDE);
         }
 
         $manager = $this->createManager();

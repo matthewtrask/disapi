@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Http\Requests\Api\RideRequest;
 use App\Models\Ride;
 use App\Models\RideDetail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class RidesRepository
@@ -18,12 +19,12 @@ class RidesRepository
 
     public function get() : LengthAwarePaginator
     {
-        return Ride::paginate(25);
+        return$this->ride->paginate(25);
     }
 
     public function fetch(string $id) : ?Ride
     {
-        return Ride::find($id);
+        return $this->ride->find($id);
     }
 
     public function create(RideRequest $object) : Ride
@@ -81,5 +82,10 @@ class RidesRepository
         $this->ride->detail->delete();
 
         return $this->ride->delete();
+    }
+
+    public function filterByParkId(int $parkId) : Collection
+    {
+        $this->ride->byParkId($parkId)->get();
     }
 }

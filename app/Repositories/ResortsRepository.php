@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Resort;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ResortsRepository
@@ -84,5 +85,10 @@ class ResortsRepository
         $resort->detail->delete();
 
         return $this->resort->delete();
+    }
+
+    public function filterByParkId(int $parkId) : Collection
+    {
+        return $this->resort->byParkId($parkId)->get();
     }
 }
