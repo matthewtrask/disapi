@@ -6,16 +6,17 @@ php:
 
 before_script:
   - cp .env.travis .env
+  - php artisan cache:clear
+  - php artisan config:cache
   - mysql -e 'create database homestead_test;'
   - mysql 'create user "forge"@"localhost"'
   - mysql 'grant all privileges on * . * to "forge"@"localhost"'
   - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
+  - php artisan migrate:install
   - php artisan migrate
   - php artisan db:seed
-  - php artisan cache:clear
-  - php artisan config:cache
 
 script:
 - vendor/bin/phpunit
