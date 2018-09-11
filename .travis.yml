@@ -5,7 +5,7 @@ php:
   - nightly
 
 before_script:
-  - mkdir bootstrap/cache
+  - mkdir ./bootstrap/cache
   - cp .env.travis .env
   - php artisan cache:clear
   - php artisan config:cache
