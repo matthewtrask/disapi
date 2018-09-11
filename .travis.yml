@@ -8,7 +8,7 @@ before_script:
   - cp .env.travis .env
   - php artisan cache:clear
   - php artisan config:cache
-  - mysql -e 'create database homestead_test;'
+  - mysql '-u forge -p create database homestead_test;'
   - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
