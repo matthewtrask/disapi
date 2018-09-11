@@ -12,7 +12,7 @@ before_script:
   - composer install --no-interaction
   - php artisan cache:clear
   - php artisan config:cache
-  - mysql '-u forge -p create database homestead_test'
+  - mysql -u forge -p create database homestead_test
   - php artisan key:generate
   - php artisan migrate --env=testing
   - php artisan migrate
