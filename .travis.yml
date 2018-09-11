@@ -19,11 +19,11 @@ before_script:
   - php artisan migrate --env=testing
   - php artisan migrate
   - php artisan db:seed
+  - npm install
 
 script:
 - vendor/bin/phpunit
 - vendor/bin/phpcs --standard=Doctrine app/ --colors
-- npm install speccy --only=dev
 - npm run speccy lint specs/openapi.yml
 
 services:
