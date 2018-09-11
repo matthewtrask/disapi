@@ -11,6 +11,7 @@ use App\Transformers\Api\RidesTransformer;
 use App\Transformers\Api\RideTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
@@ -30,10 +31,12 @@ class RidesController extends ApiController
     public function index() : Response
     {
         $rides   = $this->ridesRepository->get();
+        $collection = $rides->getCollection();
         $manager = $this->createManager();
 
-        $resources = new Collection($rides, new RidesTransformer(), 'Rides');
+        $resources = new Collection($collection, new RidesTransformer(), 'Rides');
         $resources->setMeta($this->createMetaData());
+        $resources->setPaginator(new IlluminatePaginatorAdapter($rides));
 
         $data = $manager->createData($resources)->toArray();
 

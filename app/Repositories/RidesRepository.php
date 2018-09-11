@@ -7,7 +7,7 @@ namespace App\Repositories;
 use App\Http\Requests\Api\RideRequest;
 use App\Models\Ride;
 use App\Models\RideDetail;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RidesRepository
 {
@@ -16,9 +16,9 @@ class RidesRepository
         $this->ride = $ride;
     }
 
-    public function get() : Collection
+    public function get() : LengthAwarePaginator
     {
-        return Ride::all();
+        return Ride::paginate(25);
     }
 
     public function fetch(string $id) : ?Ride
