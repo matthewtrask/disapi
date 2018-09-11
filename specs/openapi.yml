@@ -11,8 +11,8 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://disapi.io/api
-  description: Production
+- url: http://omestead.test
+  description: Testing
 
 tags:
   - name: parks
