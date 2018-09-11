@@ -260,6 +260,7 @@ class RideSeeder extends Seeder
             'ride_vehicle' => 'Train',
             'interactive_queue' => 0,
             'gift_store_finish' => 0,
+            'ride_photo' => 0,
             'single_rider' => 0,
             'height_restricted' => 0,
         ]);
