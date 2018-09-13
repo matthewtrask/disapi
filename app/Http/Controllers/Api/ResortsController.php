@@ -8,10 +8,12 @@ use App\Factories\ResponseFactory;
 use App\Http\Requests\Api\ResortsRequest;
 use App\Models\Resort;
 use App\Repositories\ResortsRepository;
+use App\Services\ConstantService;
 use App\Transformers\Api\ResortsTransformer;
 use App\Transformers\Api\ResortTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
@@ -30,12 +32,14 @@ class ResortsController extends ApiController
 
     public function index(Request $request) : Response
     {
-        $resorts = Resort::all();
+        $resorts = $this->resortsRepository->get();
+        $collection = $resorts->getCollection();
 
         $manager = $this->createManager();
 
-        $resources = new Collection($resorts, new ResortsTransformer(), 'resorts');
+        $resources = new Collection($collection, new ResortsTransformer(), 'resorts');
         $resources->setMeta($this->createMetaData());
+        $resources->setPaginator(new IlluminatePaginatorAdapter($resorts));
 
         if ($request->query('include')) {
             $manager->parseIncludes($request->query('include'));
@@ -50,7 +54,11 @@ class ResortsController extends ApiController
 
     public function fetch(Request $request) : Response
     {
-        $resort = Resort::find($request->id);
+        $resort = $this->resortsRepository->find($request->id);
+
+        if (! $resort) {
+            return $this->resourceNotFoundResponse((int) $request->id, ConstantService::RESORT);
+        }
 
         $manager = $this->createManager();
 
@@ -71,14 +79,20 @@ class ResortsController extends ApiController
     {
         $resort = $this->resortsRepository->create($request);
 
-        return $this->resourceCreatedResponse($resort, self::RESORTS);
+        return $this->resourceCreatedResponse($resort, ConstantService::RESORT);
     }
 
     public function edit(ResortsRequest $request) : Response
     {
+        $resort = $this->resortsRepository->find((int) $request->id);
+
+        if (! $resort) {
+            return $this->resourceNotFoundResponse($request->id, ConstantService::RESORT);
+        }
+
         $resort = $this->resortsRepository->edit($request);
 
-        return $this->resourceEditedResponse($resort, self::RESORTS);
+        return $this->resourceEditedResponse($resort, ConstantService::RESORT);
     }
 
     public function destroy(Request $request) : Response
@@ -86,10 +100,10 @@ class ResortsController extends ApiController
         $resort = $this->resortsRepository->find($request->id);
 
         if (! $resort) {
-            return $this->resourceNotFoundResponse(self::RESORTS, $request->id);
+            return $this->resourceNotFoundResponse($request->id, ConstantService::RESORT);
         }
 
-        $this->resortsRepository->destroy($resort->getId());
+        $this->resortsRepository->destroy((int) $resort->getId());
 
         return $this->resourceDeletedResponse();
     }

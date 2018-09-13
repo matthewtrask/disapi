@@ -30,7 +30,7 @@ class ResponseFactory
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->header('location', sprintf('https://disapi.co/api/$s/$s', $type, $object->getId()))
+            ->header('location', sprintf(ConstantService::API_ENDPOINT, $type, $object->getId()))
             ->setDate(new DateTime())
             ->setStatusCode(201)
             ->setContent($object->getId());
@@ -42,7 +42,7 @@ class ResponseFactory
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->header('location', sprintf('https://disapi.co/api/$s/$s', $type, $object->getId()))
+            ->header('location', sprintf(ConstantService::API_ENDPOINT, $type, $object->getId()))
             ->setDate(new DateTime())
             ->setStatusCode(200)
             ->setContent($object);
@@ -65,6 +65,15 @@ class ResponseFactory
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->setDate(new DateTime());
+    }
+
+    public function createUserCreatedResponse(string $token) : Response
+    {
+        return $this->createResponse()
+            ->header('accept', ConstantService::ACCEPT_TYPE)
+            ->header('content-type', ConstantService::CONTENT_TYPE)
+            ->setDate(new DateTime())
+            ->setContent($token);
     }
 
     private function createResponse() : Response

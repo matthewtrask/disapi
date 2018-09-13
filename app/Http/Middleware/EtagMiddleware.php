@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use function md5;
 use function str_replace;
 
 class EtagMiddleware
 {
-    public function handle(Request $request, Closure $next) : Response
+    public function handle(Request $request, Closure $next)
     {
         // If this was not a get or head request, just return
         if (! $request->isMethod('get') && ! $request->isMethod('head')) {

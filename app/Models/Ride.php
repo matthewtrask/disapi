@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Model\Park;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -13,6 +14,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ride extends Model
 {
     use SoftDeletes;
+
+    protected $fillable = [
+        'park_id',
+        'name'
+    ];
 
     /** @var bool */
     private $showRelationship = false;
@@ -60,5 +66,10 @@ class Ride extends Model
     public function setName(string $name) : void
     {
         $this->name = $name;
+    }
+
+    public function scopeByParkId(Builder $query, int $parkId) : Builder
+    {
+        return $query->where('park_id', '=', $parkId);
     }
 }

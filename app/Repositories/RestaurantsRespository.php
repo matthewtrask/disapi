@@ -6,7 +6,7 @@ namespace App\Repositories;
 
 use App\Http\Requests\Api\RestaurantRequest;
 use App\Models\Restaurant;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use function implode;
 
 class RestaurantsRespository
@@ -19,9 +19,9 @@ class RestaurantsRespository
         $this->restaurant = $restaurant;
     }
 
-    public function get() : Collection
+    public function get() : LengthAwarePaginator
     {
-        return $this->restaurant->all();
+        return $this->restaurant->paginate(25);
     }
 
     public function fetch(int $id) : ?Restaurant

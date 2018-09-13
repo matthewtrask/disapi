@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\UserHitEndpoint;
 use App\Factories\ResponseFactory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -74,9 +75,25 @@ abstract class ApiController extends Controller
         return $this->responseFactory->createResourceEditedResponse($object, $type);
     }
 
-    protected function resourceNotFoundResponse(string $type, int $id) : Response
+    protected function resourceNotFoundResponse(int $id, string $type) : Response
     {
         return $this->responseFactory->createResourceNotFoundResponse($type, $id);
+    }
+
+    protected function userCreatedResponse(string $token) : Response
+    {
+        return $this->responseFactory->createUserCreatedResponse($token);
+    }
+
+    protected function logAction(string $token, string $endpoint, string $action, bool $success, string $error = null) : void
+    {
+        event(new UserHitEndpoint(
+            $token,
+            $endpoint,
+            $action,
+            $success,
+            $error
+        ));
     }
 
     protected function resourceDeletedResponse() : Response

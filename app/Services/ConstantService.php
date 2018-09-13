@@ -20,6 +20,22 @@ class ConstantService
 
     public const AK_ID = 4;
 
+    public const MK = 'Magic Kingdom';
+
+    public const EP = 'Epcot';
+
+    public const HS = 'Hollywood Studios';
+
+    public const AK = 'Animal Kingdom';
+
+    public const PARK = 'park';
+
+    public const RIDE = 'ride';
+
+    public const RESORT = 'resort';
+
+    public const RESTAURANT = 'restaurant';
+
     public const MK_CENTRAL_ATTRACTION = 'Cinderella\'s Castle';
 
     public const EP_CENTRAL_ATTRACTION = 'Spaceship Earth';
@@ -27,4 +43,22 @@ class ConstantService
     public const HS_CENTRAL_ATTRACTION = 'The Chinese Theater';
 
     public const AK_CENTRAL_ATTRACTION = 'The Tree of Life';
+
+    public const API_ENDPOINT = 'https://disapi.co/api/%s/%s';
+
+    public const PARKS_ENDPOINT = '/api/parks';
+
+    public const RIDES_ENDPONT = '/api/rides';
+
+    public const RESTAURANTS_ENDPOINT = '/api/restaurants';
+
+    public const RESORTS_ENDPONT = '/api/resorts';
+
+    public const GET_ACTION = 'get';
+
+    public const POST_ACTION = 'post';
+
+    public const PUT_ACTION = 'put';
+
+    public const DELETE_ACTION = 'delete';
 }

@@ -8,35 +8,39 @@ use App\Http\Requests\Api\RideRequest;
 use App\Models\Ride;
 use App\Models\RideDetail;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RidesRepository
 {
+    /** @var Ride $ride */
+    private $ride;
+
     public function __construct(Ride $ride)
     {
         $this->ride = $ride;
     }
 
-    public function get() : Collection
+    public function get() : LengthAwarePaginator
     {
-        return Ride::all();
+        return$this->ride->paginate(25);
     }
 
     public function fetch(string $id) : ?Ride
     {
-        return Ride::find($id);
+        return $this->ride->find($id);
     }
 
     public function create(RideRequest $object) : Ride
     {
         $ride = new Ride();
 
-        $ride->setParkId($object->getId());
+        $ride->setParkId($object->getParkId());
         $ride->setName($object->getName());
 
         $ride->save();
 
-        $ride->park()->save(new RideDetail([
-            'park_id' => $object->getId(),
+        $ride->detail()->create([
+            'park_id' => $object->getParkId(),
             'opening_year' => $object->getOpeningYear(),
             'ride_type' => $object->getRideType(),
             'ride_vehicle' => $object->getRideVehicle(),
@@ -45,7 +49,7 @@ class RidesRepository
             'single_rider' => $object->getSingleRider(),
             'ride_photo' => $object->getRidePhoto(),
             'height_restricted' => $object->getHeightRestriction(),
-        ]));
+        ]);
 
         return $ride;
     }
@@ -59,7 +63,7 @@ class RidesRepository
 
         $ride->update();
 
-        $ride->park()->update(new RideDetail([
+        $ride->park()->create([
             'park_id' => $object->getId(),
             'opening_year' => $object->getOpeningYear(),
             'ride_type' => $object->getRideType(),
@@ -69,7 +73,7 @@ class RidesRepository
             'single_rider' => $object->getSingleRider(),
             'ride_photo' => $object->getRidePhoto(),
             'height_restricted' => $object->getHeightRestriction(),
-        ]));
+        ]);
 
         return $ride;
     }
@@ -81,5 +85,10 @@ class RidesRepository
         $this->ride->detail->delete();
 
         return $this->ride->delete();
+    }
+
+    public function filterByParkId(int $parkId) : Collection
+    {
+        $this->ride->byParkId($parkId)->get();
     }
 }

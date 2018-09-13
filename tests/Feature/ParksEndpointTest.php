@@ -10,7 +10,9 @@ class ParksEndpointTest extends TestCase
 {
     public function testParksEndpointSuccess() : void
     {
-        $response = $this->get('/api/parks');
+        $userToken = md5('somestring');
+
+        $response = $this->get('/api/parks?token=' . $userToken);
 
         $response->assertOk();
         $response->assertSuccessful();
@@ -20,8 +22,9 @@ class ParksEndpointTest extends TestCase
 
     public function testGetOnePark() : void
     {
+        $userToken = md5('somestring');
         $id = random_int(1, 3);
-        $response = $this->get('/api/parks/' . $id);
+        $response = $this->get('/api/parks/' . $id . '?token=' . $userToken);
 
         $response->assertSuccessful();
         $response->assertOk();
@@ -31,8 +34,10 @@ class ParksEndpointTest extends TestCase
 
     public function testGetOneParkWithIncludes()
     {
+        $userToken = md5('somestring');
         $id = random_int(1, 3);
-        $response = $this->get('/api/parks/' . $id . '?includes=rides&restaurants');
+        $response = $this->get('/api/parks/' . $id . '?token=' . $userToken . '&includes=rides,restaurants');
+
         $response->assertSuccessful();
         $response->assertOk();
         $response->assertHeader('etag');
