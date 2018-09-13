@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\UserHitEndpoint;
 use App\Factories\ResponseFactory;
 use App\Http\Requests\Api\ParkRequest;
 use App\Repositories\ParksRepository;
+use App\Services\ConstantService;
 use App\Transformers\Api\ParksTransformer;
 use App\Transformers\Api\ParkTransformer;
 use Illuminate\Http\Request;
@@ -27,7 +29,7 @@ class ParksController extends ApiController
         $this->parksRepository = $parksRepository;
     }
 
-    public function index() : Response
+    public function index(Request $request) : Response
     {
         $parks   = $this->parksRepository->get();
         $manager = $this->createManager();
@@ -37,6 +39,14 @@ class ParksController extends ApiController
 
         $data = $manager->createData($resources)->toArray();
         $etag = $this->createEtag($data);
+
+
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::PARKS_ENDPOINT,
+            ConstantService::GET_ACTION,
+            true
+        );
 
         return $this->resourcesFoundResponse($data, $etag);
     }
@@ -62,6 +72,13 @@ class ParksController extends ApiController
 
         $etag = $this->createEtag($data);
 
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::PARKS_ENDPOINT,
+            ConstantService::GET_ACTION,
+            true
+        );
+
         return $this->resourcesFoundResponse($data, $etag);
     }
 
@@ -69,12 +86,26 @@ class ParksController extends ApiController
     {
         $park = $this->parksRepository->create($request);
 
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::PARKS_ENDPOINT,
+            ConstantService::POST_ACTION,
+            true
+        );
+
         return $this->resourceCreatedResponse($park, self::PARK);
     }
 
     public function edit(ParkRequest $request) : Response
     {
         $park = $this->parksRepository->edit($request);
+
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::PARKS_ENDPOINT,
+            ConstantService::PUT_ACTION,
+            true
+        );
 
         return $this->resourceEditedResponse($park, self::PARK);
     }
@@ -88,6 +119,13 @@ class ParksController extends ApiController
         }
 
         $this->parksRepository->destroy((int) $park->getId());
+
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::PARKS_ENDPOINT,
+            ConstantService::DELETE_ACTION,
+            true
+        );
 
         return $this->resourceDeletedResponse();
     }

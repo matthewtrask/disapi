@@ -24,7 +24,10 @@ before_script:
 script:
 - vendor/bin/phpunit
 - vendor/bin/phpcs --standard=Doctrine app/ --colors
+- vendor/bin/phpstan analyse app tests
 - npm run speccy lint specs/openapi.yml
+- vendor/bin/phpcdp ap
+- vendor/bin/phpmd app text cleancode codesize unusedcode naming
 
 services:
   - mysql

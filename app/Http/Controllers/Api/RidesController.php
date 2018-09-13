@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Factories\ResponseFactory;
 use App\Http\Requests\Api\RideRequest;
 use App\Repositories\RidesRepository;
+use App\Services\ConstantService;
 use App\Transformers\Api\RidesTransformer;
 use App\Transformers\Api\RideTransformer;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class RidesController extends ApiController
         $this->ridesRepository = $ridesRepository;
     }
 
-    public function index() : Response
+    public function index(Request $request) : Response
     {
         $rides      = $this->ridesRepository->get();
         $collection = $rides->getCollection();
@@ -41,6 +42,13 @@ class RidesController extends ApiController
         $data = $manager->createData($resources)->toArray();
 
         $etag = $this->createEtag($data);
+
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::RIDES_ENDPONT,
+            ConstantService::GET_ACTION,
+            true
+        );
 
         return $this->resourcesFoundResponse($data, $etag);
     }
@@ -65,12 +73,28 @@ class RidesController extends ApiController
         $data = $manager->createData($resource)->toArray();
         $etag = $this->createEtag($data);
 
+        $this->logAction(
+            $request->get('token'),
+            ConstantService::RIDES_ENDPONT . '/' . $request->id,
+            ConstantService::GET_ACTION,
+            true
+        );
+
         return $this->resourcesFoundResponse($data, $etag);
     }
 
     public function create(RideRequest $request) : Response
     {
         $ride = $this->ridesRepository->create($request);
+
+        if ($ride) {
+            $this->logAction(
+                $request->get('token'),
+                ConstantService::RIDES_ENDPONT,
+                ConstantService::POST_ACTION,
+                true
+            );
+        }
 
         return $this->resourceCreatedResponse($ride, self::RIDE);
     }

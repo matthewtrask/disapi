@@ -16,6 +16,10 @@ class Park extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'park_id',
+    ];
+
     /** @var bool */
     private $showRelationship = false;
 

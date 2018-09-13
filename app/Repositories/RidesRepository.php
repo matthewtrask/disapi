@@ -12,6 +12,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class RidesRepository
 {
+    /** @var Ride $ride */
+    private $ride;
+
     public function __construct(Ride $ride)
     {
         $this->ride = $ride;
@@ -31,13 +34,13 @@ class RidesRepository
     {
         $ride = new Ride();
 
-        $ride->setParkId($object->getId());
+        $ride->setParkId($object->getParkId());
         $ride->setName($object->getName());
 
         $ride->save();
 
-        $ride->park()->save(new RideDetail([
-            'park_id' => $object->getId(),
+        $ride->detail()->create([
+            'park_id' => $object->getParkId(),
             'opening_year' => $object->getOpeningYear(),
             'ride_type' => $object->getRideType(),
             'ride_vehicle' => $object->getRideVehicle(),
@@ -46,7 +49,7 @@ class RidesRepository
             'single_rider' => $object->getSingleRider(),
             'ride_photo' => $object->getRidePhoto(),
             'height_restricted' => $object->getHeightRestriction(),
-        ]));
+        ]);
 
         return $ride;
     }
@@ -60,7 +63,7 @@ class RidesRepository
 
         $ride->update();
 
-        $ride->park()->update(new RideDetail([
+        $ride->park()->create([
             'park_id' => $object->getId(),
             'opening_year' => $object->getOpeningYear(),
             'ride_type' => $object->getRideType(),
@@ -70,7 +73,7 @@ class RidesRepository
             'single_rider' => $object->getSingleRider(),
             'ride_photo' => $object->getRidePhoto(),
             'height_restricted' => $object->getHeightRestriction(),
-        ]));
+        ]);
 
         return $ride;
     }

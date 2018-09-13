@@ -54,7 +54,7 @@ class ResortsController extends ApiController
 
     public function fetch(Request $request) : Response
     {
-        $resort = Resort::find($request->id);
+        $resort = $this->resortsRepository->find($request->id);
 
         if (! $resort) {
             return $this->resourceNotFoundResponse((int) $request->id, ConstantService::RESORT);

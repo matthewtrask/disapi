@@ -45,3 +45,5 @@ Route::delete('restaurants/{id}', ['uses' => 'Api\RestaurantsController@destroy'
 
 Route::get('parks/{id}/rides', ['uses' => 'Api\ParkRidesController@fetch'])->where('id', '[0-9]+');
 Route::get('parks/{id}/restaurants', ['uses' => 'Api\ParkRestaurantsController@fetch'])->where('id', '[0-9]+');
+
+Route::post('users', ['uses' => 'Api\UsersController@create']);

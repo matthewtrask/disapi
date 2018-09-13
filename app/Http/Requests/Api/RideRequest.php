@@ -25,42 +25,42 @@ class RideRequest extends FormRequest
 
     public function getOpeningYear() : int
     {
-        return $this->get('opening_year');
+        return $this->get('openingYear');
     }
 
     public function getRideType() : string
     {
-        return $this->get('ride_type');
+        return $this->get('rideType');
     }
 
     public function getRideVehicle() : string
     {
-        return $this->get('ride_vehicle');
+        return $this->get('rideVehicle');
     }
 
     public function getInteractiveQueue() : bool
     {
-        return $this->get('interactive_queue');
+        return (bool) $this->get('interactiveQueue');
     }
 
     public function getGiftStoreFinish() : bool
     {
-        return $this->get('gift_store_finish');
+        return (bool) $this->get('giftStoreFinish');
     }
 
     public function getSingleRider() : bool
     {
-        return $this->get('single_rider');
+        return (bool) $this->get('singleRider');
     }
 
     public function getRidePhoto() : bool
     {
-        return $this->get('ride_photo');
+        return (bool) $this->get('ridePhoto');
     }
 
     public function getHeightRestriction() : bool
     {
-        return $this->get('height_restriction');
+        return (bool) $this->get('heightRestriction');
     }
 
     /** @return string[] */

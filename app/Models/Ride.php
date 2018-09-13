@@ -15,6 +15,11 @@ class Ride extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'park_id',
+        'name'
+    ];
+
     /** @var bool */
     private $showRelationship = false;
 
