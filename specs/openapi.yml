@@ -328,6 +328,8 @@ paths:
       summary: Remove a resource from the restaurants collection
       description: Remove a resource from the restaurants collection by ID
       operationId: deleteRestaurant
+      parameters:
+        - $ref: '#/components/parameters/restaurantId'
       tags:
         - restaurants
       responses:
