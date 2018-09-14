@@ -13,6 +13,8 @@ info:
 servers:
 - url: https://disapi.co/api
   description: Production Server
+- url: http://localhost/api
+  description: Local Server
 
 tags:
   - name: parks
@@ -70,6 +72,8 @@ paths:
       summary: List a specific resort resource by ID
       description: Get a specific resort resource by ID
       operationId: getResort
+      parameters:
+      - $ref: '#/components/parameters/resortId'
       tags:
         - resorts
       requestBody:
@@ -92,6 +96,8 @@ paths:
       summary: Edit a specific resort resource by ID
       description: Find and edit a specific resort resource by its ID
       operationId: editResort
+      parameters:
+      - $ref: '#/components/parameters/resortId'
       tags:
         - resorts
       requestBody:
@@ -116,6 +122,8 @@ paths:
     delete:
       summary: Delete resort resource by ID
       operationId: deleteResort
+      parameters:
+      - $ref: '#/components/parameters/resortId'
       tags:
         - resorts
       responses:
