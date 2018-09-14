@@ -19,7 +19,8 @@ before_script:
   - php artisan migrate --env=testing
   - php artisan migrate
   - php artisan db:seed
-  - npm install
+  - npm install sync-exec
+  - yarn add
 
 script:
 - vendor/bin/phpunit

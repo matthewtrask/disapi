@@ -11,9 +11,8 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: http://homestead.test/api
-  description: Testing
 - url: https://disapi.co/api
+  description: Production Server
 
 tags:
   - name: parks
@@ -37,6 +36,10 @@ paths:
           $ref: '#/components/responses/ResortsResponse'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     post:
       summary: Create a new resort resource
       operationId: createResort
@@ -58,6 +61,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /resorts/{id}:
     get:
       summary: List a specific resort resource by ID
@@ -77,6 +84,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     put:
       summary: Edit a specific resort resource by ID
       description: Find and edit a specific resort resource by its ID
@@ -98,6 +109,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     delete:
       summary: Delete resort resource by ID
       operationId: deleteResort
@@ -110,6 +125,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /rides:
     get:
       summary: List rides at Walt Disney World
@@ -125,6 +144,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: The requested resources could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     post:
       summary: Create a new ride resource
       description: Create a new ride resource for the Walt Disney World Resort
@@ -144,24 +167,36 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /rides/{id}:
-     get:
-       summary: Get ride by ID
-       description: Get a ride at Walt Disney World by ID
-       operationId: getRide
-       tags:
-         - rides
-       responses:
-         200:
-           $ref: '#/components/responses/RideResponse'
-         400:
-           description: The request you made could not be fulfilled right now.
-         404:
-           description: Resource Not Found
-     put:
+    get:
+      summary: Get ride by ID
+      description: Get a ride at Walt Disney World by ID
+      operationId: getRide
+      parameters:
+        - $ref: '#/components/parameters/rideId'
+      tags:
+        - rides
+      responses:
+        200:
+          $ref: '#/components/responses/RideResponse'
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+    put:
        summary: Edit a ride by ID
        description: Edit a ride in the resource collection by ID
        operationId: editRide
+       parameters:
+         - $ref: '#/components/parameters/rideId'
        tags:
          - rides
        requestBody:
@@ -171,24 +206,34 @@ paths:
                $ref: '#/components/schemas/RideForm'
        responses:
          201:
-           description: OK
+           description: Created
            headers:
              location:
                $ref: '#/components/headers/Location'
          400:
            description: The request you made could not be fulfilled right now.
-     delete:
-       summary: Delete ride resource by ID
-       operationId: deleteRide
-       tags:
-         - rides
-       responses:
-         204:
-           description: No Content
-         400:
-           description: The request you made could not be fulfilled right now.
-         404:
-           description: Resource Not Found
+         418:
+           description: I am a teapot.
+         451:
+           description: Censored for legal reasons.
+    delete:
+      summary: Delete ride resource by ID
+      operationId: deleteRide
+      parameters:
+        - $ref: '#/components/parameters/rideId'
+      tags:
+        - rides
+      responses:
+        204:
+          description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /restaurants:
     get:
       summary: List restaurants at Walt Disney World
@@ -220,11 +265,17 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /restaurants/{id}:
     get:
       summary:  List a single restaurant resource from the collection by ID
       description: Get a single restaurant resource by ID
       operationId: getRestaurant
+      parameters:
+        - $ref: '#/components/parameters/restaurantId'
       tags:
         - restaurants
       responses:
@@ -234,10 +285,16 @@ paths:
           description: The request you made could not be fulfilled right now
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     put:
       summary: Edit a single restaurant resource in the collection by ID
       description: Edit a restaurant by ID
       operationId: editRestaurant
+      parameters:
+        - $ref: '#/components/parameters/restaurantId'
       tags:
         - restaurants
       requestBody:
@@ -253,6 +310,12 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        404:
+          description: The resource could not be found.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     delete:
       summary: Remove a resource from the restaurants collection
       description: Remove a resource from the restaurants collection by ID
@@ -266,6 +329,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: The resource could not be found.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /parks:
     get:
       summary: List all parks at Walt Disney World
@@ -278,6 +345,10 @@ paths:
           $ref: '#/components/responses/ParksResponse'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     post:
       summary: Create a new park resource in the collection
       description: Create a new park at Walt Disney World
@@ -297,11 +368,17 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
   /parks/{id}:
     get:
       summary: List a park by ID
       description: Get a park at Walt Disney World by ID
       operationId: getPark
+      parameters:
+        - $ref: '#/components/parameters/parkId'
       tags:
         - parks
       responses:
@@ -311,10 +388,16 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     put:
       summary: Edit a resource by ID
       description: Edit a park resource by an ID
       operationId: editPark
+      parameters:
+        - $ref: '#/components/parameters/parkId'
       tags:
         - parks
       responses:
@@ -325,10 +408,16 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
     delete:
       summary: Remove a resource from the collection
       description: Remove a resource from the collection by ID
       operationId: deletePark
+      parameters:
+        - $ref: '#/components/parameters/parkId'
       tags:
         - parks
       responses:
@@ -338,6 +427,10 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
 components:
   schemas:
     Rides:
@@ -812,6 +905,15 @@ components:
             ridePhoto: false
             singleRider: false
             heightRestriction: false
+          - id: 3
+            name: Jungle Cruise
+            yearOpened: 1971
+            rideType: Transport
+            rideVehicle: Train
+            interactiveQueue: false
+            ridePhoto: false
+            singleRider: false
+            heightRestriction: false
     RestaurantsResponse:
       summary: An example response of restaurants at Walt Disney World
       value:
@@ -838,20 +940,6 @@ components:
             foodTypes: [
                 Snacks,
                 Dole Whip
-            ]
-          - id: 2
-            name: Auntie Gravity's Galactic Goodies
-            parkId: 1
-            quickService: true
-            tableService: false
-            alcohol: false
-            diningPlan: true
-            mealTypes: [
-                Snacks
-            ]
-            foodTypes: [
-                Snacks,
-                Ice Cream
             ]
     ParksResponse:
       summary: An exmaple response of parks at Walt Disney World
