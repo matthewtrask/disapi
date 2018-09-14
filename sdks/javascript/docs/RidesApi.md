@@ -1,6 +1,6 @@
 # WaltDisneyWorldApi.RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -76,7 +76,7 @@ No authorization required
 
 <a name="deleteRide"></a>
 # **deleteRide**
-> deleteRide()
+> deleteRide(id)
 
 Delete ride resource by ID
 
@@ -85,6 +85,7 @@ Delete ride resource by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.RidesApi();
+var id = 56; // Number | The ID of the ride
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -92,11 +93,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteRide(callback);
+apiInstance.deleteRide(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the ride | 
 
 ### Return type
 
@@ -113,7 +117,7 @@ No authorization required
 
 <a name="editRide"></a>
 # **editRide**
-> editRide(opts)
+> editRide(id, opts)
 
 Edit a ride by ID
 
@@ -124,6 +128,7 @@ Edit a ride in the resource collection by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.RidesApi();
+var id = 56; // Number | The ID of the ride
 var opts = {
   'name': "name_example", // String | 
   'parkId': 56, // Number | 
@@ -143,13 +148,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.editRide(opts, callback);
+apiInstance.editRide(id, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the ride | 
  **name** | **String**|  | [optional] 
  **parkId** | **Number**|  | [optional] 
  **openingYear** | **Number**|  | [optional] 
@@ -176,7 +182,7 @@ No authorization required
 
 <a name="getRide"></a>
 # **getRide**
-> InlineResponse2003 getRide()
+> InlineResponse2003 getRide(id)
 
 Get ride by ID
 
@@ -187,6 +193,7 @@ Get a ride at Walt Disney World by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.RidesApi();
+var id = 56; // Number | The ID of the ride
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -194,11 +201,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getRide(callback);
+apiInstance.getRide(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the ride | 
 
 ### Return type
 

@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"fmt"
 	"github.com/antihax/optional"
 )
 
@@ -159,8 +160,9 @@ func (a *ResortsApiService) CreateResort(ctx context.Context, localVarOptionals 
 /*
 ResortsApiService Delete resort resource by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the resort
 */
-func (a *ResortsApiService) DeleteResort(ctx context.Context) (*http.Response, error) {
+func (a *ResortsApiService) DeleteResort(ctx context.Context, id int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -171,6 +173,7 @@ func (a *ResortsApiService) DeleteResort(ctx context.Context) (*http.Response, e
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/resorts/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -224,6 +227,7 @@ func (a *ResortsApiService) DeleteResort(ctx context.Context) (*http.Response, e
 ResortsApiService Edit a specific resort resource by ID
 Find and edit a specific resort resource by its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the resort
  * @param optional nil or *EditResortOpts - Optional Parameters:
  * @param "Name" (optional.String) - 
  * @param "ParkId" (optional.Int32) - 
@@ -254,7 +258,7 @@ type EditResortOpts struct {
     Pool optional.Bool
 }
 
-func (a *ResortsApiService) EditResort(ctx context.Context, localVarOptionals *EditResortOpts) (*http.Response, error) {
+func (a *ResortsApiService) EditResort(ctx context.Context, id int32, localVarOptionals *EditResortOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -265,6 +269,7 @@ func (a *ResortsApiService) EditResort(ctx context.Context, localVarOptionals *E
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/resorts/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,6 +359,7 @@ func (a *ResortsApiService) EditResort(ctx context.Context, localVarOptionals *E
 ResortsApiService List a specific resort resource by ID
 Get a specific resort resource by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the resort
  * @param optional nil or *GetResortOpts - Optional Parameters:
  * @param "Name" (optional.String) - 
  * @param "ParkId" (optional.Int32) - 
@@ -385,7 +391,7 @@ type GetResortOpts struct {
     Pool optional.Bool
 }
 
-func (a *ResortsApiService) GetResort(ctx context.Context, localVarOptionals *GetResortOpts) (InlineResponse2001, *http.Response, error) {
+func (a *ResortsApiService) GetResort(ctx context.Context, id int32, localVarOptionals *GetResortOpts) (InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -397,6 +403,7 @@ func (a *ResortsApiService) GetResort(ctx context.Context, localVarOptionals *Ge
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/resorts/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

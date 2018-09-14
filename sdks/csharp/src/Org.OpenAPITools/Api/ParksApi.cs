@@ -66,8 +66,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns></returns>
-        void DeletePark ();
+        void DeletePark (int? id);
 
         /// <summary>
         /// Remove a resource from the collection
@@ -76,8 +77,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteParkWithHttpInfo ();
+        ApiResponse<Object> DeleteParkWithHttpInfo (int? id);
         /// <summary>
         /// Edit a resource by ID
         /// </summary>
@@ -85,8 +87,9 @@ namespace Org.OpenAPITools.Api
         /// Edit a park resource by an ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns></returns>
-        void EditPark ();
+        void EditPark (int? id);
 
         /// <summary>
         /// Edit a resource by ID
@@ -95,8 +98,9 @@ namespace Org.OpenAPITools.Api
         /// Edit a park resource by an ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> EditParkWithHttpInfo ();
+        ApiResponse<Object> EditParkWithHttpInfo (int? id);
         /// <summary>
         /// List a park by ID
         /// </summary>
@@ -104,8 +108,9 @@ namespace Org.OpenAPITools.Api
         /// Get a park at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>InlineResponse2007</returns>
-        InlineResponse2007 GetPark ();
+        InlineResponse2007 GetPark (int? id);
 
         /// <summary>
         /// List a park by ID
@@ -114,8 +119,9 @@ namespace Org.OpenAPITools.Api
         /// Get a park at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>ApiResponse of InlineResponse2007</returns>
-        ApiResponse<InlineResponse2007> GetParkWithHttpInfo ();
+        ApiResponse<InlineResponse2007> GetParkWithHttpInfo (int? id);
         /// <summary>
         /// List all parks at Walt Disney World
         /// </summary>
@@ -179,8 +185,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteParkAsync ();
+        System.Threading.Tasks.Task DeleteParkAsync (int? id);
 
         /// <summary>
         /// Remove a resource from the collection
@@ -189,8 +196,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteParkAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteParkAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Edit a resource by ID
         /// </summary>
@@ -198,8 +206,9 @@ namespace Org.OpenAPITools.Api
         /// Edit a park resource by an ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task EditParkAsync ();
+        System.Threading.Tasks.Task EditParkAsync (int? id);
 
         /// <summary>
         /// Edit a resource by ID
@@ -208,8 +217,9 @@ namespace Org.OpenAPITools.Api
         /// Edit a park resource by an ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> EditParkAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditParkAsyncWithHttpInfo (int? id);
         /// <summary>
         /// List a park by ID
         /// </summary>
@@ -217,8 +227,9 @@ namespace Org.OpenAPITools.Api
         /// Get a park at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of InlineResponse2007</returns>
-        System.Threading.Tasks.Task<InlineResponse2007> GetParkAsync ();
+        System.Threading.Tasks.Task<InlineResponse2007> GetParkAsync (int? id);
 
         /// <summary>
         /// List a park by ID
@@ -227,8 +238,9 @@ namespace Org.OpenAPITools.Api
         /// Get a park at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> GetParkAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> GetParkAsyncWithHttpInfo (int? id);
         /// <summary>
         /// List all parks at Walt Disney World
         /// </summary>
@@ -519,19 +531,24 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection Remove a resource from the collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns></returns>
-        public void DeletePark ()
+        public void DeletePark (int? id)
         {
-             DeleteParkWithHttpInfo();
+             DeleteParkWithHttpInfo(id);
         }
 
         /// <summary>
         /// Remove a resource from the collection Remove a resource from the collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteParkWithHttpInfo ()
+        public ApiResponse<Object> DeleteParkWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ParksApi->DeletePark");
 
             var localVarPath = "/parks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -553,6 +570,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -577,10 +595,11 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection Remove a resource from the collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteParkAsync ()
+        public async System.Threading.Tasks.Task DeleteParkAsync (int? id)
         {
-             await DeleteParkAsyncWithHttpInfo();
+             await DeleteParkAsyncWithHttpInfo(id);
 
         }
 
@@ -588,9 +607,13 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the collection Remove a resource from the collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteParkAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteParkAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ParksApi->DeletePark");
 
             var localVarPath = "/parks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -612,6 +635,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -636,19 +660,24 @@ namespace Org.OpenAPITools.Api
         /// Edit a resource by ID Edit a park resource by an ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns></returns>
-        public void EditPark ()
+        public void EditPark (int? id)
         {
-             EditParkWithHttpInfo();
+             EditParkWithHttpInfo(id);
         }
 
         /// <summary>
         /// Edit a resource by ID Edit a park resource by an ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> EditParkWithHttpInfo ()
+        public ApiResponse<Object> EditParkWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ParksApi->EditPark");
 
             var localVarPath = "/parks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -670,6 +699,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -694,10 +724,11 @@ namespace Org.OpenAPITools.Api
         /// Edit a resource by ID Edit a park resource by an ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task EditParkAsync ()
+        public async System.Threading.Tasks.Task EditParkAsync (int? id)
         {
-             await EditParkAsyncWithHttpInfo();
+             await EditParkAsyncWithHttpInfo(id);
 
         }
 
@@ -705,9 +736,13 @@ namespace Org.OpenAPITools.Api
         /// Edit a resource by ID Edit a park resource by an ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditParkAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditParkAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ParksApi->EditPark");
 
             var localVarPath = "/parks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -729,6 +764,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -753,10 +789,11 @@ namespace Org.OpenAPITools.Api
         /// List a park by ID Get a park at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>InlineResponse2007</returns>
-        public InlineResponse2007 GetPark ()
+        public InlineResponse2007 GetPark (int? id)
         {
-             ApiResponse<InlineResponse2007> localVarResponse = GetParkWithHttpInfo();
+             ApiResponse<InlineResponse2007> localVarResponse = GetParkWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -764,9 +801,13 @@ namespace Org.OpenAPITools.Api
         /// List a park by ID Get a park at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>ApiResponse of InlineResponse2007</returns>
-        public ApiResponse< InlineResponse2007 > GetParkWithHttpInfo ()
+        public ApiResponse< InlineResponse2007 > GetParkWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ParksApi->GetPark");
 
             var localVarPath = "/parks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -789,6 +830,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -813,10 +855,11 @@ namespace Org.OpenAPITools.Api
         /// List a park by ID Get a park at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of InlineResponse2007</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2007> GetParkAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse2007> GetParkAsync (int? id)
         {
-             ApiResponse<InlineResponse2007> localVarResponse = await GetParkAsyncWithHttpInfo();
+             ApiResponse<InlineResponse2007> localVarResponse = await GetParkAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -825,9 +868,13 @@ namespace Org.OpenAPITools.Api
         /// List a park by ID Get a park at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the park</param>
         /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> GetParkAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> GetParkAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ParksApi->GetPark");
 
             var localVarPath = "/parks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -850,6 +897,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request

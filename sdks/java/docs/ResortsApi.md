@@ -1,6 +1,6 @@
 # ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -79,7 +79,7 @@ No authorization required
 
 <a name="deleteResort"></a>
 # **deleteResort**
-> deleteResort()
+> deleteResort(id)
 
 Delete resort resource by ID
 
@@ -91,8 +91,9 @@ Delete resort resource by ID
 
 
 ResortsApi apiInstance = new ResortsApi();
+Integer id = 56; // Integer | The ID of the resort
 try {
-    apiInstance.deleteResort();
+    apiInstance.deleteResort(id);
 } catch (ApiException e) {
     System.err.println("Exception when calling ResortsApi#deleteResort");
     e.printStackTrace();
@@ -100,7 +101,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the resort |
 
 ### Return type
 
@@ -117,7 +121,7 @@ No authorization required
 
 <a name="editResort"></a>
 # **editResort**
-> editResort(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool)
+> editResort(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool)
 
 Edit a specific resort resource by ID
 
@@ -131,6 +135,7 @@ Find and edit a specific resort resource by its ID
 
 
 ResortsApi apiInstance = new ResortsApi();
+Integer id = 56; // Integer | The ID of the resort
 String name = "null"; // String | 
 Integer parkId = null; // Integer | 
 Integer openingYear = null; // Integer | 
@@ -144,7 +149,7 @@ Boolean giftShop = null; // Boolean |
 Boolean arcade = null; // Boolean | 
 Boolean pool = null; // Boolean | 
 try {
-    apiInstance.editResort(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+    apiInstance.editResort(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
 } catch (ApiException e) {
     System.err.println("Exception when calling ResortsApi#editResort");
     e.printStackTrace();
@@ -155,6 +160,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the resort |
  **name** | **String**|  | [optional] [default to null]
  **parkId** | **Integer**|  | [optional] [default to null]
  **openingYear** | **Integer**|  | [optional] [default to null]
@@ -183,7 +189,7 @@ No authorization required
 
 <a name="getResort"></a>
 # **getResort**
-> InlineResponse2001 getResort(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool)
+> InlineResponse2001 getResort(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool)
 
 List a specific resort resource by ID
 
@@ -197,6 +203,7 @@ Get a specific resort resource by ID
 
 
 ResortsApi apiInstance = new ResortsApi();
+Integer id = 56; // Integer | The ID of the resort
 String name = "null"; // String | 
 Integer parkId = null; // Integer | 
 Integer openingYear = null; // Integer | 
@@ -210,7 +217,7 @@ Boolean giftShop = null; // Boolean |
 Boolean arcade = null; // Boolean | 
 Boolean pool = null; // Boolean | 
 try {
-    InlineResponse2001 result = apiInstance.getResort(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+    InlineResponse2001 result = apiInstance.getResort(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ResortsApi#getResort");
@@ -222,6 +229,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the resort |
  **name** | **String**|  | [optional] [default to null]
  **parkId** | **Integer**|  | [optional] [default to null]
  **openingYear** | **Integer**|  | [optional] [default to null]

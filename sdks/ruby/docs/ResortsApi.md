@@ -1,6 +1,6 @@
 # OpenapiClient::ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -80,7 +80,7 @@ No authorization required
 
 
 # **delete_resort**
-> delete_resort
+> delete_resort(id)
 
 Delete resort resource by ID
 
@@ -90,17 +90,21 @@ Delete resort resource by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::ResortsApi.new
+id = 56 # Integer | The ID of the resort
 
 begin
   #Delete resort resource by ID
-  api_instance.delete_resort
+  api_instance.delete_resort(id)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling ResortsApi->delete_resort: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the resort | 
 
 ### Return type
 
@@ -118,7 +122,7 @@ No authorization required
 
 
 # **edit_resort**
-> edit_resort(opts)
+> edit_resort(id, opts)
 
 Edit a specific resort resource by ID
 
@@ -130,6 +134,7 @@ Find and edit a specific resort resource by its ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::ResortsApi.new
+id = 56 # Integer | The ID of the resort
 opts = {
   name: 'name_example', # String | 
   park_id: 56, # Integer | 
@@ -147,7 +152,7 @@ opts = {
 
 begin
   #Edit a specific resort resource by ID
-  api_instance.edit_resort(opts)
+  api_instance.edit_resort(id, opts)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling ResortsApi->edit_resort: #{e}"
 end
@@ -157,6 +162,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the resort | 
  **name** | **String**|  | [optional] 
  **park_id** | **Integer**|  | [optional] 
  **opening_year** | **Integer**|  | [optional] 
@@ -186,7 +192,7 @@ No authorization required
 
 
 # **get_resort**
-> InlineResponse2001 get_resort(opts)
+> InlineResponse2001 get_resort(id, opts)
 
 List a specific resort resource by ID
 
@@ -198,6 +204,7 @@ Get a specific resort resource by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::ResortsApi.new
+id = 56 # Integer | The ID of the resort
 opts = {
   name: 'name_example', # String | 
   park_id: 56, # Integer | 
@@ -215,7 +222,7 @@ opts = {
 
 begin
   #List a specific resort resource by ID
-  result = api_instance.get_resort(opts)
+  result = api_instance.get_resort(id, opts)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling ResortsApi->get_resort: #{e}"
@@ -226,6 +233,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the resort | 
  **name** | **String**|  | [optional] 
  **park_id** | **Integer**|  | [optional] 
  **opening_year** | **Integer**|  | [optional] 

@@ -405,14 +405,15 @@ class ResortsApi
      *
      * Delete resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteResort()
+    public function deleteResort($id)
     {
-        $this->deleteResortWithHttpInfo();
+        $this->deleteResortWithHttpInfo($id);
     }
 
     /**
@@ -420,14 +421,15 @@ class ResortsApi
      *
      * Delete resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteResortWithHttpInfo()
+    public function deleteResortWithHttpInfo($id)
     {
-        $request = $this->deleteResortRequest();
+        $request = $this->deleteResortRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -471,13 +473,14 @@ class ResortsApi
      *
      * Delete resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteResortAsync()
+    public function deleteResortAsync($id)
     {
-        return $this->deleteResortAsyncWithHttpInfo()
+        return $this->deleteResortAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -490,14 +493,15 @@ class ResortsApi
      *
      * Delete resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteResortAsyncWithHttpInfo()
+    public function deleteResortAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->deleteResortRequest();
+        $request = $this->deleteResortRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -525,12 +529,19 @@ class ResortsApi
     /**
      * Create request for operation 'deleteResort'
      *
+     * @param  int $id The ID of the resort (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteResortRequest()
+    protected function deleteResortRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deleteResort'
+            );
+        }
 
         $resourcePath = '/resorts/{id}';
         $formParams = [];
@@ -540,6 +551,14 @@ class ResortsApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
@@ -610,6 +629,7 @@ class ResortsApi
      *
      * Edit a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name name (optional)
      * @param  int $park_id park_id (optional)
      * @param  int $opening_year opening_year (optional)
@@ -627,9 +647,9 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function editResort($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function editResort($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
-        $this->editResortWithHttpInfo($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+        $this->editResortWithHttpInfo($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
     }
 
     /**
@@ -637,6 +657,7 @@ class ResortsApi
      *
      * Edit a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -654,9 +675,9 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editResortWithHttpInfo($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function editResortWithHttpInfo($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
-        $request = $this->editResortRequest($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+        $request = $this->editResortRequest($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
 
         try {
             $options = $this->createHttpClientOption();
@@ -700,6 +721,7 @@ class ResortsApi
      *
      * Edit a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -716,9 +738,9 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editResortAsync($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function editResortAsync($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
-        return $this->editResortAsyncWithHttpInfo($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
+        return $this->editResortAsyncWithHttpInfo($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -731,6 +753,7 @@ class ResortsApi
      *
      * Edit a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -747,10 +770,10 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editResortAsyncWithHttpInfo($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function editResortAsyncWithHttpInfo($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
         $returnType = '';
-        $request = $this->editResortRequest($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+        $request = $this->editResortRequest($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -778,6 +801,7 @@ class ResortsApi
     /**
      * Create request for operation 'editResort'
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -794,8 +818,14 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editResortRequest($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    protected function editResortRequest($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling editResort'
+            );
+        }
 
         $resourcePath = '/resorts/{id}';
         $formParams = [];
@@ -805,6 +835,14 @@ class ResortsApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // form params
         if ($name !== null) {
@@ -923,6 +961,7 @@ class ResortsApi
      *
      * List a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name name (optional)
      * @param  int $park_id park_id (optional)
      * @param  int $opening_year opening_year (optional)
@@ -940,9 +979,9 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\InlineResponse2001
      */
-    public function getResort($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function getResort($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
-        list($response) = $this->getResortWithHttpInfo($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+        list($response) = $this->getResortWithHttpInfo($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
         return $response;
     }
 
@@ -951,6 +990,7 @@ class ResortsApi
      *
      * List a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -968,9 +1008,9 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getResortWithHttpInfo($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function getResortWithHttpInfo($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
-        $request = $this->getResortRequest($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+        $request = $this->getResortRequest($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1056,6 +1096,7 @@ class ResortsApi
      *
      * List a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -1072,9 +1113,9 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getResortAsync($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function getResortAsync($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
-        return $this->getResortAsyncWithHttpInfo($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
+        return $this->getResortAsyncWithHttpInfo($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1087,6 +1128,7 @@ class ResortsApi
      *
      * List a specific resort resource by ID
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -1103,10 +1145,10 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getResortAsyncWithHttpInfo($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    public function getResortAsyncWithHttpInfo($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
         $returnType = '\OpenAPI\Client\Model\InlineResponse2001';
-        $request = $this->getResortRequest($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+        $request = $this->getResortRequest($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1148,6 +1190,7 @@ class ResortsApi
     /**
      * Create request for operation 'getResort'
      *
+     * @param  int $id The ID of the resort (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -1164,8 +1207,14 @@ class ResortsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getResortRequest($name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
+    protected function getResortRequest($id, $name = null, $park_id = null, $opening_year = null, $resort_type = null, $transport_options = null, $category = null, $num_of_rooms = null, $quick_service_restaurants = null, $table_service_restaurants = null, $gift_shop = null, $arcade = null, $pool = null)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getResort'
+            );
+        }
 
         $resourcePath = '/resorts/{id}';
         $formParams = [];
@@ -1175,6 +1224,14 @@ class ResortsApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // form params
         if ($name !== null) {

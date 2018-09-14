@@ -1,6 +1,6 @@
 # OpenAPI\Client\ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -82,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteResort**
-> deleteResort()
+> deleteResort($id)
 
 Delete resort resource by ID
 
@@ -96,9 +96,10 @@ $apiInstance = new OpenAPI\Client\Api\ResortsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the resort
 
 try {
-    $apiInstance->deleteResort();
+    $apiInstance->deleteResort($id);
 } catch (Exception $e) {
     echo 'Exception when calling ResortsApi->deleteResort: ', $e->getMessage(), PHP_EOL;
 }
@@ -106,7 +107,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the resort |
 
 ### Return type
 
@@ -124,7 +128,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editResort**
-> editResort($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
+> editResort($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
 
 Edit a specific resort resource by ID
 
@@ -140,6 +144,7 @@ $apiInstance = new OpenAPI\Client\Api\ResortsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the resort
 $name = 'name_example'; // string | 
 $park_id = 56; // int | 
 $opening_year = 56; // int | 
@@ -154,7 +159,7 @@ $arcade = True; // bool |
 $pool = True; // bool | 
 
 try {
-    $apiInstance->editResort($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+    $apiInstance->editResort($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
 } catch (Exception $e) {
     echo 'Exception when calling ResortsApi->editResort: ', $e->getMessage(), PHP_EOL;
 }
@@ -165,6 +170,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the resort |
  **name** | **string**|  | [optional]
  **park_id** | **int**|  | [optional]
  **opening_year** | **int**|  | [optional]
@@ -194,7 +200,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getResort**
-> \OpenAPI\Client\Model\InlineResponse2001 getResort($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
+> \OpenAPI\Client\Model\InlineResponse2001 getResort($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool)
 
 List a specific resort resource by ID
 
@@ -210,6 +216,7 @@ $apiInstance = new OpenAPI\Client\Api\ResortsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the resort
 $name = 'name_example'; // string | 
 $park_id = 56; // int | 
 $opening_year = 56; // int | 
@@ -224,7 +231,7 @@ $arcade = True; // bool |
 $pool = True; // bool | 
 
 try {
-    $result = $apiInstance->getResort($name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
+    $result = $apiInstance->getResort($id, $name, $park_id, $opening_year, $resort_type, $transport_options, $category, $num_of_rooms, $quick_service_restaurants, $table_service_restaurants, $gift_shop, $arcade, $pool);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ResortsApi->getResort: ', $e->getMessage(), PHP_EOL;
@@ -236,6 +243,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the resort |
  **name** | **string**|  | [optional]
  **park_id** | **int**|  | [optional]
  **opening_year** | **int**|  | [optional]

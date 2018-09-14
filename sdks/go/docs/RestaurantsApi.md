@@ -1,6 +1,6 @@
 # \RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -54,13 +54,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteRestaurant**
-> DeleteRestaurant(ctx, )
+> DeleteRestaurant(ctx, id)
 Remove a resource from the restaurants collection
 
 Remove a resource from the restaurants collection by ID
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the restaurant | 
 
 ### Return type
 
@@ -78,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EditRestaurant**
-> EditRestaurant(ctx, optional)
+> EditRestaurant(ctx, id, optional)
 Edit a single restaurant resource in the collection by ID
 
 Edit a restaurant by ID
@@ -88,6 +92,7 @@ Edit a restaurant by ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the restaurant | 
  **optional** | ***EditRestaurantOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -95,6 +100,7 @@ Optional parameters are passed through a pointer to a EditRestaurantOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **name** | **optional.String**|  | 
  **parkId** | **optional.Int32**|  | 
  **quickService** | **optional.Bool**|  | 
@@ -120,13 +126,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRestaurant**
-> InlineResponse2005 GetRestaurant(ctx, )
+> InlineResponse2005 GetRestaurant(ctx, id)
 List a single restaurant resource from the collection by ID
 
 Get a single restaurant resource by ID
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the restaurant | 
 
 ### Return type
 

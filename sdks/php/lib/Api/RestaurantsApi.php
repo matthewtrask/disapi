@@ -369,14 +369,15 @@ class RestaurantsApi
      *
      * Remove a resource from the restaurants collection
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRestaurant()
+    public function deleteRestaurant($id)
     {
-        $this->deleteRestaurantWithHttpInfo();
+        $this->deleteRestaurantWithHttpInfo($id);
     }
 
     /**
@@ -384,14 +385,15 @@ class RestaurantsApi
      *
      * Remove a resource from the restaurants collection
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRestaurantWithHttpInfo()
+    public function deleteRestaurantWithHttpInfo($id)
     {
-        $request = $this->deleteRestaurantRequest();
+        $request = $this->deleteRestaurantRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -435,13 +437,14 @@ class RestaurantsApi
      *
      * Remove a resource from the restaurants collection
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRestaurantAsync()
+    public function deleteRestaurantAsync($id)
     {
-        return $this->deleteRestaurantAsyncWithHttpInfo()
+        return $this->deleteRestaurantAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -454,14 +457,15 @@ class RestaurantsApi
      *
      * Remove a resource from the restaurants collection
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRestaurantAsyncWithHttpInfo()
+    public function deleteRestaurantAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->deleteRestaurantRequest();
+        $request = $this->deleteRestaurantRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -489,12 +493,19 @@ class RestaurantsApi
     /**
      * Create request for operation 'deleteRestaurant'
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteRestaurantRequest()
+    protected function deleteRestaurantRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deleteRestaurant'
+            );
+        }
 
         $resourcePath = '/restaurants/{id}';
         $formParams = [];
@@ -504,6 +515,14 @@ class RestaurantsApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
@@ -574,6 +593,7 @@ class RestaurantsApi
      *
      * Edit a single restaurant resource in the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      * @param  string $name name (optional)
      * @param  int $park_id park_id (optional)
      * @param  bool $quick_service quick_service (optional)
@@ -587,9 +607,9 @@ class RestaurantsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function editRestaurant($name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
+    public function editRestaurant($id, $name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
     {
-        $this->editRestaurantWithHttpInfo($name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
+        $this->editRestaurantWithHttpInfo($id, $name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
     }
 
     /**
@@ -597,6 +617,7 @@ class RestaurantsApi
      *
      * Edit a single restaurant resource in the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  bool $quick_service (optional)
@@ -610,9 +631,9 @@ class RestaurantsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editRestaurantWithHttpInfo($name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
+    public function editRestaurantWithHttpInfo($id, $name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
     {
-        $request = $this->editRestaurantRequest($name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
+        $request = $this->editRestaurantRequest($id, $name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -656,6 +677,7 @@ class RestaurantsApi
      *
      * Edit a single restaurant resource in the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  bool $quick_service (optional)
@@ -668,9 +690,9 @@ class RestaurantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editRestaurantAsync($name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
+    public function editRestaurantAsync($id, $name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
     {
-        return $this->editRestaurantAsyncWithHttpInfo($name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types)
+        return $this->editRestaurantAsyncWithHttpInfo($id, $name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -683,6 +705,7 @@ class RestaurantsApi
      *
      * Edit a single restaurant resource in the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  bool $quick_service (optional)
@@ -695,10 +718,10 @@ class RestaurantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editRestaurantAsyncWithHttpInfo($name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
+    public function editRestaurantAsyncWithHttpInfo($id, $name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
     {
         $returnType = '';
-        $request = $this->editRestaurantRequest($name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
+        $request = $this->editRestaurantRequest($id, $name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -726,6 +749,7 @@ class RestaurantsApi
     /**
      * Create request for operation 'editRestaurant'
      *
+     * @param  int $id The ID of the restaurant (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  bool $quick_service (optional)
@@ -738,8 +762,14 @@ class RestaurantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editRestaurantRequest($name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
+    protected function editRestaurantRequest($id, $name = null, $park_id = null, $quick_service = null, $table_service = null, $alcohol = null, $dining_plan = null, $meal_types = null, $food_types = null)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling editRestaurant'
+            );
+        }
 
         $resourcePath = '/restaurants/{id}';
         $formParams = [];
@@ -749,6 +779,14 @@ class RestaurantsApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // form params
         if ($name !== null) {
@@ -851,14 +889,15 @@ class RestaurantsApi
      *
      * List a single restaurant resource from the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\InlineResponse2005
      */
-    public function getRestaurant()
+    public function getRestaurant($id)
     {
-        list($response) = $this->getRestaurantWithHttpInfo();
+        list($response) = $this->getRestaurantWithHttpInfo($id);
         return $response;
     }
 
@@ -867,14 +906,15 @@ class RestaurantsApi
      *
      * List a single restaurant resource from the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRestaurantWithHttpInfo()
+    public function getRestaurantWithHttpInfo($id)
     {
-        $request = $this->getRestaurantRequest();
+        $request = $this->getRestaurantRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -960,13 +1000,14 @@ class RestaurantsApi
      *
      * List a single restaurant resource from the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRestaurantAsync()
+    public function getRestaurantAsync($id)
     {
-        return $this->getRestaurantAsyncWithHttpInfo()
+        return $this->getRestaurantAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -979,14 +1020,15 @@ class RestaurantsApi
      *
      * List a single restaurant resource from the collection by ID
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRestaurantAsyncWithHttpInfo()
+    public function getRestaurantAsyncWithHttpInfo($id)
     {
         $returnType = '\OpenAPI\Client\Model\InlineResponse2005';
-        $request = $this->getRestaurantRequest();
+        $request = $this->getRestaurantRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1028,12 +1070,19 @@ class RestaurantsApi
     /**
      * Create request for operation 'getRestaurant'
      *
+     * @param  int $id The ID of the restaurant (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRestaurantRequest()
+    protected function getRestaurantRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getRestaurant'
+            );
+        }
 
         $resourcePath = '/restaurants/{id}';
         $formParams = [];
@@ -1043,6 +1092,14 @@ class RestaurantsApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;

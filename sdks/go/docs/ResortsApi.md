@@ -1,6 +1,6 @@
 # \ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -58,11 +58,15 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteResort**
-> DeleteResort(ctx, )
+> DeleteResort(ctx, id)
 Delete resort resource by ID
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the resort | 
 
 ### Return type
 
@@ -80,7 +84,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EditResort**
-> EditResort(ctx, optional)
+> EditResort(ctx, id, optional)
 Edit a specific resort resource by ID
 
 Find and edit a specific resort resource by its ID
@@ -90,6 +94,7 @@ Find and edit a specific resort resource by its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the resort | 
  **optional** | ***EditResortOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -97,6 +102,7 @@ Optional parameters are passed through a pointer to a EditResortOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **name** | **optional.String**|  | 
  **parkId** | **optional.Int32**|  | 
  **openingYear** | **optional.Int32**|  | 
@@ -126,7 +132,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResort**
-> InlineResponse2001 GetResort(ctx, optional)
+> InlineResponse2001 GetResort(ctx, id, optional)
 List a specific resort resource by ID
 
 Get a specific resort resource by ID
@@ -136,6 +142,7 @@ Get a specific resort resource by ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the resort | 
  **optional** | ***GetResortOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -143,6 +150,7 @@ Optional parameters are passed through a pointer to a GetResortOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **name** | **optional.String**|  | 
  **parkId** | **optional.Int32**|  | 
  **openingYear** | **optional.Int32**|  | 

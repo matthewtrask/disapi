@@ -214,16 +214,18 @@ public class ParksApi {
     }
     /**
      * Build call for deletePark
+     * @param id The ID of the park (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteParkCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteParkCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/parks/{id}";
+        String localVarPath = "/parks/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -261,10 +263,15 @@ public class ParksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteParkValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteParkValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deletePark(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = deleteParkCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteParkCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -272,31 +279,34 @@ public class ParksApi {
     /**
      * Remove a resource from the collection
      * Remove a resource from the collection by ID
+     * @param id The ID of the park (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deletePark() throws ApiException {
-        deleteParkWithHttpInfo();
+    public void deletePark(Integer id) throws ApiException {
+        deleteParkWithHttpInfo(id);
     }
 
     /**
      * Remove a resource from the collection
      * Remove a resource from the collection by ID
+     * @param id The ID of the park (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteParkWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = deleteParkValidateBeforeCall(null, null);
+    public ApiResponse<Void> deleteParkWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = deleteParkValidateBeforeCall(id, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Remove a resource from the collection (asynchronously)
      * Remove a resource from the collection by ID
+     * @param id The ID of the park (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteParkAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteParkAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -317,22 +327,24 @@ public class ParksApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteParkValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteParkValidateBeforeCall(id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for editPark
+     * @param id The ID of the park (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call editParkCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call editParkCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/parks/{id}";
+        String localVarPath = "/parks/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -370,10 +382,15 @@ public class ParksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call editParkValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call editParkValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling editPark(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = editParkCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editParkCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -381,31 +398,34 @@ public class ParksApi {
     /**
      * Edit a resource by ID
      * Edit a park resource by an ID
+     * @param id The ID of the park (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void editPark() throws ApiException {
-        editParkWithHttpInfo();
+    public void editPark(Integer id) throws ApiException {
+        editParkWithHttpInfo(id);
     }
 
     /**
      * Edit a resource by ID
      * Edit a park resource by an ID
+     * @param id The ID of the park (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> editParkWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = editParkValidateBeforeCall(null, null);
+    public ApiResponse<Void> editParkWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = editParkValidateBeforeCall(id, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Edit a resource by ID (asynchronously)
      * Edit a park resource by an ID
+     * @param id The ID of the park (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call editParkAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call editParkAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -426,22 +446,24 @@ public class ParksApi {
             };
         }
 
-        com.squareup.okhttp.Call call = editParkValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editParkValidateBeforeCall(id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for getPark
+     * @param id The ID of the park (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getParkCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getParkCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/parks/{id}";
+        String localVarPath = "/parks/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -479,10 +501,15 @@ public class ParksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getParkValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getParkValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getPark(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = getParkCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getParkCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -490,22 +517,24 @@ public class ParksApi {
     /**
      * List a park by ID
      * Get a park at Walt Disney World by ID
+     * @param id The ID of the park (required)
      * @return InlineResponse2007
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2007 getPark() throws ApiException {
-        ApiResponse<InlineResponse2007> resp = getParkWithHttpInfo();
+    public InlineResponse2007 getPark(Integer id) throws ApiException {
+        ApiResponse<InlineResponse2007> resp = getParkWithHttpInfo(id);
         return resp.getData();
     }
 
     /**
      * List a park by ID
      * Get a park at Walt Disney World by ID
+     * @param id The ID of the park (required)
      * @return ApiResponse&lt;InlineResponse2007&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2007> getParkWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getParkValidateBeforeCall(null, null);
+    public ApiResponse<InlineResponse2007> getParkWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = getParkValidateBeforeCall(id, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -513,11 +542,12 @@ public class ParksApi {
     /**
      * List a park by ID (asynchronously)
      * Get a park at Walt Disney World by ID
+     * @param id The ID of the park (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getParkAsync(final ApiCallback<InlineResponse2007> callback) throws ApiException {
+    public com.squareup.okhttp.Call getParkAsync(Integer id, final ApiCallback<InlineResponse2007> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -538,7 +568,7 @@ public class ParksApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getParkValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getParkValidateBeforeCall(id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

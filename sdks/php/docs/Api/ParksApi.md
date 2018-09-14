@@ -1,6 +1,6 @@
 # OpenAPI\Client\ParksApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -74,7 +74,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deletePark**
-> deletePark()
+> deletePark($id)
 
 Remove a resource from the collection
 
@@ -90,9 +90,10 @@ $apiInstance = new OpenAPI\Client\Api\ParksApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the park
 
 try {
-    $apiInstance->deletePark();
+    $apiInstance->deletePark($id);
 } catch (Exception $e) {
     echo 'Exception when calling ParksApi->deletePark: ', $e->getMessage(), PHP_EOL;
 }
@@ -100,7 +101,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the park |
 
 ### Return type
 
@@ -118,7 +122,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editPark**
-> editPark()
+> editPark($id)
 
 Edit a resource by ID
 
@@ -134,9 +138,10 @@ $apiInstance = new OpenAPI\Client\Api\ParksApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the park
 
 try {
-    $apiInstance->editPark();
+    $apiInstance->editPark($id);
 } catch (Exception $e) {
     echo 'Exception when calling ParksApi->editPark: ', $e->getMessage(), PHP_EOL;
 }
@@ -144,7 +149,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the park |
 
 ### Return type
 
@@ -162,7 +170,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPark**
-> \OpenAPI\Client\Model\InlineResponse2007 getPark()
+> \OpenAPI\Client\Model\InlineResponse2007 getPark($id)
 
 List a park by ID
 
@@ -178,9 +186,10 @@ $apiInstance = new OpenAPI\Client\Api\ParksApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the park
 
 try {
-    $result = $apiInstance->getPark();
+    $result = $apiInstance->getPark($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ParksApi->getPark: ', $e->getMessage(), PHP_EOL;
@@ -189,7 +198,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the park |
 
 ### Return type
 

@@ -128,8 +128,8 @@ module OpenapiClient
     attr_accessor :force_ending_format
 
     def initialize
-      @scheme = 'http'
-      @host = 'homestead.test'
+      @scheme = 'https'
+      @host = 'disapi.co'
       @base_path = '/api'
       @api_key = {}
       @api_key_prefix = {}

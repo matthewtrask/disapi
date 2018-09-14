@@ -226,16 +226,18 @@ public class RidesApi {
     }
     /**
      * Build call for deleteRide
+     * @param id The ID of the ride (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteRideCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteRideCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/rides/{id}";
+        String localVarPath = "/rides/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -273,10 +275,15 @@ public class RidesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteRideValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteRideValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteRide(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = deleteRideCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteRideCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -284,31 +291,34 @@ public class RidesApi {
     /**
      * Delete ride resource by ID
      * 
+     * @param id The ID of the ride (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteRide() throws ApiException {
-        deleteRideWithHttpInfo();
+    public void deleteRide(Integer id) throws ApiException {
+        deleteRideWithHttpInfo(id);
     }
 
     /**
      * Delete ride resource by ID
      * 
+     * @param id The ID of the ride (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteRideWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = deleteRideValidateBeforeCall(null, null);
+    public ApiResponse<Void> deleteRideWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = deleteRideValidateBeforeCall(id, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Delete ride resource by ID (asynchronously)
      * 
+     * @param id The ID of the ride (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteRideAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteRideAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -329,12 +339,13 @@ public class RidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteRideValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteRideValidateBeforeCall(id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for editRide
+     * @param id The ID of the ride (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -350,11 +361,12 @@ public class RidesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call editRideCall(String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call editRideCall(Integer id, String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/rides/{id}";
+        String localVarPath = "/rides/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -412,10 +424,15 @@ public class RidesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call editRideValidateBeforeCall(String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call editRideValidateBeforeCall(Integer id, String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling editRide(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = editRideCall(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editRideCall(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction, progressListener, progressRequestListener);
         return call;
 
     }
@@ -423,6 +440,7 @@ public class RidesApi {
     /**
      * Edit a ride by ID
      * Edit a ride in the resource collection by ID
+     * @param id The ID of the ride (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -435,13 +453,14 @@ public class RidesApi {
      * @param heightRestriction  (optional, default to null)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void editRide(String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction) throws ApiException {
-        editRideWithHttpInfo(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
+    public void editRide(Integer id, String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction) throws ApiException {
+        editRideWithHttpInfo(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
     }
 
     /**
      * Edit a ride by ID
      * Edit a ride in the resource collection by ID
+     * @param id The ID of the ride (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -455,14 +474,15 @@ public class RidesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> editRideWithHttpInfo(String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction) throws ApiException {
-        com.squareup.okhttp.Call call = editRideValidateBeforeCall(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction, null, null);
+    public ApiResponse<Void> editRideWithHttpInfo(Integer id, String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction) throws ApiException {
+        com.squareup.okhttp.Call call = editRideValidateBeforeCall(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Edit a ride by ID (asynchronously)
      * Edit a ride in the resource collection by ID
+     * @param id The ID of the ride (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -477,7 +497,7 @@ public class RidesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call editRideAsync(String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call editRideAsync(Integer id, String name, Integer parkId, Integer openingYear, String rideType, String rideVehicle, Boolean interactiveQueue, Boolean giftStoreFinish, Integer singleRider, Integer ridePhoto, Integer heightRestriction, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -498,22 +518,24 @@ public class RidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = editRideValidateBeforeCall(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editRideValidateBeforeCall(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for getRide
+     * @param id The ID of the ride (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getRideCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getRideCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/rides/{id}";
+        String localVarPath = "/rides/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -551,10 +573,15 @@ public class RidesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getRideValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getRideValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getRide(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = getRideCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getRideCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -562,22 +589,24 @@ public class RidesApi {
     /**
      * Get ride by ID
      * Get a ride at Walt Disney World by ID
+     * @param id The ID of the ride (required)
      * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 getRide() throws ApiException {
-        ApiResponse<InlineResponse2003> resp = getRideWithHttpInfo();
+    public InlineResponse2003 getRide(Integer id) throws ApiException {
+        ApiResponse<InlineResponse2003> resp = getRideWithHttpInfo(id);
         return resp.getData();
     }
 
     /**
      * Get ride by ID
      * Get a ride at Walt Disney World by ID
+     * @param id The ID of the ride (required)
      * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> getRideWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getRideValidateBeforeCall(null, null);
+    public ApiResponse<InlineResponse2003> getRideWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = getRideValidateBeforeCall(id, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -585,11 +614,12 @@ public class RidesApi {
     /**
      * Get ride by ID (asynchronously)
      * Get a ride at Walt Disney World by ID
+     * @param id The ID of the ride (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getRideAsync(final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call getRideAsync(Integer id, final ApiCallback<InlineResponse2003> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -610,7 +640,7 @@ public class RidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getRideValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getRideValidateBeforeCall(id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

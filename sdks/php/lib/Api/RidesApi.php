@@ -387,14 +387,15 @@ class RidesApi
      *
      * Delete ride resource by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRide()
+    public function deleteRide($id)
     {
-        $this->deleteRideWithHttpInfo();
+        $this->deleteRideWithHttpInfo($id);
     }
 
     /**
@@ -402,14 +403,15 @@ class RidesApi
      *
      * Delete ride resource by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRideWithHttpInfo()
+    public function deleteRideWithHttpInfo($id)
     {
-        $request = $this->deleteRideRequest();
+        $request = $this->deleteRideRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -453,13 +455,14 @@ class RidesApi
      *
      * Delete ride resource by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRideAsync()
+    public function deleteRideAsync($id)
     {
-        return $this->deleteRideAsyncWithHttpInfo()
+        return $this->deleteRideAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -472,14 +475,15 @@ class RidesApi
      *
      * Delete ride resource by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRideAsyncWithHttpInfo()
+    public function deleteRideAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->deleteRideRequest();
+        $request = $this->deleteRideRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -507,12 +511,19 @@ class RidesApi
     /**
      * Create request for operation 'deleteRide'
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteRideRequest()
+    protected function deleteRideRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deleteRide'
+            );
+        }
 
         $resourcePath = '/rides/{id}';
         $formParams = [];
@@ -522,6 +533,14 @@ class RidesApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
@@ -592,6 +611,7 @@ class RidesApi
      *
      * Edit a ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      * @param  string $name name (optional)
      * @param  int $park_id park_id (optional)
      * @param  int $opening_year opening_year (optional)
@@ -607,9 +627,9 @@ class RidesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function editRide($name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
+    public function editRide($id, $name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
     {
-        $this->editRideWithHttpInfo($name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
+        $this->editRideWithHttpInfo($id, $name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
     }
 
     /**
@@ -617,6 +637,7 @@ class RidesApi
      *
      * Edit a ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -632,9 +653,9 @@ class RidesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editRideWithHttpInfo($name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
+    public function editRideWithHttpInfo($id, $name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
     {
-        $request = $this->editRideRequest($name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
+        $request = $this->editRideRequest($id, $name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
 
         try {
             $options = $this->createHttpClientOption();
@@ -678,6 +699,7 @@ class RidesApi
      *
      * Edit a ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -692,9 +714,9 @@ class RidesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editRideAsync($name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
+    public function editRideAsync($id, $name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
     {
-        return $this->editRideAsyncWithHttpInfo($name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction)
+        return $this->editRideAsyncWithHttpInfo($id, $name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -707,6 +729,7 @@ class RidesApi
      *
      * Edit a ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -721,10 +744,10 @@ class RidesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editRideAsyncWithHttpInfo($name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
+    public function editRideAsyncWithHttpInfo($id, $name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
     {
         $returnType = '';
-        $request = $this->editRideRequest($name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
+        $request = $this->editRideRequest($id, $name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -752,6 +775,7 @@ class RidesApi
     /**
      * Create request for operation 'editRide'
      *
+     * @param  int $id The ID of the ride (required)
      * @param  string $name (optional)
      * @param  int $park_id (optional)
      * @param  int $opening_year (optional)
@@ -766,8 +790,14 @@ class RidesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editRideRequest($name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
+    protected function editRideRequest($id, $name = null, $park_id = null, $opening_year = null, $ride_type = null, $ride_vehicle = null, $interactive_queue = null, $gift_store_finish = null, $single_rider = null, $ride_photo = null, $height_restriction = null)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling editRide'
+            );
+        }
 
         $resourcePath = '/rides/{id}';
         $formParams = [];
@@ -777,6 +807,14 @@ class RidesApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // form params
         if ($name !== null) {
@@ -887,14 +925,15 @@ class RidesApi
      *
      * Get ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\InlineResponse2003
      */
-    public function getRide()
+    public function getRide($id)
     {
-        list($response) = $this->getRideWithHttpInfo();
+        list($response) = $this->getRideWithHttpInfo($id);
         return $response;
     }
 
@@ -903,14 +942,15 @@ class RidesApi
      *
      * Get ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRideWithHttpInfo()
+    public function getRideWithHttpInfo($id)
     {
-        $request = $this->getRideRequest();
+        $request = $this->getRideRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -996,13 +1036,14 @@ class RidesApi
      *
      * Get ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRideAsync()
+    public function getRideAsync($id)
     {
-        return $this->getRideAsyncWithHttpInfo()
+        return $this->getRideAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1015,14 +1056,15 @@ class RidesApi
      *
      * Get ride by ID
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRideAsyncWithHttpInfo()
+    public function getRideAsyncWithHttpInfo($id)
     {
         $returnType = '\OpenAPI\Client\Model\InlineResponse2003';
-        $request = $this->getRideRequest();
+        $request = $this->getRideRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1064,12 +1106,19 @@ class RidesApi
     /**
      * Create request for operation 'getRide'
      *
+     * @param  int $id The ID of the ride (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRideRequest()
+    protected function getRideRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getRide'
+            );
+        }
 
         $resourcePath = '/rides/{id}';
         $formParams = [];
@@ -1079,6 +1128,14 @@ class RidesApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;

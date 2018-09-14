@@ -1,6 +1,6 @@
 # OpenapiClient::ParksApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -72,7 +72,7 @@ No authorization required
 
 
 # **delete_park**
-> delete_park
+> delete_park(id)
 
 Remove a resource from the collection
 
@@ -84,17 +84,21 @@ Remove a resource from the collection by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::ParksApi.new
+id = 56 # Integer | The ID of the park
 
 begin
   #Remove a resource from the collection
-  api_instance.delete_park
+  api_instance.delete_park(id)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling ParksApi->delete_park: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the park | 
 
 ### Return type
 
@@ -112,7 +116,7 @@ No authorization required
 
 
 # **edit_park**
-> edit_park
+> edit_park(id)
 
 Edit a resource by ID
 
@@ -124,17 +128,21 @@ Edit a park resource by an ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::ParksApi.new
+id = 56 # Integer | The ID of the park
 
 begin
   #Edit a resource by ID
-  api_instance.edit_park
+  api_instance.edit_park(id)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling ParksApi->edit_park: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the park | 
 
 ### Return type
 
@@ -152,7 +160,7 @@ No authorization required
 
 
 # **get_park**
-> InlineResponse2007 get_park
+> InlineResponse2007 get_park(id)
 
 List a park by ID
 
@@ -164,10 +172,11 @@ Get a park at Walt Disney World by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::ParksApi.new
+id = 56 # Integer | The ID of the park
 
 begin
   #List a park by ID
-  result = api_instance.get_park
+  result = api_instance.get_park(id)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling ParksApi->get_park: #{e}"
@@ -175,7 +184,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the park | 
 
 ### Return type
 

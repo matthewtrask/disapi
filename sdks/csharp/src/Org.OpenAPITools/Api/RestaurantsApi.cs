@@ -66,8 +66,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns></returns>
-        void DeleteRestaurant ();
+        void DeleteRestaurant (int? id);
 
         /// <summary>
         /// Remove a resource from the restaurants collection
@@ -76,8 +77,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteRestaurantWithHttpInfo ();
+        ApiResponse<Object> DeleteRestaurantWithHttpInfo (int? id);
         /// <summary>
         /// Edit a single restaurant resource in the collection by ID
         /// </summary>
@@ -85,6 +87,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a restaurant by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -94,7 +97,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns></returns>
-        void EditRestaurant (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
+        void EditRestaurant (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
 
         /// <summary>
         /// Edit a single restaurant resource in the collection by ID
@@ -103,6 +106,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a restaurant by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -112,7 +116,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> EditRestaurantWithHttpInfo (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
+        ApiResponse<Object> EditRestaurantWithHttpInfo (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
         /// <summary>
         /// List a single restaurant resource from the collection by ID
         /// </summary>
@@ -120,8 +124,9 @@ namespace Org.OpenAPITools.Api
         /// Get a single restaurant resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>InlineResponse2005</returns>
-        InlineResponse2005 GetRestaurant ();
+        InlineResponse2005 GetRestaurant (int? id);
 
         /// <summary>
         /// List a single restaurant resource from the collection by ID
@@ -130,8 +135,9 @@ namespace Org.OpenAPITools.Api
         /// Get a single restaurant resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>ApiResponse of InlineResponse2005</returns>
-        ApiResponse<InlineResponse2005> GetRestaurantWithHttpInfo ();
+        ApiResponse<InlineResponse2005> GetRestaurantWithHttpInfo (int? id);
         /// <summary>
         /// List restaurants at Walt Disney World
         /// </summary>
@@ -195,8 +201,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteRestaurantAsync ();
+        System.Threading.Tasks.Task DeleteRestaurantAsync (int? id);
 
         /// <summary>
         /// Remove a resource from the restaurants collection
@@ -205,8 +212,9 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRestaurantAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRestaurantAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Edit a single restaurant resource in the collection by ID
         /// </summary>
@@ -214,6 +222,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a restaurant by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -223,7 +232,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task EditRestaurantAsync (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
+        System.Threading.Tasks.Task EditRestaurantAsync (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
 
         /// <summary>
         /// Edit a single restaurant resource in the collection by ID
@@ -232,6 +241,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a restaurant by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -241,7 +251,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> EditRestaurantAsyncWithHttpInfo (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditRestaurantAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null);
         /// <summary>
         /// List a single restaurant resource from the collection by ID
         /// </summary>
@@ -249,8 +259,9 @@ namespace Org.OpenAPITools.Api
         /// Get a single restaurant resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of InlineResponse2005</returns>
-        System.Threading.Tasks.Task<InlineResponse2005> GetRestaurantAsync ();
+        System.Threading.Tasks.Task<InlineResponse2005> GetRestaurantAsync (int? id);
 
         /// <summary>
         /// List a single restaurant resource from the collection by ID
@@ -259,8 +270,9 @@ namespace Org.OpenAPITools.Api
         /// Get a single restaurant resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> GetRestaurantAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> GetRestaurantAsyncWithHttpInfo (int? id);
         /// <summary>
         /// List restaurants at Walt Disney World
         /// </summary>
@@ -551,19 +563,24 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection Remove a resource from the restaurants collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns></returns>
-        public void DeleteRestaurant ()
+        public void DeleteRestaurant (int? id)
         {
-             DeleteRestaurantWithHttpInfo();
+             DeleteRestaurantWithHttpInfo(id);
         }
 
         /// <summary>
         /// Remove a resource from the restaurants collection Remove a resource from the restaurants collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteRestaurantWithHttpInfo ()
+        public ApiResponse<Object> DeleteRestaurantWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RestaurantsApi->DeleteRestaurant");
 
             var localVarPath = "/restaurants/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -585,6 +602,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -609,10 +627,11 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection Remove a resource from the restaurants collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteRestaurantAsync ()
+        public async System.Threading.Tasks.Task DeleteRestaurantAsync (int? id)
         {
-             await DeleteRestaurantAsyncWithHttpInfo();
+             await DeleteRestaurantAsyncWithHttpInfo(id);
 
         }
 
@@ -620,9 +639,13 @@ namespace Org.OpenAPITools.Api
         /// Remove a resource from the restaurants collection Remove a resource from the restaurants collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRestaurantAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRestaurantAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RestaurantsApi->DeleteRestaurant");
 
             var localVarPath = "/restaurants/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -644,6 +667,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -668,6 +692,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a single restaurant resource in the collection by ID Edit a restaurant by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -677,15 +702,16 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns></returns>
-        public void EditRestaurant (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
+        public void EditRestaurant (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
         {
-             EditRestaurantWithHttpInfo(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
+             EditRestaurantWithHttpInfo(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
         }
 
         /// <summary>
         /// Edit a single restaurant resource in the collection by ID Edit a restaurant by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -695,8 +721,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> EditRestaurantWithHttpInfo (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
+        public ApiResponse<Object> EditRestaurantWithHttpInfo (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RestaurantsApi->EditRestaurant");
 
             var localVarPath = "/restaurants/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -719,6 +748,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (quickService != null) localVarFormParams.Add("quickService", this.Configuration.ApiClient.ParameterToString(quickService)); // form parameter
@@ -751,6 +781,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a single restaurant resource in the collection by ID Edit a restaurant by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -760,9 +791,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task EditRestaurantAsync (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
+        public async System.Threading.Tasks.Task EditRestaurantAsync (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
         {
-             await EditRestaurantAsyncWithHttpInfo(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
+             await EditRestaurantAsyncWithHttpInfo(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
 
         }
 
@@ -770,6 +801,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a single restaurant resource in the collection by ID Edit a restaurant by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="quickService"> (optional)</param>
@@ -779,8 +811,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="mealTypes"> (optional)</param>
         /// <param name="foodTypes"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditRestaurantAsyncWithHttpInfo (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditRestaurantAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RestaurantsApi->EditRestaurant");
 
             var localVarPath = "/restaurants/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -803,6 +838,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (quickService != null) localVarFormParams.Add("quickService", this.Configuration.ApiClient.ParameterToString(quickService)); // form parameter
@@ -835,10 +871,11 @@ namespace Org.OpenAPITools.Api
         /// List a single restaurant resource from the collection by ID Get a single restaurant resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>InlineResponse2005</returns>
-        public InlineResponse2005 GetRestaurant ()
+        public InlineResponse2005 GetRestaurant (int? id)
         {
-             ApiResponse<InlineResponse2005> localVarResponse = GetRestaurantWithHttpInfo();
+             ApiResponse<InlineResponse2005> localVarResponse = GetRestaurantWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -846,9 +883,13 @@ namespace Org.OpenAPITools.Api
         /// List a single restaurant resource from the collection by ID Get a single restaurant resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>ApiResponse of InlineResponse2005</returns>
-        public ApiResponse< InlineResponse2005 > GetRestaurantWithHttpInfo ()
+        public ApiResponse< InlineResponse2005 > GetRestaurantWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RestaurantsApi->GetRestaurant");
 
             var localVarPath = "/restaurants/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -871,6 +912,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -895,10 +937,11 @@ namespace Org.OpenAPITools.Api
         /// List a single restaurant resource from the collection by ID Get a single restaurant resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of InlineResponse2005</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2005> GetRestaurantAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse2005> GetRestaurantAsync (int? id)
         {
-             ApiResponse<InlineResponse2005> localVarResponse = await GetRestaurantAsyncWithHttpInfo();
+             ApiResponse<InlineResponse2005> localVarResponse = await GetRestaurantAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -907,9 +950,13 @@ namespace Org.OpenAPITools.Api
         /// List a single restaurant resource from the collection by ID Get a single restaurant resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the restaurant</param>
         /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> GetRestaurantAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> GetRestaurantAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RestaurantsApi->GetRestaurant");
 
             var localVarPath = "/restaurants/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -932,6 +979,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request

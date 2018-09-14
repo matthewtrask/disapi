@@ -1,6 +1,6 @@
 # openapi_client.RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_restaurant**
-> delete_restaurant()
+> delete_restaurant(id)
 
 Remove a resource from the restaurants collection
 
@@ -89,16 +89,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.RestaurantsApi()
+id = 56 # int | The ID of the restaurant
 
 try:
     # Remove a resource from the restaurants collection
-    api_instance.delete_restaurant()
+    api_instance.delete_restaurant(id)
 except ApiException as e:
     print("Exception when calling RestaurantsApi->delete_restaurant: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the restaurant | 
 
 ### Return type
 
@@ -116,7 +120,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_restaurant**
-> edit_restaurant(name=name, park_id=park_id, quick_service=quick_service, table_service=table_service, alcohol=alcohol, dining_plan=dining_plan, meal_types=meal_types, food_types=food_types)
+> edit_restaurant(id, name=name, park_id=park_id, quick_service=quick_service, table_service=table_service, alcohol=alcohol, dining_plan=dining_plan, meal_types=meal_types, food_types=food_types)
 
 Edit a single restaurant resource in the collection by ID
 
@@ -132,6 +136,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.RestaurantsApi()
+id = 56 # int | The ID of the restaurant
 name = 'name_example' # str |  (optional)
 park_id = 56 # int |  (optional)
 quick_service = True # bool |  (optional)
@@ -143,7 +148,7 @@ food_types = 'food_types_example' # list[str] |  (optional)
 
 try:
     # Edit a single restaurant resource in the collection by ID
-    api_instance.edit_restaurant(name=name, park_id=park_id, quick_service=quick_service, table_service=table_service, alcohol=alcohol, dining_plan=dining_plan, meal_types=meal_types, food_types=food_types)
+    api_instance.edit_restaurant(id, name=name, park_id=park_id, quick_service=quick_service, table_service=table_service, alcohol=alcohol, dining_plan=dining_plan, meal_types=meal_types, food_types=food_types)
 except ApiException as e:
     print("Exception when calling RestaurantsApi->edit_restaurant: %s\n" % e)
 ```
@@ -152,6 +157,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the restaurant | 
  **name** | **str**|  | [optional] 
  **park_id** | **int**|  | [optional] 
  **quick_service** | **bool**|  | [optional] 
@@ -177,7 +183,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_restaurant**
-> InlineResponse2005 get_restaurant()
+> InlineResponse2005 get_restaurant(id)
 
 List a single restaurant resource from the collection by ID
 
@@ -193,17 +199,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.RestaurantsApi()
+id = 56 # int | The ID of the restaurant
 
 try:
     # List a single restaurant resource from the collection by ID
-    api_response = api_instance.get_restaurant()
+    api_response = api_instance.get_restaurant(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RestaurantsApi->get_restaurant: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the restaurant | 
 
 ### Return type
 

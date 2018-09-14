@@ -11,9 +11,10 @@ info:
   title: Walt Disney World API
   version: 0.1.0
 servers:
-- description: Testing
-  url: http://homestead.test/api
-- url: https://disapi.co/api
+- description: Production Server
+  url: https://disapi.co/api
+- description: Local Server
+  url: http://localhost/api
 tags:
 - description: Endpoints for getting and working with the parks
   name: parks
@@ -40,6 +41,12 @@ paths:
           description: A list a resorts at Walt Disney World
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List resorts at Walt Disney World
       tags:
       - resorts
@@ -61,12 +68,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Create a new resort resource
       tags:
       - resorts
   /resorts/{id}:
     delete:
       operationId: deleteResort
+      parameters:
+      - description: The ID of the resort
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         204:
           description: No Content
@@ -74,12 +97,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Delete resort resource by ID
       tags:
       - resorts
     get:
       description: Get a specific resort resource by ID
       operationId: getResort
+      parameters:
+      - description: The ID of the resort
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -99,12 +138,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List a specific resort resource by ID
       tags:
       - resorts
     put:
       description: Find and edit a specific resort resource by its ID
       operationId: editResort
+      parameters:
+      - description: The ID of the resort
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -120,6 +175,12 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Edit a specific resort resource by ID
       tags:
       - resorts
@@ -142,6 +203,12 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: The requested resources could not be found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List rides at Walt Disney World
       tags:
       - rides
@@ -161,12 +228,28 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Create a new ride resource
       tags:
       - rides
   /rides/{id}:
     delete:
       operationId: deleteRide
+      parameters:
+      - description: The ID of the ride
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         204:
           description: No Content
@@ -174,12 +257,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Delete ride resource by ID
       tags:
       - rides
     get:
       description: Get a ride at Walt Disney World by ID
       operationId: getRide
+      parameters:
+      - description: The ID of the ride
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         200:
           content:
@@ -194,12 +293,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Get ride by ID
       tags:
       - rides
     put:
       description: Edit a ride in the resource collection by ID
       operationId: editRide
+      parameters:
+      - description: The ID of the ride
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -207,12 +322,18 @@ paths:
               $ref: '#/components/schemas/RideForm'
       responses:
         201:
-          description: OK
+          description: Created
           headers:
             location:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Edit a ride by ID
       tags:
       - rides
@@ -232,6 +353,12 @@ paths:
           description: A list a restaurant resources
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List restaurants at Walt Disney World
       tags:
       - restaurants
@@ -251,6 +378,12 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Create a new restaurant resource
       tags:
       - restaurants
@@ -258,6 +391,16 @@ paths:
     delete:
       description: Remove a resource from the restaurants collection by ID
       operationId: deleteRestaurant
+      parameters:
+      - description: The ID of the restaurant
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         204:
           description: No Content
@@ -265,12 +408,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: The resource could not be found.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Remove a resource from the restaurants collection
       tags:
       - restaurants
     get:
       description: Get a single restaurant resource by ID
       operationId: getRestaurant
+      parameters:
+      - description: The ID of the restaurant
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         200:
           content:
@@ -285,12 +444,28 @@ paths:
           description: The request you made could not be fulfilled right now
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List a single restaurant resource from the collection by ID
       tags:
       - restaurants
     put:
       description: Edit a restaurant by ID
       operationId: editRestaurant
+      parameters:
+      - description: The ID of the restaurant
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -304,6 +479,14 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        404:
+          description: The resource could not be found.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Edit a single restaurant resource in the collection by ID
       tags:
       - restaurants
@@ -323,6 +506,12 @@ paths:
           description: A list a parks at Walt Disney World
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List all parks at Walt Disney World
       tags:
       - parks
@@ -342,6 +531,12 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Create a new park resource in the collection
       tags:
       - parks
@@ -349,6 +544,16 @@ paths:
     delete:
       description: Remove a resource from the collection by ID
       operationId: deletePark
+      parameters:
+      - description: The ID of the park
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         204:
           description: No Content
@@ -356,12 +561,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Remove a resource from the collection
       tags:
       - parks
     get:
       description: Get a park at Walt Disney World by ID
       operationId: getPark
+      parameters:
+      - description: The ID of the park
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         200:
           content:
@@ -376,12 +597,28 @@ paths:
           description: The request you made could not be fulfilled right now.
         404:
           description: Resource Not Found
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: List a park by ID
       tags:
       - parks
     put:
       description: Edit a park resource by an ID
       operationId: editPark
+      parameters:
+      - description: The ID of the park
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
       responses:
         200:
           description: OK
@@ -390,6 +627,12 @@ paths:
               $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
+        418:
+          description: I am a teapot.
+        451:
+          description: Censored for legal reasons.
+        500:
+          description: The server could not handle the request right now.
       summary: Edit a resource by ID
       tags:
       - parks
@@ -457,6 +700,15 @@ components:
           ridePhoto: false
           singleRider: false
           heightRestriction: false
+        - id: 3
+          name: Jungle Cruise
+          yearOpened: 1971
+          rideType: Transport
+          rideVehicle: Train
+          interactiveQueue: false
+          ridePhoto: false
+          singleRider: false
+          heightRestriction: false
     RestaurantsResponse:
       summary: An example response of restaurants at Walt Disney World
       value:
@@ -482,18 +734,6 @@ components:
           foodTypes:
           - Snacks
           - Dole Whip
-        - id: 2
-          name: Auntie Gravity's Galactic Goodies
-          parkId: 1
-          quickService: true
-          tableService: false
-          alcohol: false
-          diningPlan: true
-          mealTypes:
-          - Snacks
-          foodTypes:
-          - Snacks
-          - Ice Cream
     ParksResponse:
       summary: An exmaple response of parks at Walt Disney World
       value:

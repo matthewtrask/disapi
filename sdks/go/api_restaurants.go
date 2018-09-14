@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"fmt"
 	"github.com/antihax/optional"
 )
 
@@ -140,8 +141,9 @@ func (a *RestaurantsApiService) CreateRestaurant(ctx context.Context, localVarOp
 RestaurantsApiService Remove a resource from the restaurants collection
 Remove a resource from the restaurants collection by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the restaurant
 */
-func (a *RestaurantsApiService) DeleteRestaurant(ctx context.Context) (*http.Response, error) {
+func (a *RestaurantsApiService) DeleteRestaurant(ctx context.Context, id int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -152,6 +154,7 @@ func (a *RestaurantsApiService) DeleteRestaurant(ctx context.Context) (*http.Res
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/restaurants/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -205,6 +208,7 @@ func (a *RestaurantsApiService) DeleteRestaurant(ctx context.Context) (*http.Res
 RestaurantsApiService Edit a single restaurant resource in the collection by ID
 Edit a restaurant by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the restaurant
  * @param optional nil or *EditRestaurantOpts - Optional Parameters:
  * @param "Name" (optional.String) - 
  * @param "ParkId" (optional.Int32) - 
@@ -227,7 +231,7 @@ type EditRestaurantOpts struct {
     FoodTypes optional.Interface
 }
 
-func (a *RestaurantsApiService) EditRestaurant(ctx context.Context, localVarOptionals *EditRestaurantOpts) (*http.Response, error) {
+func (a *RestaurantsApiService) EditRestaurant(ctx context.Context, id int32, localVarOptionals *EditRestaurantOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -238,6 +242,7 @@ func (a *RestaurantsApiService) EditRestaurant(ctx context.Context, localVarOpti
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/restaurants/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -315,9 +320,10 @@ func (a *RestaurantsApiService) EditRestaurant(ctx context.Context, localVarOpti
 RestaurantsApiService List a single restaurant resource from the collection by ID
 Get a single restaurant resource by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the restaurant
 @return InlineResponse2005
 */
-func (a *RestaurantsApiService) GetRestaurant(ctx context.Context) (InlineResponse2005, *http.Response, error) {
+func (a *RestaurantsApiService) GetRestaurant(ctx context.Context, id int32) (InlineResponse2005, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -329,6 +335,7 @@ func (a *RestaurantsApiService) GetRestaurant(ctx context.Context) (InlineRespon
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/restaurants/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

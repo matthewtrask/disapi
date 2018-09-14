@@ -120,13 +120,20 @@
 
     /**
      * Delete ride resource by ID
+     * @param {Number} id The ID of the ride
      * @param {module:api/RidesApi~deleteRideCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteRide = function(callback) {
+    this.deleteRide = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteRide");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -160,6 +167,7 @@
     /**
      * Edit a ride by ID
      * Edit a ride in the resource collection by ID
+     * @param {Number} id The ID of the ride
      * @param {Object} opts Optional parameters
      * @param {String} opts.name 
      * @param {Number} opts.parkId 
@@ -173,12 +181,18 @@
      * @param {Number} opts.heightRestriction 
      * @param {module:api/RidesApi~editRideCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.editRide = function(opts, callback) {
+    this.editRide = function(id, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling editRide");
+      }
+
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -222,14 +236,21 @@
     /**
      * Get ride by ID
      * Get a ride at Walt Disney World by ID
+     * @param {Number} id The ID of the ride
      * @param {module:api/RidesApi~getRideCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2003}
      */
-    this.getRide = function(callback) {
+    this.getRide = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getRide");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };

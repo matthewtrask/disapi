@@ -124,13 +124,20 @@
 
     /**
      * Delete resort resource by ID
+     * @param {Number} id The ID of the resort
      * @param {module:api/ResortsApi~deleteResortCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteResort = function(callback) {
+    this.deleteResort = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteResort");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -164,6 +171,7 @@
     /**
      * Edit a specific resort resource by ID
      * Find and edit a specific resort resource by its ID
+     * @param {Number} id The ID of the resort
      * @param {Object} opts Optional parameters
      * @param {String} opts.name 
      * @param {Number} opts.parkId 
@@ -179,12 +187,18 @@
      * @param {Boolean} opts.pool 
      * @param {module:api/ResortsApi~editResortCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.editResort = function(opts, callback) {
+    this.editResort = function(id, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling editResort");
+      }
+
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -230,6 +244,7 @@
     /**
      * List a specific resort resource by ID
      * Get a specific resort resource by ID
+     * @param {Number} id The ID of the resort
      * @param {Object} opts Optional parameters
      * @param {String} opts.name 
      * @param {Number} opts.parkId 
@@ -246,12 +261,18 @@
      * @param {module:api/ResortsApi~getResortCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2001}
      */
-    this.getResort = function(opts, callback) {
+    this.getResort = function(id, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getResort");
+      }
+
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };

@@ -1,6 +1,6 @@
 # \RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -56,11 +56,15 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteRide**
-> DeleteRide(ctx, )
+> DeleteRide(ctx, id)
 Delete ride resource by ID
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the ride | 
 
 ### Return type
 
@@ -78,7 +82,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EditRide**
-> EditRide(ctx, optional)
+> EditRide(ctx, id, optional)
 Edit a ride by ID
 
 Edit a ride in the resource collection by ID
@@ -88,6 +92,7 @@ Edit a ride in the resource collection by ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the ride | 
  **optional** | ***EditRideOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -95,6 +100,7 @@ Optional parameters are passed through a pointer to a EditRideOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **name** | **optional.String**|  | 
  **parkId** | **optional.Int32**|  | 
  **openingYear** | **optional.Int32**|  | 
@@ -122,13 +128,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRide**
-> InlineResponse2003 GetRide(ctx, )
+> InlineResponse2003 GetRide(ctx, id)
 Get ride by ID
 
 Get a ride at Walt Disney World by ID
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int32**| The ID of the ride | 
 
 ### Return type
 

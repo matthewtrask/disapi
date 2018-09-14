@@ -117,13 +117,20 @@
     /**
      * Remove a resource from the restaurants collection
      * Remove a resource from the restaurants collection by ID
+     * @param {Number} id The ID of the restaurant
      * @param {module:api/RestaurantsApi~deleteRestaurantCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteRestaurant = function(callback) {
+    this.deleteRestaurant = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteRestaurant");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -157,6 +164,7 @@
     /**
      * Edit a single restaurant resource in the collection by ID
      * Edit a restaurant by ID
+     * @param {Number} id The ID of the restaurant
      * @param {Object} opts Optional parameters
      * @param {String} opts.name 
      * @param {Number} opts.parkId 
@@ -168,12 +176,18 @@
      * @param {Array.<String>} opts.foodTypes 
      * @param {module:api/RestaurantsApi~editRestaurantCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.editRestaurant = function(opts, callback) {
+    this.editRestaurant = function(id, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling editRestaurant");
+      }
+
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -215,14 +229,21 @@
     /**
      * List a single restaurant resource from the collection by ID
      * Get a single restaurant resource by ID
+     * @param {Number} id The ID of the restaurant
      * @param {module:api/RestaurantsApi~getRestaurantCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2005}
      */
-    this.getRestaurant = function(callback) {
+    this.getRestaurant = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getRestaurant");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };

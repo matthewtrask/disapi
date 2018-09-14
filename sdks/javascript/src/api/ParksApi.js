@@ -117,13 +117,20 @@
     /**
      * Remove a resource from the collection
      * Remove a resource from the collection by ID
+     * @param {Number} id The ID of the park
      * @param {module:api/ParksApi~deleteParkCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deletePark = function(callback) {
+    this.deletePark = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deletePark");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -157,13 +164,20 @@
     /**
      * Edit a resource by ID
      * Edit a park resource by an ID
+     * @param {Number} id The ID of the park
      * @param {module:api/ParksApi~editParkCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.editPark = function(callback) {
+    this.editPark = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling editPark");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -197,14 +211,21 @@
     /**
      * List a park by ID
      * Get a park at Walt Disney World by ID
+     * @param {Number} id The ID of the park
      * @param {module:api/ParksApi~getParkCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2007}
      */
-    this.getPark = function(callback) {
+    this.getPark = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getPark");
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };

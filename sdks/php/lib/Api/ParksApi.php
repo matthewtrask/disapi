@@ -369,14 +369,15 @@ class ParksApi
      *
      * Remove a resource from the collection
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deletePark()
+    public function deletePark($id)
     {
-        $this->deleteParkWithHttpInfo();
+        $this->deleteParkWithHttpInfo($id);
     }
 
     /**
@@ -384,14 +385,15 @@ class ParksApi
      *
      * Remove a resource from the collection
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteParkWithHttpInfo()
+    public function deleteParkWithHttpInfo($id)
     {
-        $request = $this->deleteParkRequest();
+        $request = $this->deleteParkRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -435,13 +437,14 @@ class ParksApi
      *
      * Remove a resource from the collection
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteParkAsync()
+    public function deleteParkAsync($id)
     {
-        return $this->deleteParkAsyncWithHttpInfo()
+        return $this->deleteParkAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -454,14 +457,15 @@ class ParksApi
      *
      * Remove a resource from the collection
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteParkAsyncWithHttpInfo()
+    public function deleteParkAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->deleteParkRequest();
+        $request = $this->deleteParkRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -489,12 +493,19 @@ class ParksApi
     /**
      * Create request for operation 'deletePark'
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteParkRequest()
+    protected function deleteParkRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deletePark'
+            );
+        }
 
         $resourcePath = '/parks/{id}';
         $formParams = [];
@@ -504,6 +515,14 @@ class ParksApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
@@ -574,14 +593,15 @@ class ParksApi
      *
      * Edit a resource by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function editPark()
+    public function editPark($id)
     {
-        $this->editParkWithHttpInfo();
+        $this->editParkWithHttpInfo($id);
     }
 
     /**
@@ -589,14 +609,15 @@ class ParksApi
      *
      * Edit a resource by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editParkWithHttpInfo()
+    public function editParkWithHttpInfo($id)
     {
-        $request = $this->editParkRequest();
+        $request = $this->editParkRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -640,13 +661,14 @@ class ParksApi
      *
      * Edit a resource by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editParkAsync()
+    public function editParkAsync($id)
     {
-        return $this->editParkAsyncWithHttpInfo()
+        return $this->editParkAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -659,14 +681,15 @@ class ParksApi
      *
      * Edit a resource by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editParkAsyncWithHttpInfo()
+    public function editParkAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->editParkRequest();
+        $request = $this->editParkRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -694,12 +717,19 @@ class ParksApi
     /**
      * Create request for operation 'editPark'
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editParkRequest()
+    protected function editParkRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling editPark'
+            );
+        }
 
         $resourcePath = '/parks/{id}';
         $formParams = [];
@@ -709,6 +739,14 @@ class ParksApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
@@ -779,14 +817,15 @@ class ParksApi
      *
      * List a park by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\InlineResponse2007
      */
-    public function getPark()
+    public function getPark($id)
     {
-        list($response) = $this->getParkWithHttpInfo();
+        list($response) = $this->getParkWithHttpInfo($id);
         return $response;
     }
 
@@ -795,14 +834,15 @@ class ParksApi
      *
      * List a park by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getParkWithHttpInfo()
+    public function getParkWithHttpInfo($id)
     {
-        $request = $this->getParkRequest();
+        $request = $this->getParkRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -888,13 +928,14 @@ class ParksApi
      *
      * List a park by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParkAsync()
+    public function getParkAsync($id)
     {
-        return $this->getParkAsyncWithHttpInfo()
+        return $this->getParkAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -907,14 +948,15 @@ class ParksApi
      *
      * List a park by ID
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParkAsyncWithHttpInfo()
+    public function getParkAsyncWithHttpInfo($id)
     {
         $returnType = '\OpenAPI\Client\Model\InlineResponse2007';
-        $request = $this->getParkRequest();
+        $request = $this->getParkRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -956,12 +998,19 @@ class ParksApi
     /**
      * Create request for operation 'getPark'
      *
+     * @param  int $id The ID of the park (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getParkRequest()
+    protected function getParkRequest($id)
     {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getPark'
+            );
+        }
 
         $resourcePath = '/parks/{id}';
         $formParams = [];
@@ -971,6 +1020,14 @@ class ParksApi
         $multipart = false;
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;

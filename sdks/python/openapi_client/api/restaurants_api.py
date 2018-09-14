@@ -155,37 +155,39 @@ class RestaurantsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_restaurant(self, **kwargs):  # noqa: E501
+    def delete_restaurant(self, id, **kwargs):  # noqa: E501
         """Remove a resource from the restaurants collection  # noqa: E501
 
         Remove a resource from the restaurants collection by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_restaurant(async_req=True)
+        >>> thread = api.delete_restaurant(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the restaurant (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.delete_restaurant_with_http_info(**kwargs)  # noqa: E501
+            return self.delete_restaurant_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_restaurant_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.delete_restaurant_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def delete_restaurant_with_http_info(self, **kwargs):  # noqa: E501
+    def delete_restaurant_with_http_info(self, id, **kwargs):  # noqa: E501
         """Remove a resource from the restaurants collection  # noqa: E501
 
         Remove a resource from the restaurants collection by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_restaurant_with_http_info(async_req=True)
+        >>> thread = api.delete_restaurant_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the restaurant (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -193,7 +195,7 @@ class RestaurantsApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -207,10 +209,16 @@ class RestaurantsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `delete_restaurant`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 
@@ -239,16 +247,17 @@ class RestaurantsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def edit_restaurant(self, **kwargs):  # noqa: E501
+    def edit_restaurant(self, id, **kwargs):  # noqa: E501
         """Edit a single restaurant resource in the collection by ID  # noqa: E501
 
         Edit a restaurant by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.edit_restaurant(async_req=True)
+        >>> thread = api.edit_restaurant(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the restaurant (required)
         :param str name:
         :param int park_id:
         :param bool quick_service:
@@ -263,21 +272,22 @@ class RestaurantsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.edit_restaurant_with_http_info(**kwargs)  # noqa: E501
+            return self.edit_restaurant_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.edit_restaurant_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.edit_restaurant_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def edit_restaurant_with_http_info(self, **kwargs):  # noqa: E501
+    def edit_restaurant_with_http_info(self, id, **kwargs):  # noqa: E501
         """Edit a single restaurant resource in the collection by ID  # noqa: E501
 
         Edit a restaurant by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.edit_restaurant_with_http_info(async_req=True)
+        >>> thread = api.edit_restaurant_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the restaurant (required)
         :param str name:
         :param int park_id:
         :param bool quick_service:
@@ -293,7 +303,7 @@ class RestaurantsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['name', 'park_id', 'quick_service', 'table_service', 'alcohol', 'dining_plan', 'meal_types', 'food_types']  # noqa: E501
+        all_params = ['id', 'name', 'park_id', 'quick_service', 'table_service', 'alcohol', 'dining_plan', 'meal_types', 'food_types']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -307,10 +317,16 @@ class RestaurantsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `edit_restaurant`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 
@@ -361,37 +377,39 @@ class RestaurantsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_restaurant(self, **kwargs):  # noqa: E501
+    def get_restaurant(self, id, **kwargs):  # noqa: E501
         """List a single restaurant resource from the collection by ID  # noqa: E501
 
         Get a single restaurant resource by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_restaurant(async_req=True)
+        >>> thread = api.get_restaurant(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the restaurant (required)
         :return: InlineResponse2005
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_restaurant_with_http_info(**kwargs)  # noqa: E501
+            return self.get_restaurant_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_restaurant_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_restaurant_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def get_restaurant_with_http_info(self, **kwargs):  # noqa: E501
+    def get_restaurant_with_http_info(self, id, **kwargs):  # noqa: E501
         """List a single restaurant resource from the collection by ID  # noqa: E501
 
         Get a single restaurant resource by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_restaurant_with_http_info(async_req=True)
+        >>> thread = api.get_restaurant_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the restaurant (required)
         :return: InlineResponse2005
                  If the method is called asynchronously,
                  returns the request thread.
@@ -399,7 +417,7 @@ class RestaurantsApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -413,10 +431,16 @@ class RestaurantsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `get_restaurant`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 

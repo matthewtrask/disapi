@@ -91,23 +91,29 @@ module OpenapiClient
 
     # Remove a resource from the collection
     # Remove a resource from the collection by ID
+    # @param id The ID of the park
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_park(opts = {})
-      delete_park_with_http_info(opts)
+    def delete_park(id, opts = {})
+      delete_park_with_http_info(id, opts)
       nil
     end
 
     # Remove a resource from the collection
     # Remove a resource from the collection by ID
+    # @param id The ID of the park
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def delete_park_with_http_info(opts = {})
+    def delete_park_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ParksApi.delete_park ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ParksApi.delete_park"
+      end
       # resource path
-      local_var_path = '/parks/{id}'
+      local_var_path = '/parks/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -135,23 +141,29 @@ module OpenapiClient
 
     # Edit a resource by ID
     # Edit a park resource by an ID
+    # @param id The ID of the park
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def edit_park(opts = {})
-      edit_park_with_http_info(opts)
+    def edit_park(id, opts = {})
+      edit_park_with_http_info(id, opts)
       nil
     end
 
     # Edit a resource by ID
     # Edit a park resource by an ID
+    # @param id The ID of the park
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def edit_park_with_http_info(opts = {})
+    def edit_park_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ParksApi.edit_park ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ParksApi.edit_park"
+      end
       # resource path
-      local_var_path = '/parks/{id}'
+      local_var_path = '/parks/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -179,23 +191,29 @@ module OpenapiClient
 
     # List a park by ID
     # Get a park at Walt Disney World by ID
+    # @param id The ID of the park
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse2007]
-    def get_park(opts = {})
-      data, _status_code, _headers = get_park_with_http_info(opts)
+    def get_park(id, opts = {})
+      data, _status_code, _headers = get_park_with_http_info(id, opts)
       data
     end
 
     # List a park by ID
     # Get a park at Walt Disney World by ID
+    # @param id The ID of the park
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse2007, Fixnum, Hash)>] InlineResponse2007 data, response status code and response headers
-    def get_park_with_http_info(opts = {})
+    def get_park_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ParksApi.get_park ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ParksApi.get_park"
+      end
       # resource path
-      local_var_path = '/parks/{id}'
+      local_var_path = '/parks/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}

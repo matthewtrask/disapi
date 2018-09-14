@@ -1,6 +1,6 @@
 # openapi_client.ParksApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_park**
-> delete_park()
+> delete_park(id)
 
 Remove a resource from the collection
 
@@ -89,16 +89,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.ParksApi()
+id = 56 # int | The ID of the park
 
 try:
     # Remove a resource from the collection
-    api_instance.delete_park()
+    api_instance.delete_park(id)
 except ApiException as e:
     print("Exception when calling ParksApi->delete_park: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the park | 
 
 ### Return type
 
@@ -116,7 +120,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_park**
-> edit_park()
+> edit_park(id)
 
 Edit a resource by ID
 
@@ -132,16 +136,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.ParksApi()
+id = 56 # int | The ID of the park
 
 try:
     # Edit a resource by ID
-    api_instance.edit_park()
+    api_instance.edit_park(id)
 except ApiException as e:
     print("Exception when calling ParksApi->edit_park: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the park | 
 
 ### Return type
 
@@ -159,7 +167,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_park**
-> InlineResponse2007 get_park()
+> InlineResponse2007 get_park(id)
 
 List a park by ID
 
@@ -175,17 +183,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.ParksApi()
+id = 56 # int | The ID of the park
 
 try:
     # List a park by ID
-    api_response = api_instance.get_park()
+    api_response = api_instance.get_park(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ParksApi->get_park: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the park | 
 
 ### Return type
 

@@ -1,6 +1,6 @@
 # openapi_client.ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -81,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_resort**
-> delete_resort()
+> delete_resort(id)
 
 Delete resort resource by ID
 
@@ -95,16 +95,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.ResortsApi()
+id = 56 # int | The ID of the resort
 
 try:
     # Delete resort resource by ID
-    api_instance.delete_resort()
+    api_instance.delete_resort(id)
 except ApiException as e:
     print("Exception when calling ResortsApi->delete_resort: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the resort | 
 
 ### Return type
 
@@ -122,7 +126,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_resort**
-> edit_resort(name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
+> edit_resort(id, name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
 
 Edit a specific resort resource by ID
 
@@ -138,6 +142,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.ResortsApi()
+id = 56 # int | The ID of the resort
 name = 'name_example' # str |  (optional)
 park_id = 56 # int |  (optional)
 opening_year = 56 # int |  (optional)
@@ -153,7 +158,7 @@ pool = True # bool |  (optional)
 
 try:
     # Edit a specific resort resource by ID
-    api_instance.edit_resort(name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
+    api_instance.edit_resort(id, name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
 except ApiException as e:
     print("Exception when calling ResortsApi->edit_resort: %s\n" % e)
 ```
@@ -162,6 +167,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the resort | 
  **name** | **str**|  | [optional] 
  **park_id** | **int**|  | [optional] 
  **opening_year** | **int**|  | [optional] 
@@ -191,7 +197,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_resort**
-> InlineResponse2001 get_resort(name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
+> InlineResponse2001 get_resort(id, name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
 
 List a specific resort resource by ID
 
@@ -207,6 +213,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.ResortsApi()
+id = 56 # int | The ID of the resort
 name = 'name_example' # str |  (optional)
 park_id = 56 # int |  (optional)
 opening_year = 56 # int |  (optional)
@@ -222,7 +229,7 @@ pool = True # bool |  (optional)
 
 try:
     # List a specific resort resource by ID
-    api_response = api_instance.get_resort(name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
+    api_response = api_instance.get_resort(id, name=name, park_id=park_id, opening_year=opening_year, resort_type=resort_type, transport_options=transport_options, category=category, num_of_rooms=num_of_rooms, quick_service_restaurants=quick_service_restaurants, table_service_restaurants=table_service_restaurants, gift_shop=gift_shop, arcade=arcade, pool=pool)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ResortsApi->get_resort: %s\n" % e)
@@ -232,6 +239,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the resort | 
  **name** | **str**|  | [optional] 
  **park_id** | **int**|  | [optional] 
  **opening_year** | **int**|  | [optional] 

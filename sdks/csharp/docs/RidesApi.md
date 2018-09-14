@@ -1,6 +1,6 @@
 # Org.OpenAPITools.Api.RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -91,7 +91,7 @@ No authorization required
 
 <a name="deleteride"></a>
 # **DeleteRide**
-> void DeleteRide ()
+> void DeleteRide (int? id)
 
 Delete ride resource by ID
 
@@ -110,11 +110,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new RidesApi();
+            var id = 56;  // int? | The ID of the ride
 
             try
             {
                 // Delete ride resource by ID
-                apiInstance.DeleteRide();
+                apiInstance.DeleteRide(id);
             }
             catch (Exception e)
             {
@@ -126,7 +127,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the ride | 
 
 ### Return type
 
@@ -145,7 +149,7 @@ No authorization required
 
 <a name="editride"></a>
 # **EditRide**
-> void EditRide (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
+> void EditRide (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
 
 Edit a ride by ID
 
@@ -166,6 +170,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new RidesApi();
+            var id = 56;  // int? | The ID of the ride
             var name = name_example;  // string |  (optional) 
             var parkId = 56;  // int? |  (optional) 
             var openingYear = 56;  // int? |  (optional) 
@@ -180,7 +185,7 @@ namespace Example
             try
             {
                 // Edit a ride by ID
-                apiInstance.EditRide(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
+                apiInstance.EditRide(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
             }
             catch (Exception e)
             {
@@ -195,6 +200,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the ride | 
  **name** | **string**|  | [optional] 
  **parkId** | **int?**|  | [optional] 
  **openingYear** | **int?**|  | [optional] 
@@ -223,7 +229,7 @@ No authorization required
 
 <a name="getride"></a>
 # **GetRide**
-> InlineResponse2003 GetRide ()
+> InlineResponse2003 GetRide (int? id)
 
 Get ride by ID
 
@@ -244,11 +250,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new RidesApi();
+            var id = 56;  // int? | The ID of the ride
 
             try
             {
                 // Get ride by ID
-                InlineResponse2003 result = apiInstance.GetRide();
+                InlineResponse2003 result = apiInstance.GetRide(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -261,7 +268,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the ride | 
 
 ### Return type
 

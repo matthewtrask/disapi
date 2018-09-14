@@ -1,6 +1,6 @@
 # ParksApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -71,7 +71,7 @@ No authorization required
 
 <a name="deletePark"></a>
 # **deletePark**
-> deletePark()
+> deletePark(id)
 
 Remove a resource from the collection
 
@@ -85,8 +85,9 @@ Remove a resource from the collection by ID
 
 
 ParksApi apiInstance = new ParksApi();
+Integer id = 56; // Integer | The ID of the park
 try {
-    apiInstance.deletePark();
+    apiInstance.deletePark(id);
 } catch (ApiException e) {
     System.err.println("Exception when calling ParksApi#deletePark");
     e.printStackTrace();
@@ -94,7 +95,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the park |
 
 ### Return type
 
@@ -111,7 +115,7 @@ No authorization required
 
 <a name="editPark"></a>
 # **editPark**
-> editPark()
+> editPark(id)
 
 Edit a resource by ID
 
@@ -125,8 +129,9 @@ Edit a park resource by an ID
 
 
 ParksApi apiInstance = new ParksApi();
+Integer id = 56; // Integer | The ID of the park
 try {
-    apiInstance.editPark();
+    apiInstance.editPark(id);
 } catch (ApiException e) {
     System.err.println("Exception when calling ParksApi#editPark");
     e.printStackTrace();
@@ -134,7 +139,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the park |
 
 ### Return type
 
@@ -151,7 +159,7 @@ No authorization required
 
 <a name="getPark"></a>
 # **getPark**
-> InlineResponse2007 getPark()
+> InlineResponse2007 getPark(id)
 
 List a park by ID
 
@@ -165,8 +173,9 @@ Get a park at Walt Disney World by ID
 
 
 ParksApi apiInstance = new ParksApi();
+Integer id = 56; // Integer | The ID of the park
 try {
-    InlineResponse2007 result = apiInstance.getPark();
+    InlineResponse2007 result = apiInstance.getPark(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ParksApi#getPark");
@@ -175,7 +184,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the park |
 
 ### Return type
 

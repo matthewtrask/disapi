@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"fmt"
 	"github.com/antihax/optional"
 )
 
@@ -149,8 +150,9 @@ func (a *RidesApiService) CreateRides(ctx context.Context, localVarOptionals *Cr
 /*
 RidesApiService Delete ride resource by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the ride
 */
-func (a *RidesApiService) DeleteRide(ctx context.Context) (*http.Response, error) {
+func (a *RidesApiService) DeleteRide(ctx context.Context, id int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -161,6 +163,7 @@ func (a *RidesApiService) DeleteRide(ctx context.Context) (*http.Response, error
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/rides/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -214,6 +217,7 @@ func (a *RidesApiService) DeleteRide(ctx context.Context) (*http.Response, error
 RidesApiService Edit a ride by ID
 Edit a ride in the resource collection by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the ride
  * @param optional nil or *EditRideOpts - Optional Parameters:
  * @param "Name" (optional.String) - 
  * @param "ParkId" (optional.Int32) - 
@@ -240,7 +244,7 @@ type EditRideOpts struct {
     HeightRestriction optional.Int32
 }
 
-func (a *RidesApiService) EditRide(ctx context.Context, localVarOptionals *EditRideOpts) (*http.Response, error) {
+func (a *RidesApiService) EditRide(ctx context.Context, id int32, localVarOptionals *EditRideOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -251,6 +255,7 @@ func (a *RidesApiService) EditRide(ctx context.Context, localVarOptionals *EditR
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/rides/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -334,9 +339,10 @@ func (a *RidesApiService) EditRide(ctx context.Context, localVarOptionals *EditR
 RidesApiService Get ride by ID
 Get a ride at Walt Disney World by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the ride
 @return InlineResponse2003
 */
-func (a *RidesApiService) GetRide(ctx context.Context) (InlineResponse2003, *http.Response, error) {
+func (a *RidesApiService) GetRide(ctx context.Context, id int32) (InlineResponse2003, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -348,6 +354,7 @@ func (a *RidesApiService) GetRide(ctx context.Context) (InlineResponse2003, *htt
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/rides/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

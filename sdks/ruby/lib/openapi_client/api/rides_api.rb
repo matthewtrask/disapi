@@ -96,22 +96,28 @@ module OpenapiClient
     end
 
     # Delete ride resource by ID
+    # @param id The ID of the ride
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_ride(opts = {})
-      delete_ride_with_http_info(opts)
+    def delete_ride(id, opts = {})
+      delete_ride_with_http_info(id, opts)
       nil
     end
 
     # Delete ride resource by ID
+    # @param id The ID of the ride
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def delete_ride_with_http_info(opts = {})
+    def delete_ride_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RidesApi.delete_ride ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RidesApi.delete_ride"
+      end
       # resource path
-      local_var_path = '/rides/{id}'
+      local_var_path = '/rides/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -139,6 +145,7 @@ module OpenapiClient
 
     # Edit a ride by ID
     # Edit a ride in the resource collection by ID
+    # @param id The ID of the ride
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -151,13 +158,14 @@ module OpenapiClient
     # @option opts [Integer] :ride_photo 
     # @option opts [Integer] :height_restriction 
     # @return [nil]
-    def edit_ride(opts = {})
-      edit_ride_with_http_info(opts)
+    def edit_ride(id, opts = {})
+      edit_ride_with_http_info(id, opts)
       nil
     end
 
     # Edit a ride by ID
     # Edit a ride in the resource collection by ID
+    # @param id The ID of the ride
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -170,12 +178,16 @@ module OpenapiClient
     # @option opts [Integer] :ride_photo 
     # @option opts [Integer] :height_restriction 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def edit_ride_with_http_info(opts = {})
+    def edit_ride_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RidesApi.edit_ride ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RidesApi.edit_ride"
+      end
       # resource path
-      local_var_path = '/rides/{id}'
+      local_var_path = '/rides/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -215,23 +227,29 @@ module OpenapiClient
 
     # Get ride by ID
     # Get a ride at Walt Disney World by ID
+    # @param id The ID of the ride
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse2003]
-    def get_ride(opts = {})
-      data, _status_code, _headers = get_ride_with_http_info(opts)
+    def get_ride(id, opts = {})
+      data, _status_code, _headers = get_ride_with_http_info(id, opts)
       data
     end
 
     # Get ride by ID
     # Get a ride at Walt Disney World by ID
+    # @param id The ID of the ride
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse2003, Fixnum, Hash)>] InlineResponse2003 data, response status code and response headers
-    def get_ride_with_http_info(opts = {})
+    def get_ride_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RidesApi.get_ride ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RidesApi.get_ride"
+      end
       # resource path
-      local_var_path = '/rides/{id}'
+      local_var_path = '/rides/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}

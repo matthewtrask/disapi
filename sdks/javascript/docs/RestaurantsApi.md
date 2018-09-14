@@ -1,6 +1,6 @@
 # WaltDisneyWorldApi.RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -72,7 +72,7 @@ No authorization required
 
 <a name="deleteRestaurant"></a>
 # **deleteRestaurant**
-> deleteRestaurant()
+> deleteRestaurant(id)
 
 Remove a resource from the restaurants collection
 
@@ -83,6 +83,7 @@ Remove a resource from the restaurants collection by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.RestaurantsApi();
+var id = 56; // Number | The ID of the restaurant
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -90,11 +91,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteRestaurant(callback);
+apiInstance.deleteRestaurant(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the restaurant | 
 
 ### Return type
 
@@ -111,7 +115,7 @@ No authorization required
 
 <a name="editRestaurant"></a>
 # **editRestaurant**
-> editRestaurant(opts)
+> editRestaurant(id, opts)
 
 Edit a single restaurant resource in the collection by ID
 
@@ -122,6 +126,7 @@ Edit a restaurant by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.RestaurantsApi();
+var id = 56; // Number | The ID of the restaurant
 var opts = {
   'name': "name_example", // String | 
   'parkId': 56, // Number | 
@@ -139,13 +144,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.editRestaurant(opts, callback);
+apiInstance.editRestaurant(id, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the restaurant | 
  **name** | **String**|  | [optional] 
  **parkId** | **Number**|  | [optional] 
  **quickService** | **Boolean**|  | [optional] 
@@ -170,7 +176,7 @@ No authorization required
 
 <a name="getRestaurant"></a>
 # **getRestaurant**
-> InlineResponse2005 getRestaurant()
+> InlineResponse2005 getRestaurant(id)
 
 List a single restaurant resource from the collection by ID
 
@@ -181,6 +187,7 @@ Get a single restaurant resource by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.RestaurantsApi();
+var id = 56; // Number | The ID of the restaurant
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -188,11 +195,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getRestaurant(callback);
+apiInstance.getRestaurant(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the restaurant | 
 
 ### Return type
 

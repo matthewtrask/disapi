@@ -102,22 +102,28 @@ module OpenapiClient
     end
 
     # Delete resort resource by ID
+    # @param id The ID of the resort
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_resort(opts = {})
-      delete_resort_with_http_info(opts)
+    def delete_resort(id, opts = {})
+      delete_resort_with_http_info(id, opts)
       nil
     end
 
     # Delete resort resource by ID
+    # @param id The ID of the resort
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def delete_resort_with_http_info(opts = {})
+    def delete_resort_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ResortsApi.delete_resort ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResortsApi.delete_resort"
+      end
       # resource path
-      local_var_path = '/resorts/{id}'
+      local_var_path = '/resorts/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -145,6 +151,7 @@ module OpenapiClient
 
     # Edit a specific resort resource by ID
     # Find and edit a specific resort resource by its ID
+    # @param id The ID of the resort
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -159,13 +166,14 @@ module OpenapiClient
     # @option opts [BOOLEAN] :arcade 
     # @option opts [BOOLEAN] :pool 
     # @return [nil]
-    def edit_resort(opts = {})
-      edit_resort_with_http_info(opts)
+    def edit_resort(id, opts = {})
+      edit_resort_with_http_info(id, opts)
       nil
     end
 
     # Edit a specific resort resource by ID
     # Find and edit a specific resort resource by its ID
+    # @param id The ID of the resort
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -180,12 +188,16 @@ module OpenapiClient
     # @option opts [BOOLEAN] :arcade 
     # @option opts [BOOLEAN] :pool 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def edit_resort_with_http_info(opts = {})
+    def edit_resort_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ResortsApi.edit_resort ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResortsApi.edit_resort"
+      end
       # resource path
-      local_var_path = '/resorts/{id}'
+      local_var_path = '/resorts/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -227,6 +239,7 @@ module OpenapiClient
 
     # List a specific resort resource by ID
     # Get a specific resort resource by ID
+    # @param id The ID of the resort
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -241,13 +254,14 @@ module OpenapiClient
     # @option opts [BOOLEAN] :arcade 
     # @option opts [BOOLEAN] :pool 
     # @return [InlineResponse2001]
-    def get_resort(opts = {})
-      data, _status_code, _headers = get_resort_with_http_info(opts)
+    def get_resort(id, opts = {})
+      data, _status_code, _headers = get_resort_with_http_info(id, opts)
       data
     end
 
     # List a specific resort resource by ID
     # Get a specific resort resource by ID
+    # @param id The ID of the resort
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -262,12 +276,16 @@ module OpenapiClient
     # @option opts [BOOLEAN] :arcade 
     # @option opts [BOOLEAN] :pool 
     # @return [Array<(InlineResponse2001, Fixnum, Hash)>] InlineResponse2001 data, response status code and response headers
-    def get_resort_with_http_info(opts = {})
+    def get_resort_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ResortsApi.get_resort ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResortsApi.get_resort"
+      end
       # resource path
-      local_var_path = '/resorts/{id}'
+      local_var_path = '/resorts/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}

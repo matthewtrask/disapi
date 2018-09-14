@@ -1,6 +1,6 @@
 # openapi_client.RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -77,7 +77,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_ride**
-> delete_ride()
+> delete_ride(id)
 
 Delete ride resource by ID
 
@@ -91,16 +91,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.RidesApi()
+id = 56 # int | The ID of the ride
 
 try:
     # Delete ride resource by ID
-    api_instance.delete_ride()
+    api_instance.delete_ride(id)
 except ApiException as e:
     print("Exception when calling RidesApi->delete_ride: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the ride | 
 
 ### Return type
 
@@ -118,7 +122,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_ride**
-> edit_ride(name=name, park_id=park_id, opening_year=opening_year, ride_type=ride_type, ride_vehicle=ride_vehicle, interactive_queue=interactive_queue, gift_store_finish=gift_store_finish, single_rider=single_rider, ride_photo=ride_photo, height_restriction=height_restriction)
+> edit_ride(id, name=name, park_id=park_id, opening_year=opening_year, ride_type=ride_type, ride_vehicle=ride_vehicle, interactive_queue=interactive_queue, gift_store_finish=gift_store_finish, single_rider=single_rider, ride_photo=ride_photo, height_restriction=height_restriction)
 
 Edit a ride by ID
 
@@ -134,6 +138,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.RidesApi()
+id = 56 # int | The ID of the ride
 name = 'name_example' # str |  (optional)
 park_id = 56 # int |  (optional)
 opening_year = 56 # int |  (optional)
@@ -147,7 +152,7 @@ height_restriction = 56 # int |  (optional)
 
 try:
     # Edit a ride by ID
-    api_instance.edit_ride(name=name, park_id=park_id, opening_year=opening_year, ride_type=ride_type, ride_vehicle=ride_vehicle, interactive_queue=interactive_queue, gift_store_finish=gift_store_finish, single_rider=single_rider, ride_photo=ride_photo, height_restriction=height_restriction)
+    api_instance.edit_ride(id, name=name, park_id=park_id, opening_year=opening_year, ride_type=ride_type, ride_vehicle=ride_vehicle, interactive_queue=interactive_queue, gift_store_finish=gift_store_finish, single_rider=single_rider, ride_photo=ride_photo, height_restriction=height_restriction)
 except ApiException as e:
     print("Exception when calling RidesApi->edit_ride: %s\n" % e)
 ```
@@ -156,6 +161,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the ride | 
  **name** | **str**|  | [optional] 
  **park_id** | **int**|  | [optional] 
  **opening_year** | **int**|  | [optional] 
@@ -183,7 +189,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ride**
-> InlineResponse2003 get_ride()
+> InlineResponse2003 get_ride(id)
 
 Get ride by ID
 
@@ -199,17 +205,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = openapi_client.RidesApi()
+id = 56 # int | The ID of the ride
 
 try:
     # Get ride by ID
-    api_response = api_instance.get_ride()
+    api_response = api_instance.get_ride(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RidesApi->get_ride: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the ride | 
 
 ### Return type
 

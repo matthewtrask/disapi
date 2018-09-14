@@ -12,7 +12,7 @@ Contact: support@disapi.io
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8BFB456-23A2-4471-8284-8D399316B75A}</ProjectGuid>
+    <ProjectGuid>{EED69609-F0EC-417A-8E3C-71733F6823B8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Org.OpenAPITools</RootNamespace>

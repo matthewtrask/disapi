@@ -214,16 +214,18 @@ public class RestaurantsApi {
     }
     /**
      * Build call for deleteRestaurant
+     * @param id The ID of the restaurant (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteRestaurantCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteRestaurantCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/restaurants/{id}";
+        String localVarPath = "/restaurants/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -261,10 +263,15 @@ public class RestaurantsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteRestaurantValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteRestaurantValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteRestaurant(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = deleteRestaurantCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteRestaurantCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -272,31 +279,34 @@ public class RestaurantsApi {
     /**
      * Remove a resource from the restaurants collection
      * Remove a resource from the restaurants collection by ID
+     * @param id The ID of the restaurant (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteRestaurant() throws ApiException {
-        deleteRestaurantWithHttpInfo();
+    public void deleteRestaurant(Integer id) throws ApiException {
+        deleteRestaurantWithHttpInfo(id);
     }
 
     /**
      * Remove a resource from the restaurants collection
      * Remove a resource from the restaurants collection by ID
+     * @param id The ID of the restaurant (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteRestaurantWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = deleteRestaurantValidateBeforeCall(null, null);
+    public ApiResponse<Void> deleteRestaurantWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = deleteRestaurantValidateBeforeCall(id, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Remove a resource from the restaurants collection (asynchronously)
      * Remove a resource from the restaurants collection by ID
+     * @param id The ID of the restaurant (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteRestaurantAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteRestaurantAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -317,12 +327,13 @@ public class RestaurantsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteRestaurantValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteRestaurantValidateBeforeCall(id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for editRestaurant
+     * @param id The ID of the restaurant (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param quickService  (optional, default to null)
@@ -336,11 +347,12 @@ public class RestaurantsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call editRestaurantCall(String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call editRestaurantCall(Integer id, String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/restaurants/{id}";
+        String localVarPath = "/restaurants/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -394,10 +406,15 @@ public class RestaurantsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call editRestaurantValidateBeforeCall(String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call editRestaurantValidateBeforeCall(Integer id, String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling editRestaurant(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = editRestaurantCall(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editRestaurantCall(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes, progressListener, progressRequestListener);
         return call;
 
     }
@@ -405,6 +422,7 @@ public class RestaurantsApi {
     /**
      * Edit a single restaurant resource in the collection by ID
      * Edit a restaurant by ID
+     * @param id The ID of the restaurant (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param quickService  (optional, default to null)
@@ -415,13 +433,14 @@ public class RestaurantsApi {
      * @param foodTypes  (optional, default to null)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void editRestaurant(String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes) throws ApiException {
-        editRestaurantWithHttpInfo(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
+    public void editRestaurant(Integer id, String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes) throws ApiException {
+        editRestaurantWithHttpInfo(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
     }
 
     /**
      * Edit a single restaurant resource in the collection by ID
      * Edit a restaurant by ID
+     * @param id The ID of the restaurant (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param quickService  (optional, default to null)
@@ -433,14 +452,15 @@ public class RestaurantsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> editRestaurantWithHttpInfo(String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes) throws ApiException {
-        com.squareup.okhttp.Call call = editRestaurantValidateBeforeCall(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes, null, null);
+    public ApiResponse<Void> editRestaurantWithHttpInfo(Integer id, String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes) throws ApiException {
+        com.squareup.okhttp.Call call = editRestaurantValidateBeforeCall(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Edit a single restaurant resource in the collection by ID (asynchronously)
      * Edit a restaurant by ID
+     * @param id The ID of the restaurant (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param quickService  (optional, default to null)
@@ -453,7 +473,7 @@ public class RestaurantsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call editRestaurantAsync(String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call editRestaurantAsync(Integer id, String name, Integer parkId, Boolean quickService, Boolean tableService, Boolean alcohol, Boolean diningPlan, List<String> mealTypes, List<String> foodTypes, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -474,22 +494,24 @@ public class RestaurantsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = editRestaurantValidateBeforeCall(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editRestaurantValidateBeforeCall(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for getRestaurant
+     * @param id The ID of the restaurant (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getRestaurantCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getRestaurantCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/restaurants/{id}";
+        String localVarPath = "/restaurants/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -527,10 +549,15 @@ public class RestaurantsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getRestaurantValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getRestaurantValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getRestaurant(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = getRestaurantCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getRestaurantCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -538,22 +565,24 @@ public class RestaurantsApi {
     /**
      * List a single restaurant resource from the collection by ID
      * Get a single restaurant resource by ID
+     * @param id The ID of the restaurant (required)
      * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2005 getRestaurant() throws ApiException {
-        ApiResponse<InlineResponse2005> resp = getRestaurantWithHttpInfo();
+    public InlineResponse2005 getRestaurant(Integer id) throws ApiException {
+        ApiResponse<InlineResponse2005> resp = getRestaurantWithHttpInfo(id);
         return resp.getData();
     }
 
     /**
      * List a single restaurant resource from the collection by ID
      * Get a single restaurant resource by ID
+     * @param id The ID of the restaurant (required)
      * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2005> getRestaurantWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getRestaurantValidateBeforeCall(null, null);
+    public ApiResponse<InlineResponse2005> getRestaurantWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = getRestaurantValidateBeforeCall(id, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -561,11 +590,12 @@ public class RestaurantsApi {
     /**
      * List a single restaurant resource from the collection by ID (asynchronously)
      * Get a single restaurant resource by ID
+     * @param id The ID of the restaurant (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getRestaurantAsync(final ApiCallback<InlineResponse2005> callback) throws ApiException {
+    public com.squareup.okhttp.Call getRestaurantAsync(Integer id, final ApiCallback<InlineResponse2005> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -586,7 +616,7 @@ public class RestaurantsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getRestaurantValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getRestaurantValidateBeforeCall(id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

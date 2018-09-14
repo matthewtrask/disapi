@@ -1,6 +1,6 @@
 # OpenapiClient::RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -76,7 +76,7 @@ No authorization required
 
 
 # **delete_ride**
-> delete_ride
+> delete_ride(id)
 
 Delete ride resource by ID
 
@@ -86,17 +86,21 @@ Delete ride resource by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::RidesApi.new
+id = 56 # Integer | The ID of the ride
 
 begin
   #Delete ride resource by ID
-  api_instance.delete_ride
+  api_instance.delete_ride(id)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling RidesApi->delete_ride: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the ride | 
 
 ### Return type
 
@@ -114,7 +118,7 @@ No authorization required
 
 
 # **edit_ride**
-> edit_ride(opts)
+> edit_ride(id, opts)
 
 Edit a ride by ID
 
@@ -126,6 +130,7 @@ Edit a ride in the resource collection by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::RidesApi.new
+id = 56 # Integer | The ID of the ride
 opts = {
   name: 'name_example', # String | 
   park_id: 56, # Integer | 
@@ -141,7 +146,7 @@ opts = {
 
 begin
   #Edit a ride by ID
-  api_instance.edit_ride(opts)
+  api_instance.edit_ride(id, opts)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling RidesApi->edit_ride: #{e}"
 end
@@ -151,6 +156,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the ride | 
  **name** | **String**|  | [optional] 
  **park_id** | **Integer**|  | [optional] 
  **opening_year** | **Integer**|  | [optional] 
@@ -178,7 +184,7 @@ No authorization required
 
 
 # **get_ride**
-> InlineResponse2003 get_ride
+> InlineResponse2003 get_ride(id)
 
 Get ride by ID
 
@@ -190,10 +196,11 @@ Get a ride at Walt Disney World by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::RidesApi.new
+id = 56 # Integer | The ID of the ride
 
 begin
   #Get ride by ID
-  result = api_instance.get_ride
+  result = api_instance.get_ride(id)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling RidesApi->get_ride: #{e}"
@@ -201,7 +208,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the ride | 
 
 ### Return type
 

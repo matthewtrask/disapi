@@ -52,7 +52,7 @@ import org.openapitools.client.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "http://homestead.test/api";
+    private String basePath = "https://disapi.co/api";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -105,7 +105,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://homestead.test/api
+     * @param basePath Base path of the URL (e.g https://disapi.co/api
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

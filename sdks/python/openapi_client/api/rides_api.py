@@ -161,35 +161,37 @@ class RidesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_ride(self, **kwargs):  # noqa: E501
+    def delete_ride(self, id, **kwargs):  # noqa: E501
         """Delete ride resource by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_ride(async_req=True)
+        >>> thread = api.delete_ride(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the ride (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.delete_ride_with_http_info(**kwargs)  # noqa: E501
+            return self.delete_ride_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_ride_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.delete_ride_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def delete_ride_with_http_info(self, **kwargs):  # noqa: E501
+    def delete_ride_with_http_info(self, id, **kwargs):  # noqa: E501
         """Delete ride resource by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_ride_with_http_info(async_req=True)
+        >>> thread = api.delete_ride_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the ride (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -197,7 +199,7 @@ class RidesApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -211,10 +213,16 @@ class RidesApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `delete_ride`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 
@@ -243,16 +251,17 @@ class RidesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def edit_ride(self, **kwargs):  # noqa: E501
+    def edit_ride(self, id, **kwargs):  # noqa: E501
         """Edit a ride by ID  # noqa: E501
 
         Edit a ride in the resource collection by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.edit_ride(async_req=True)
+        >>> thread = api.edit_ride(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the ride (required)
         :param str name:
         :param int park_id:
         :param int opening_year:
@@ -269,21 +278,22 @@ class RidesApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.edit_ride_with_http_info(**kwargs)  # noqa: E501
+            return self.edit_ride_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.edit_ride_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.edit_ride_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def edit_ride_with_http_info(self, **kwargs):  # noqa: E501
+    def edit_ride_with_http_info(self, id, **kwargs):  # noqa: E501
         """Edit a ride by ID  # noqa: E501
 
         Edit a ride in the resource collection by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.edit_ride_with_http_info(async_req=True)
+        >>> thread = api.edit_ride_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the ride (required)
         :param str name:
         :param int park_id:
         :param int opening_year:
@@ -301,7 +311,7 @@ class RidesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['name', 'park_id', 'opening_year', 'ride_type', 'ride_vehicle', 'interactive_queue', 'gift_store_finish', 'single_rider', 'ride_photo', 'height_restriction']  # noqa: E501
+        all_params = ['id', 'name', 'park_id', 'opening_year', 'ride_type', 'ride_vehicle', 'interactive_queue', 'gift_store_finish', 'single_rider', 'ride_photo', 'height_restriction']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -315,10 +325,16 @@ class RidesApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `edit_ride`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 
@@ -371,37 +387,39 @@ class RidesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_ride(self, **kwargs):  # noqa: E501
+    def get_ride(self, id, **kwargs):  # noqa: E501
         """Get ride by ID  # noqa: E501
 
         Get a ride at Walt Disney World by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ride(async_req=True)
+        >>> thread = api.get_ride(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the ride (required)
         :return: InlineResponse2003
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_ride_with_http_info(**kwargs)  # noqa: E501
+            return self.get_ride_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_ride_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_ride_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def get_ride_with_http_info(self, **kwargs):  # noqa: E501
+    def get_ride_with_http_info(self, id, **kwargs):  # noqa: E501
         """Get ride by ID  # noqa: E501
 
         Get a ride at Walt Disney World by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ride_with_http_info(async_req=True)
+        >>> thread = api.get_ride_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the ride (required)
         :return: InlineResponse2003
                  If the method is called asynchronously,
                  returns the request thread.
@@ -409,7 +427,7 @@ class RidesApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -423,10 +441,16 @@ class RidesApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `get_ride`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 

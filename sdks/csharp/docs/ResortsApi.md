@@ -1,6 +1,6 @@
 # Org.OpenAPITools.Api.ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -95,7 +95,7 @@ No authorization required
 
 <a name="deleteresort"></a>
 # **DeleteResort**
-> void DeleteResort ()
+> void DeleteResort (int? id)
 
 Delete resort resource by ID
 
@@ -114,11 +114,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new ResortsApi();
+            var id = 56;  // int? | The ID of the resort
 
             try
             {
                 // Delete resort resource by ID
-                apiInstance.DeleteResort();
+                apiInstance.DeleteResort(id);
             }
             catch (Exception e)
             {
@@ -130,7 +131,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the resort | 
 
 ### Return type
 
@@ -149,7 +153,7 @@ No authorization required
 
 <a name="editresort"></a>
 # **EditResort**
-> void EditResort (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+> void EditResort (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
 
 Edit a specific resort resource by ID
 
@@ -170,6 +174,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new ResortsApi();
+            var id = 56;  // int? | The ID of the resort
             var name = name_example;  // string |  (optional) 
             var parkId = 56;  // int? |  (optional) 
             var openingYear = 56;  // int? |  (optional) 
@@ -186,7 +191,7 @@ namespace Example
             try
             {
                 // Edit a specific resort resource by ID
-                apiInstance.EditResort(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+                apiInstance.EditResort(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
             }
             catch (Exception e)
             {
@@ -201,6 +206,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the resort | 
  **name** | **string**|  | [optional] 
  **parkId** | **int?**|  | [optional] 
  **openingYear** | **int?**|  | [optional] 
@@ -231,7 +237,7 @@ No authorization required
 
 <a name="getresort"></a>
 # **GetResort**
-> InlineResponse2001 GetResort (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+> InlineResponse2001 GetResort (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
 
 List a specific resort resource by ID
 
@@ -252,6 +258,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new ResortsApi();
+            var id = 56;  // int? | The ID of the resort
             var name = name_example;  // string |  (optional) 
             var parkId = 56;  // int? |  (optional) 
             var openingYear = 56;  // int? |  (optional) 
@@ -268,7 +275,7 @@ namespace Example
             try
             {
                 // List a specific resort resource by ID
-                InlineResponse2001 result = apiInstance.GetResort(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+                InlineResponse2001 result = apiInstance.GetResort(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -284,6 +291,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the resort | 
  **name** | **string**|  | [optional] 
  **parkId** | **int?**|  | [optional] 
  **openingYear** | **int?**|  | [optional] 

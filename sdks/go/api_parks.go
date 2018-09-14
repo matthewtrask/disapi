@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"fmt"
 	"github.com/antihax/optional"
 )
 
@@ -140,8 +141,9 @@ func (a *ParksApiService) CreatePark(ctx context.Context, localVarOptionals *Cre
 ParksApiService Remove a resource from the collection
 Remove a resource from the collection by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the park
 */
-func (a *ParksApiService) DeletePark(ctx context.Context) (*http.Response, error) {
+func (a *ParksApiService) DeletePark(ctx context.Context, id int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -152,6 +154,7 @@ func (a *ParksApiService) DeletePark(ctx context.Context) (*http.Response, error
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/parks/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -205,8 +208,9 @@ func (a *ParksApiService) DeletePark(ctx context.Context) (*http.Response, error
 ParksApiService Edit a resource by ID
 Edit a park resource by an ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the park
 */
-func (a *ParksApiService) EditPark(ctx context.Context) (*http.Response, error) {
+func (a *ParksApiService) EditPark(ctx context.Context, id int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -217,6 +221,7 @@ func (a *ParksApiService) EditPark(ctx context.Context) (*http.Response, error) 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/parks/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -270,9 +275,10 @@ func (a *ParksApiService) EditPark(ctx context.Context) (*http.Response, error) 
 ParksApiService List a park by ID
 Get a park at Walt Disney World by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id The ID of the park
 @return InlineResponse2007
 */
-func (a *ParksApiService) GetPark(ctx context.Context) (InlineResponse2007, *http.Response, error) {
+func (a *ParksApiService) GetPark(ctx context.Context, id int32) (InlineResponse2007, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -284,6 +290,7 @@ func (a *ParksApiService) GetPark(ctx context.Context) (InlineResponse2007, *htt
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/parks/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -1,6 +1,6 @@
 # OpenapiClient::RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -72,7 +72,7 @@ No authorization required
 
 
 # **delete_restaurant**
-> delete_restaurant
+> delete_restaurant(id)
 
 Remove a resource from the restaurants collection
 
@@ -84,17 +84,21 @@ Remove a resource from the restaurants collection by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::RestaurantsApi.new
+id = 56 # Integer | The ID of the restaurant
 
 begin
   #Remove a resource from the restaurants collection
-  api_instance.delete_restaurant
+  api_instance.delete_restaurant(id)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling RestaurantsApi->delete_restaurant: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the restaurant | 
 
 ### Return type
 
@@ -112,7 +116,7 @@ No authorization required
 
 
 # **edit_restaurant**
-> edit_restaurant(opts)
+> edit_restaurant(id, opts)
 
 Edit a single restaurant resource in the collection by ID
 
@@ -124,6 +128,7 @@ Edit a restaurant by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::RestaurantsApi.new
+id = 56 # Integer | The ID of the restaurant
 opts = {
   name: 'name_example', # String | 
   park_id: 56, # Integer | 
@@ -137,7 +142,7 @@ opts = {
 
 begin
   #Edit a single restaurant resource in the collection by ID
-  api_instance.edit_restaurant(opts)
+  api_instance.edit_restaurant(id, opts)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling RestaurantsApi->edit_restaurant: #{e}"
 end
@@ -147,6 +152,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the restaurant | 
  **name** | **String**|  | [optional] 
  **park_id** | **Integer**|  | [optional] 
  **quick_service** | **BOOLEAN**|  | [optional] 
@@ -172,7 +178,7 @@ No authorization required
 
 
 # **get_restaurant**
-> InlineResponse2005 get_restaurant
+> InlineResponse2005 get_restaurant(id)
 
 List a single restaurant resource from the collection by ID
 
@@ -184,10 +190,11 @@ Get a single restaurant resource by ID
 require 'openapi_client'
 
 api_instance = OpenapiClient::RestaurantsApi.new
+id = 56 # Integer | The ID of the restaurant
 
 begin
   #List a single restaurant resource from the collection by ID
-  result = api_instance.get_restaurant
+  result = api_instance.get_restaurant(id)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling RestaurantsApi->get_restaurant: #{e}"
@@ -195,7 +202,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the restaurant | 
 
 ### Return type
 

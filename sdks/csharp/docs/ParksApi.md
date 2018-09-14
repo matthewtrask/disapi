@@ -1,6 +1,6 @@
 # Org.OpenAPITools.Api.ParksApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -87,7 +87,7 @@ No authorization required
 
 <a name="deletepark"></a>
 # **DeletePark**
-> void DeletePark ()
+> void DeletePark (int? id)
 
 Remove a resource from the collection
 
@@ -108,11 +108,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new ParksApi();
+            var id = 56;  // int? | The ID of the park
 
             try
             {
                 // Remove a resource from the collection
-                apiInstance.DeletePark();
+                apiInstance.DeletePark(id);
             }
             catch (Exception e)
             {
@@ -124,7 +125,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the park | 
 
 ### Return type
 
@@ -143,7 +147,7 @@ No authorization required
 
 <a name="editpark"></a>
 # **EditPark**
-> void EditPark ()
+> void EditPark (int? id)
 
 Edit a resource by ID
 
@@ -164,11 +168,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new ParksApi();
+            var id = 56;  // int? | The ID of the park
 
             try
             {
                 // Edit a resource by ID
-                apiInstance.EditPark();
+                apiInstance.EditPark(id);
             }
             catch (Exception e)
             {
@@ -180,7 +185,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the park | 
 
 ### Return type
 
@@ -199,7 +207,7 @@ No authorization required
 
 <a name="getpark"></a>
 # **GetPark**
-> InlineResponse2007 GetPark ()
+> InlineResponse2007 GetPark (int? id)
 
 List a park by ID
 
@@ -220,11 +228,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new ParksApi();
+            var id = 56;  // int? | The ID of the park
 
             try
             {
                 // List a park by ID
-                InlineResponse2007 result = apiInstance.GetPark();
+                InlineResponse2007 result = apiInstance.GetPark(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -237,7 +246,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the park | 
 
 ### Return type
 

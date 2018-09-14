@@ -1,6 +1,6 @@
 # WaltDisneyWorldApi.ParksApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -72,7 +72,7 @@ No authorization required
 
 <a name="deletePark"></a>
 # **deletePark**
-> deletePark()
+> deletePark(id)
 
 Remove a resource from the collection
 
@@ -83,6 +83,7 @@ Remove a resource from the collection by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.ParksApi();
+var id = 56; // Number | The ID of the park
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -90,11 +91,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deletePark(callback);
+apiInstance.deletePark(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the park | 
 
 ### Return type
 
@@ -111,7 +115,7 @@ No authorization required
 
 <a name="editPark"></a>
 # **editPark**
-> editPark()
+> editPark(id)
 
 Edit a resource by ID
 
@@ -122,6 +126,7 @@ Edit a park resource by an ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.ParksApi();
+var id = 56; // Number | The ID of the park
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -129,11 +134,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.editPark(callback);
+apiInstance.editPark(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the park | 
 
 ### Return type
 
@@ -150,7 +158,7 @@ No authorization required
 
 <a name="getPark"></a>
 # **getPark**
-> InlineResponse2007 getPark()
+> InlineResponse2007 getPark(id)
 
 List a park by ID
 
@@ -161,6 +169,7 @@ Get a park at Walt Disney World by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.ParksApi();
+var id = 56; // Number | The ID of the park
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -168,11 +177,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getPark(callback);
+apiInstance.getPark(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the park | 
 
 ### Return type
 

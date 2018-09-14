@@ -238,16 +238,18 @@ public class ResortsApi {
     }
     /**
      * Build call for deleteResort
+     * @param id The ID of the resort (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteResortCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteResortCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/resorts/{id}";
+        String localVarPath = "/resorts/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -285,10 +287,15 @@ public class ResortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteResortValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteResortValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteResort(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = deleteResortCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteResortCall(id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -296,31 +303,34 @@ public class ResortsApi {
     /**
      * Delete resort resource by ID
      * 
+     * @param id The ID of the resort (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteResort() throws ApiException {
-        deleteResortWithHttpInfo();
+    public void deleteResort(Integer id) throws ApiException {
+        deleteResortWithHttpInfo(id);
     }
 
     /**
      * Delete resort resource by ID
      * 
+     * @param id The ID of the resort (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteResortWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = deleteResortValidateBeforeCall(null, null);
+    public ApiResponse<Void> deleteResortWithHttpInfo(Integer id) throws ApiException {
+        com.squareup.okhttp.Call call = deleteResortValidateBeforeCall(id, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Delete resort resource by ID (asynchronously)
      * 
+     * @param id The ID of the resort (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteResortAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteResortAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -341,12 +351,13 @@ public class ResortsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteResortValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteResortValidateBeforeCall(id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for editResort
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -364,11 +375,12 @@ public class ResortsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call editResortCall(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call editResortCall(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/resorts/{id}";
+        String localVarPath = "/resorts/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -430,10 +442,15 @@ public class ResortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call editResortValidateBeforeCall(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call editResortValidateBeforeCall(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling editResort(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = editResortCall(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editResortCall(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
         return call;
 
     }
@@ -441,6 +458,7 @@ public class ResortsApi {
     /**
      * Edit a specific resort resource by ID
      * Find and edit a specific resort resource by its ID
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -455,13 +473,14 @@ public class ResortsApi {
      * @param pool  (optional, default to null)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void editResort(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
-        editResortWithHttpInfo(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+    public void editResort(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
+        editResortWithHttpInfo(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
     }
 
     /**
      * Edit a specific resort resource by ID
      * Find and edit a specific resort resource by its ID
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -477,14 +496,15 @@ public class ResortsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> editResortWithHttpInfo(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
-        com.squareup.okhttp.Call call = editResortValidateBeforeCall(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, null, null);
+    public ApiResponse<Void> editResortWithHttpInfo(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
+        com.squareup.okhttp.Call call = editResortValidateBeforeCall(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Edit a specific resort resource by ID (asynchronously)
      * Find and edit a specific resort resource by its ID
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -501,7 +521,7 @@ public class ResortsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call editResortAsync(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call editResortAsync(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -522,12 +542,13 @@ public class ResortsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = editResortValidateBeforeCall(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = editResortValidateBeforeCall(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
      * Build call for getResort
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -545,11 +566,12 @@ public class ResortsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getResortCall(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getResortCall(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/resorts/{id}";
+        String localVarPath = "/resorts/{id}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -611,10 +633,15 @@ public class ResortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getResortValidateBeforeCall(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getResortValidateBeforeCall(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getResort(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = getResortCall(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getResortCall(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
         return call;
 
     }
@@ -622,6 +649,7 @@ public class ResortsApi {
     /**
      * List a specific resort resource by ID
      * Get a specific resort resource by ID
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -637,14 +665,15 @@ public class ResortsApi {
      * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2001 getResort(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = getResortWithHttpInfo(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+    public InlineResponse2001 getResort(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = getResortWithHttpInfo(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
         return resp.getData();
     }
 
     /**
      * List a specific resort resource by ID
      * Get a specific resort resource by ID
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -660,8 +689,8 @@ public class ResortsApi {
      * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2001> getResortWithHttpInfo(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
-        com.squareup.okhttp.Call call = getResortValidateBeforeCall(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, null, null);
+    public ApiResponse<InlineResponse2001> getResortWithHttpInfo(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool) throws ApiException {
+        com.squareup.okhttp.Call call = getResortValidateBeforeCall(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -669,6 +698,7 @@ public class ResortsApi {
     /**
      * List a specific resort resource by ID (asynchronously)
      * Get a specific resort resource by ID
+     * @param id The ID of the resort (required)
      * @param name  (optional, default to null)
      * @param parkId  (optional, default to null)
      * @param openingYear  (optional, default to null)
@@ -685,7 +715,7 @@ public class ResortsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getResortAsync(String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ApiCallback<InlineResponse2001> callback) throws ApiException {
+    public com.squareup.okhttp.Call getResortAsync(Integer id, String name, Integer parkId, Integer openingYear, String resortType, String transportOptions, String category, Integer numOfRooms, Boolean quickServiceRestaurants, Boolean tableServiceRestaurants, Boolean giftShop, Boolean arcade, Boolean pool, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -706,7 +736,7 @@ public class ResortsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getResortValidateBeforeCall(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getResortValidateBeforeCall(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

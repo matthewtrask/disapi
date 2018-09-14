@@ -1,6 +1,6 @@
 # Org.OpenAPITools.Api.RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -87,7 +87,7 @@ No authorization required
 
 <a name="deleterestaurant"></a>
 # **DeleteRestaurant**
-> void DeleteRestaurant ()
+> void DeleteRestaurant (int? id)
 
 Remove a resource from the restaurants collection
 
@@ -108,11 +108,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new RestaurantsApi();
+            var id = 56;  // int? | The ID of the restaurant
 
             try
             {
                 // Remove a resource from the restaurants collection
-                apiInstance.DeleteRestaurant();
+                apiInstance.DeleteRestaurant(id);
             }
             catch (Exception e)
             {
@@ -124,7 +125,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the restaurant | 
 
 ### Return type
 
@@ -143,7 +147,7 @@ No authorization required
 
 <a name="editrestaurant"></a>
 # **EditRestaurant**
-> void EditRestaurant (string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
+> void EditRestaurant (int? id, string name = null, int? parkId = null, bool? quickService = null, bool? tableService = null, bool? alcohol = null, bool? diningPlan = null, List<string> mealTypes = null, List<string> foodTypes = null)
 
 Edit a single restaurant resource in the collection by ID
 
@@ -164,6 +168,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new RestaurantsApi();
+            var id = 56;  // int? | The ID of the restaurant
             var name = name_example;  // string |  (optional) 
             var parkId = 56;  // int? |  (optional) 
             var quickService = true;  // bool? |  (optional) 
@@ -176,7 +181,7 @@ namespace Example
             try
             {
                 // Edit a single restaurant resource in the collection by ID
-                apiInstance.EditRestaurant(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
+                apiInstance.EditRestaurant(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
             }
             catch (Exception e)
             {
@@ -191,6 +196,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the restaurant | 
  **name** | **string**|  | [optional] 
  **parkId** | **int?**|  | [optional] 
  **quickService** | **bool?**|  | [optional] 
@@ -217,7 +223,7 @@ No authorization required
 
 <a name="getrestaurant"></a>
 # **GetRestaurant**
-> InlineResponse2005 GetRestaurant ()
+> InlineResponse2005 GetRestaurant (int? id)
 
 List a single restaurant resource from the collection by ID
 
@@ -238,11 +244,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new RestaurantsApi();
+            var id = 56;  // int? | The ID of the restaurant
 
             try
             {
                 // List a single restaurant resource from the collection by ID
-                InlineResponse2005 result = apiInstance.GetRestaurant();
+                InlineResponse2005 result = apiInstance.GetRestaurant(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -255,7 +262,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The ID of the restaurant | 
 
 ### Return type
 

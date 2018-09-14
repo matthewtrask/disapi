@@ -153,37 +153,39 @@ class ParksApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_park(self, **kwargs):  # noqa: E501
+    def delete_park(self, id, **kwargs):  # noqa: E501
         """Remove a resource from the collection  # noqa: E501
 
         Remove a resource from the collection by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_park(async_req=True)
+        >>> thread = api.delete_park(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the park (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.delete_park_with_http_info(**kwargs)  # noqa: E501
+            return self.delete_park_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_park_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.delete_park_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def delete_park_with_http_info(self, **kwargs):  # noqa: E501
+    def delete_park_with_http_info(self, id, **kwargs):  # noqa: E501
         """Remove a resource from the collection  # noqa: E501
 
         Remove a resource from the collection by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_park_with_http_info(async_req=True)
+        >>> thread = api.delete_park_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the park (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -191,7 +193,7 @@ class ParksApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -205,10 +207,16 @@ class ParksApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `delete_park`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 
@@ -237,37 +245,39 @@ class ParksApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def edit_park(self, **kwargs):  # noqa: E501
+    def edit_park(self, id, **kwargs):  # noqa: E501
         """Edit a resource by ID  # noqa: E501
 
         Edit a park resource by an ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.edit_park(async_req=True)
+        >>> thread = api.edit_park(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the park (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.edit_park_with_http_info(**kwargs)  # noqa: E501
+            return self.edit_park_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.edit_park_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.edit_park_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def edit_park_with_http_info(self, **kwargs):  # noqa: E501
+    def edit_park_with_http_info(self, id, **kwargs):  # noqa: E501
         """Edit a resource by ID  # noqa: E501
 
         Edit a park resource by an ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.edit_park_with_http_info(async_req=True)
+        >>> thread = api.edit_park_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the park (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -275,7 +285,7 @@ class ParksApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -289,10 +299,16 @@ class ParksApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `edit_park`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 
@@ -321,37 +337,39 @@ class ParksApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_park(self, **kwargs):  # noqa: E501
+    def get_park(self, id, **kwargs):  # noqa: E501
         """List a park by ID  # noqa: E501
 
         Get a park at Walt Disney World by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_park(async_req=True)
+        >>> thread = api.get_park(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the park (required)
         :return: InlineResponse2007
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_park_with_http_info(**kwargs)  # noqa: E501
+            return self.get_park_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_park_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_park_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def get_park_with_http_info(self, **kwargs):  # noqa: E501
+    def get_park_with_http_info(self, id, **kwargs):  # noqa: E501
         """List a park by ID  # noqa: E501
 
         Get a park at Walt Disney World by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_park_with_http_info(async_req=True)
+        >>> thread = api.get_park_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param int id: The ID of the park (required)
         :return: InlineResponse2007
                  If the method is called asynchronously,
                  returns the request thread.
@@ -359,7 +377,7 @@ class ParksApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -373,10 +391,16 @@ class ParksApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `get_park`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
 

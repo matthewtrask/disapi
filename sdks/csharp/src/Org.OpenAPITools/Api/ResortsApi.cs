@@ -74,8 +74,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns></returns>
-        void DeleteResort ();
+        void DeleteResort (int? id);
 
         /// <summary>
         /// Delete resort resource by ID
@@ -84,8 +85,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteResortWithHttpInfo ();
+        ApiResponse<Object> DeleteResortWithHttpInfo (int? id);
         /// <summary>
         /// Edit a specific resort resource by ID
         /// </summary>
@@ -93,6 +95,7 @@ namespace Org.OpenAPITools.Api
         /// Find and edit a specific resort resource by its ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -106,7 +109,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns></returns>
-        void EditResort (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        void EditResort (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
 
         /// <summary>
         /// Edit a specific resort resource by ID
@@ -115,6 +118,7 @@ namespace Org.OpenAPITools.Api
         /// Find and edit a specific resort resource by its ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -128,7 +132,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> EditResortWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        ApiResponse<Object> EditResortWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
         /// <summary>
         /// List a specific resort resource by ID
         /// </summary>
@@ -136,6 +140,7 @@ namespace Org.OpenAPITools.Api
         /// Get a specific resort resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -149,7 +154,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>InlineResponse2001</returns>
-        InlineResponse2001 GetResort (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        InlineResponse2001 GetResort (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
 
         /// <summary>
         /// List a specific resort resource by ID
@@ -158,6 +163,7 @@ namespace Org.OpenAPITools.Api
         /// Get a specific resort resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -171,7 +177,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>ApiResponse of InlineResponse2001</returns>
-        ApiResponse<InlineResponse2001> GetResortWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        ApiResponse<InlineResponse2001> GetResortWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
         /// <summary>
         /// List resorts at Walt Disney World
         /// </summary>
@@ -243,8 +249,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteResortAsync ();
+        System.Threading.Tasks.Task DeleteResortAsync (int? id);
 
         /// <summary>
         /// Delete resort resource by ID
@@ -253,8 +260,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteResortAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteResortAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Edit a specific resort resource by ID
         /// </summary>
@@ -262,6 +270,7 @@ namespace Org.OpenAPITools.Api
         /// Find and edit a specific resort resource by its ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -275,7 +284,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task EditResortAsync (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        System.Threading.Tasks.Task EditResortAsync (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
 
         /// <summary>
         /// Edit a specific resort resource by ID
@@ -284,6 +293,7 @@ namespace Org.OpenAPITools.Api
         /// Find and edit a specific resort resource by its ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -297,7 +307,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> EditResortAsyncWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditResortAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
         /// <summary>
         /// List a specific resort resource by ID
         /// </summary>
@@ -305,6 +315,7 @@ namespace Org.OpenAPITools.Api
         /// Get a specific resort resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -318,7 +329,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of InlineResponse2001</returns>
-        System.Threading.Tasks.Task<InlineResponse2001> GetResortAsync (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        System.Threading.Tasks.Task<InlineResponse2001> GetResortAsync (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
 
         /// <summary>
         /// List a specific resort resource by ID
@@ -327,6 +338,7 @@ namespace Org.OpenAPITools.Api
         /// Get a specific resort resource by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -340,7 +352,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> GetResortAsyncWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> GetResortAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null);
         /// <summary>
         /// List resorts at Walt Disney World
         /// </summary>
@@ -655,19 +667,24 @@ namespace Org.OpenAPITools.Api
         /// Delete resort resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns></returns>
-        public void DeleteResort ()
+        public void DeleteResort (int? id)
         {
-             DeleteResortWithHttpInfo();
+             DeleteResortWithHttpInfo(id);
         }
 
         /// <summary>
         /// Delete resort resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteResortWithHttpInfo ()
+        public ApiResponse<Object> DeleteResortWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ResortsApi->DeleteResort");
 
             var localVarPath = "/resorts/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -689,6 +706,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -713,10 +731,11 @@ namespace Org.OpenAPITools.Api
         /// Delete resort resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteResortAsync ()
+        public async System.Threading.Tasks.Task DeleteResortAsync (int? id)
         {
-             await DeleteResortAsyncWithHttpInfo();
+             await DeleteResortAsyncWithHttpInfo(id);
 
         }
 
@@ -724,9 +743,13 @@ namespace Org.OpenAPITools.Api
         /// Delete resort resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteResortAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteResortAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ResortsApi->DeleteResort");
 
             var localVarPath = "/resorts/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -748,6 +771,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -772,6 +796,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a specific resort resource by ID Find and edit a specific resort resource by its ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -785,15 +810,16 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns></returns>
-        public void EditResort (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public void EditResort (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
-             EditResortWithHttpInfo(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+             EditResortWithHttpInfo(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
         }
 
         /// <summary>
         /// Edit a specific resort resource by ID Find and edit a specific resort resource by its ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -807,8 +833,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> EditResortWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public ApiResponse<Object> EditResortWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ResortsApi->EditResort");
 
             var localVarPath = "/resorts/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -831,6 +860,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (openingYear != null) localVarFormParams.Add("openingYear", this.Configuration.ApiClient.ParameterToString(openingYear)); // form parameter
@@ -867,6 +897,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a specific resort resource by ID Find and edit a specific resort resource by its ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -880,9 +911,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task EditResortAsync (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public async System.Threading.Tasks.Task EditResortAsync (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
-             await EditResortAsyncWithHttpInfo(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+             await EditResortAsyncWithHttpInfo(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
 
         }
 
@@ -890,6 +921,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a specific resort resource by ID Find and edit a specific resort resource by its ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -903,8 +935,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditResortAsyncWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditResortAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ResortsApi->EditResort");
 
             var localVarPath = "/resorts/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -927,6 +962,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (openingYear != null) localVarFormParams.Add("openingYear", this.Configuration.ApiClient.ParameterToString(openingYear)); // form parameter
@@ -963,6 +999,7 @@ namespace Org.OpenAPITools.Api
         /// List a specific resort resource by ID Get a specific resort resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -976,9 +1013,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>InlineResponse2001</returns>
-        public InlineResponse2001 GetResort (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public InlineResponse2001 GetResort (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
-             ApiResponse<InlineResponse2001> localVarResponse = GetResortWithHttpInfo(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+             ApiResponse<InlineResponse2001> localVarResponse = GetResortWithHttpInfo(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
              return localVarResponse.Data;
         }
 
@@ -986,6 +1023,7 @@ namespace Org.OpenAPITools.Api
         /// List a specific resort resource by ID Get a specific resort resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -999,8 +1037,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>ApiResponse of InlineResponse2001</returns>
-        public ApiResponse< InlineResponse2001 > GetResortWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public ApiResponse< InlineResponse2001 > GetResortWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ResortsApi->GetResort");
 
             var localVarPath = "/resorts/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1024,6 +1065,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (openingYear != null) localVarFormParams.Add("openingYear", this.Configuration.ApiClient.ParameterToString(openingYear)); // form parameter
@@ -1060,6 +1102,7 @@ namespace Org.OpenAPITools.Api
         /// List a specific resort resource by ID Get a specific resort resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -1073,9 +1116,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of InlineResponse2001</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2001> GetResortAsync (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public async System.Threading.Tasks.Task<InlineResponse2001> GetResortAsync (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
-             ApiResponse<InlineResponse2001> localVarResponse = await GetResortAsyncWithHttpInfo(name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
+             ApiResponse<InlineResponse2001> localVarResponse = await GetResortAsyncWithHttpInfo(id, name, parkId, openingYear, resortType, transportOptions, category, numOfRooms, quickServiceRestaurants, tableServiceRestaurants, giftShop, arcade, pool);
              return localVarResponse.Data;
 
         }
@@ -1084,6 +1127,7 @@ namespace Org.OpenAPITools.Api
         /// List a specific resort resource by ID Get a specific resort resource by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the resort</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -1097,8 +1141,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="arcade"> (optional)</param>
         /// <param name="pool"> (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> GetResortAsyncWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> GetResortAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string resortType = null, string transportOptions = null, string category = null, int? numOfRooms = null, bool? quickServiceRestaurants = null, bool? tableServiceRestaurants = null, bool? giftShop = null, bool? arcade = null, bool? pool = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ResortsApi->GetResort");
 
             var localVarPath = "/resorts/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1122,6 +1169,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (openingYear != null) localVarFormParams.Add("openingYear", this.Configuration.ApiClient.ParameterToString(openingYear)); // form parameter

@@ -53,12 +53,12 @@ namespace Org.OpenAPITools.Client
         public ApiClient()
         {
             Configuration = Org.OpenAPITools.Client.Configuration.Default;
-            RestClient = new RestClient("http://homestead.test/api");
+            RestClient = new RestClient("https://disapi.co/api");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (http://homestead.test/api).
+        /// with default base path (https://disapi.co/api).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -73,7 +73,7 @@ namespace Org.OpenAPITools.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "http://homestead.test/api")
+        public ApiClient(String basePath = "https://disapi.co/api")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

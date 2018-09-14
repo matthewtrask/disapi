@@ -1,6 +1,6 @@
 # RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -75,7 +75,7 @@ No authorization required
 
 <a name="deleteRide"></a>
 # **deleteRide**
-> deleteRide()
+> deleteRide(id)
 
 Delete ride resource by ID
 
@@ -87,8 +87,9 @@ Delete ride resource by ID
 
 
 RidesApi apiInstance = new RidesApi();
+Integer id = 56; // Integer | The ID of the ride
 try {
-    apiInstance.deleteRide();
+    apiInstance.deleteRide(id);
 } catch (ApiException e) {
     System.err.println("Exception when calling RidesApi#deleteRide");
     e.printStackTrace();
@@ -96,7 +97,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the ride |
 
 ### Return type
 
@@ -113,7 +117,7 @@ No authorization required
 
 <a name="editRide"></a>
 # **editRide**
-> editRide(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction)
+> editRide(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction)
 
 Edit a ride by ID
 
@@ -127,6 +131,7 @@ Edit a ride in the resource collection by ID
 
 
 RidesApi apiInstance = new RidesApi();
+Integer id = 56; // Integer | The ID of the ride
 String name = "null"; // String | 
 Integer parkId = null; // Integer | 
 Integer openingYear = null; // Integer | 
@@ -138,7 +143,7 @@ Integer singleRider = null; // Integer |
 Integer ridePhoto = null; // Integer | 
 Integer heightRestriction = null; // Integer | 
 try {
-    apiInstance.editRide(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
+    apiInstance.editRide(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
 } catch (ApiException e) {
     System.err.println("Exception when calling RidesApi#editRide");
     e.printStackTrace();
@@ -149,6 +154,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the ride |
  **name** | **String**|  | [optional] [default to null]
  **parkId** | **Integer**|  | [optional] [default to null]
  **openingYear** | **Integer**|  | [optional] [default to null]
@@ -175,7 +181,7 @@ No authorization required
 
 <a name="getRide"></a>
 # **getRide**
-> InlineResponse2003 getRide()
+> InlineResponse2003 getRide(id)
 
 Get ride by ID
 
@@ -189,8 +195,9 @@ Get a ride at Walt Disney World by ID
 
 
 RidesApi apiInstance = new RidesApi();
+Integer id = 56; // Integer | The ID of the ride
 try {
-    InlineResponse2003 result = apiInstance.getRide();
+    InlineResponse2003 result = apiInstance.getRide(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RidesApi#getRide");
@@ -199,7 +206,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the ride |
 
 ### Return type
 

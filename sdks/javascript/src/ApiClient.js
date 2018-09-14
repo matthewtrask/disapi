@@ -47,9 +47,9 @@
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default http://homestead.test/api
+     * @default https://disapi.co/api
      */
-    this.basePath = 'http://homestead.test/api'.replace(/\/+$/, '');
+    this.basePath = 'https://disapi.co/api'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.

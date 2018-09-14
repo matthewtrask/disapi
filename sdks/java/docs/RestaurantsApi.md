@@ -1,6 +1,6 @@
 # RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -71,7 +71,7 @@ No authorization required
 
 <a name="deleteRestaurant"></a>
 # **deleteRestaurant**
-> deleteRestaurant()
+> deleteRestaurant(id)
 
 Remove a resource from the restaurants collection
 
@@ -85,8 +85,9 @@ Remove a resource from the restaurants collection by ID
 
 
 RestaurantsApi apiInstance = new RestaurantsApi();
+Integer id = 56; // Integer | The ID of the restaurant
 try {
-    apiInstance.deleteRestaurant();
+    apiInstance.deleteRestaurant(id);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestaurantsApi#deleteRestaurant");
     e.printStackTrace();
@@ -94,7 +95,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the restaurant |
 
 ### Return type
 
@@ -111,7 +115,7 @@ No authorization required
 
 <a name="editRestaurant"></a>
 # **editRestaurant**
-> editRestaurant(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes)
+> editRestaurant(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes)
 
 Edit a single restaurant resource in the collection by ID
 
@@ -125,6 +129,7 @@ Edit a restaurant by ID
 
 
 RestaurantsApi apiInstance = new RestaurantsApi();
+Integer id = 56; // Integer | The ID of the restaurant
 String name = "null"; // String | 
 Integer parkId = null; // Integer | 
 Boolean quickService = null; // Boolean | 
@@ -134,7 +139,7 @@ Boolean diningPlan = null; // Boolean |
 List<String> mealTypes = "null"; // List<String> | 
 List<String> foodTypes = "null"; // List<String> | 
 try {
-    apiInstance.editRestaurant(name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
+    apiInstance.editRestaurant(id, name, parkId, quickService, tableService, alcohol, diningPlan, mealTypes, foodTypes);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestaurantsApi#editRestaurant");
     e.printStackTrace();
@@ -145,6 +150,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the restaurant |
  **name** | **String**|  | [optional] [default to null]
  **parkId** | **Integer**|  | [optional] [default to null]
  **quickService** | **Boolean**|  | [optional] [default to null]
@@ -169,7 +175,7 @@ No authorization required
 
 <a name="getRestaurant"></a>
 # **getRestaurant**
-> InlineResponse2005 getRestaurant()
+> InlineResponse2005 getRestaurant(id)
 
 List a single restaurant resource from the collection by ID
 
@@ -183,8 +189,9 @@ Get a single restaurant resource by ID
 
 
 RestaurantsApi apiInstance = new RestaurantsApi();
+Integer id = 56; // Integer | The ID of the restaurant
 try {
-    InlineResponse2005 result = apiInstance.getRestaurant();
+    InlineResponse2005 result = apiInstance.getRestaurant(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RestaurantsApi#getRestaurant");
@@ -193,7 +200,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The ID of the restaurant |
 
 ### Return type
 

@@ -1,6 +1,6 @@
 # OpenAPI\Client\RestaurantsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -74,7 +74,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteRestaurant**
-> deleteRestaurant()
+> deleteRestaurant($id)
 
 Remove a resource from the restaurants collection
 
@@ -90,9 +90,10 @@ $apiInstance = new OpenAPI\Client\Api\RestaurantsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the restaurant
 
 try {
-    $apiInstance->deleteRestaurant();
+    $apiInstance->deleteRestaurant($id);
 } catch (Exception $e) {
     echo 'Exception when calling RestaurantsApi->deleteRestaurant: ', $e->getMessage(), PHP_EOL;
 }
@@ -100,7 +101,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the restaurant |
 
 ### Return type
 
@@ -118,7 +122,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editRestaurant**
-> editRestaurant($name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types)
+> editRestaurant($id, $name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types)
 
 Edit a single restaurant resource in the collection by ID
 
@@ -134,6 +138,7 @@ $apiInstance = new OpenAPI\Client\Api\RestaurantsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the restaurant
 $name = 'name_example'; // string | 
 $park_id = 56; // int | 
 $quick_service = True; // bool | 
@@ -144,7 +149,7 @@ $meal_types = 'meal_types_example'; // string[] |
 $food_types = 'food_types_example'; // string[] | 
 
 try {
-    $apiInstance->editRestaurant($name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
+    $apiInstance->editRestaurant($id, $name, $park_id, $quick_service, $table_service, $alcohol, $dining_plan, $meal_types, $food_types);
 } catch (Exception $e) {
     echo 'Exception when calling RestaurantsApi->editRestaurant: ', $e->getMessage(), PHP_EOL;
 }
@@ -155,6 +160,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the restaurant |
  **name** | **string**|  | [optional]
  **park_id** | **int**|  | [optional]
  **quick_service** | **bool**|  | [optional]
@@ -180,7 +186,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRestaurant**
-> \OpenAPI\Client\Model\InlineResponse2005 getRestaurant()
+> \OpenAPI\Client\Model\InlineResponse2005 getRestaurant($id)
 
 List a single restaurant resource from the collection by ID
 
@@ -196,9 +202,10 @@ $apiInstance = new OpenAPI\Client\Api\RestaurantsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the restaurant
 
 try {
-    $result = $apiInstance->getRestaurant();
+    $result = $apiInstance->getRestaurant($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RestaurantsApi->getRestaurant: ', $e->getMessage(), PHP_EOL;
@@ -207,7 +214,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the restaurant |
 
 ### Return type
 

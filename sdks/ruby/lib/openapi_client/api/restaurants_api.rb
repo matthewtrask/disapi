@@ -91,23 +91,29 @@ module OpenapiClient
 
     # Remove a resource from the restaurants collection
     # Remove a resource from the restaurants collection by ID
+    # @param id The ID of the restaurant
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_restaurant(opts = {})
-      delete_restaurant_with_http_info(opts)
+    def delete_restaurant(id, opts = {})
+      delete_restaurant_with_http_info(id, opts)
       nil
     end
 
     # Remove a resource from the restaurants collection
     # Remove a resource from the restaurants collection by ID
+    # @param id The ID of the restaurant
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def delete_restaurant_with_http_info(opts = {})
+    def delete_restaurant_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestaurantsApi.delete_restaurant ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RestaurantsApi.delete_restaurant"
+      end
       # resource path
-      local_var_path = '/restaurants/{id}'
+      local_var_path = '/restaurants/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -135,6 +141,7 @@ module OpenapiClient
 
     # Edit a single restaurant resource in the collection by ID
     # Edit a restaurant by ID
+    # @param id The ID of the restaurant
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -145,13 +152,14 @@ module OpenapiClient
     # @option opts [Array<String>] :meal_types 
     # @option opts [Array<String>] :food_types 
     # @return [nil]
-    def edit_restaurant(opts = {})
-      edit_restaurant_with_http_info(opts)
+    def edit_restaurant(id, opts = {})
+      edit_restaurant_with_http_info(id, opts)
       nil
     end
 
     # Edit a single restaurant resource in the collection by ID
     # Edit a restaurant by ID
+    # @param id The ID of the restaurant
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :park_id 
@@ -162,12 +170,16 @@ module OpenapiClient
     # @option opts [Array<String>] :meal_types 
     # @option opts [Array<String>] :food_types 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def edit_restaurant_with_http_info(opts = {})
+    def edit_restaurant_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestaurantsApi.edit_restaurant ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RestaurantsApi.edit_restaurant"
+      end
       # resource path
-      local_var_path = '/restaurants/{id}'
+      local_var_path = '/restaurants/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}
@@ -205,23 +217,29 @@ module OpenapiClient
 
     # List a single restaurant resource from the collection by ID
     # Get a single restaurant resource by ID
+    # @param id The ID of the restaurant
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse2005]
-    def get_restaurant(opts = {})
-      data, _status_code, _headers = get_restaurant_with_http_info(opts)
+    def get_restaurant(id, opts = {})
+      data, _status_code, _headers = get_restaurant_with_http_info(id, opts)
       data
     end
 
     # List a single restaurant resource from the collection by ID
     # Get a single restaurant resource by ID
+    # @param id The ID of the restaurant
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse2005, Fixnum, Hash)>] InlineResponse2005 data, response status code and response headers
-    def get_restaurant_with_http_info(opts = {})
+    def get_restaurant_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestaurantsApi.get_restaurant ...'
       end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RestaurantsApi.get_restaurant"
+      end
       # resource path
-      local_var_path = '/restaurants/{id}'
+      local_var_path = '/restaurants/{id}'.sub('{' + 'id' + '}', id.to_s)
 
       # query parameters
       query_params = {}

@@ -1,6 +1,6 @@
 # WaltDisneyWorldApi.ResortsApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -80,7 +80,7 @@ No authorization required
 
 <a name="deleteResort"></a>
 # **deleteResort**
-> deleteResort()
+> deleteResort(id)
 
 Delete resort resource by ID
 
@@ -89,6 +89,7 @@ Delete resort resource by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.ResortsApi();
+var id = 56; // Number | The ID of the resort
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -96,11 +97,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteResort(callback);
+apiInstance.deleteResort(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the resort | 
 
 ### Return type
 
@@ -117,7 +121,7 @@ No authorization required
 
 <a name="editResort"></a>
 # **editResort**
-> editResort(opts)
+> editResort(id, opts)
 
 Edit a specific resort resource by ID
 
@@ -128,6 +132,7 @@ Find and edit a specific resort resource by its ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.ResortsApi();
+var id = 56; // Number | The ID of the resort
 var opts = {
   'name': "name_example", // String | 
   'parkId': 56, // Number | 
@@ -149,13 +154,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.editResort(opts, callback);
+apiInstance.editResort(id, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the resort | 
  **name** | **String**|  | [optional] 
  **parkId** | **Number**|  | [optional] 
  **openingYear** | **Number**|  | [optional] 
@@ -184,7 +190,7 @@ No authorization required
 
 <a name="getResort"></a>
 # **getResort**
-> InlineResponse2001 getResort(opts)
+> InlineResponse2001 getResort(id, opts)
 
 List a specific resort resource by ID
 
@@ -195,6 +201,7 @@ Get a specific resort resource by ID
 var WaltDisneyWorldApi = require('walt_disney_world_api');
 
 var apiInstance = new WaltDisneyWorldApi.ResortsApi();
+var id = 56; // Number | The ID of the resort
 var opts = {
   'name': "name_example", // String | 
   'parkId': 56, // Number | 
@@ -216,13 +223,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getResort(opts, callback);
+apiInstance.getResort(id, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The ID of the resort | 
  **name** | **String**|  | [optional] 
  **parkId** | **Number**|  | [optional] 
  **openingYear** | **Number**|  | [optional] 

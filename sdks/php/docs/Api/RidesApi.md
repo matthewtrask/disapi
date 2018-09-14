@@ -1,6 +1,6 @@
 # OpenAPI\Client\RidesApi
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -78,7 +78,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteRide**
-> deleteRide()
+> deleteRide($id)
 
 Delete ride resource by ID
 
@@ -92,9 +92,10 @@ $apiInstance = new OpenAPI\Client\Api\RidesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the ride
 
 try {
-    $apiInstance->deleteRide();
+    $apiInstance->deleteRide($id);
 } catch (Exception $e) {
     echo 'Exception when calling RidesApi->deleteRide: ', $e->getMessage(), PHP_EOL;
 }
@@ -102,7 +103,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the ride |
 
 ### Return type
 
@@ -120,7 +124,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editRide**
-> editRide($name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction)
+> editRide($id, $name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction)
 
 Edit a ride by ID
 
@@ -136,6 +140,7 @@ $apiInstance = new OpenAPI\Client\Api\RidesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the ride
 $name = 'name_example'; // string | 
 $park_id = 56; // int | 
 $opening_year = 56; // int | 
@@ -148,7 +153,7 @@ $ride_photo = 56; // int |
 $height_restriction = 56; // int | 
 
 try {
-    $apiInstance->editRide($name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
+    $apiInstance->editRide($id, $name, $park_id, $opening_year, $ride_type, $ride_vehicle, $interactive_queue, $gift_store_finish, $single_rider, $ride_photo, $height_restriction);
 } catch (Exception $e) {
     echo 'Exception when calling RidesApi->editRide: ', $e->getMessage(), PHP_EOL;
 }
@@ -159,6 +164,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the ride |
  **name** | **string**|  | [optional]
  **park_id** | **int**|  | [optional]
  **opening_year** | **int**|  | [optional]
@@ -186,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRide**
-> \OpenAPI\Client\Model\InlineResponse2003 getRide()
+> \OpenAPI\Client\Model\InlineResponse2003 getRide($id)
 
 Get ride by ID
 
@@ -202,9 +208,10 @@ $apiInstance = new OpenAPI\Client\Api\RidesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = 56; // int | The ID of the ride
 
 try {
-    $result = $apiInstance->getRide();
+    $result = $apiInstance->getRide($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RidesApi->getRide: ', $e->getMessage(), PHP_EOL;
@@ -213,7 +220,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The ID of the ride |
 
 ### Return type
 

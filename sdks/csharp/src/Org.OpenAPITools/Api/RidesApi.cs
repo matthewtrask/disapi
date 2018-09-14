@@ -70,8 +70,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns></returns>
-        void DeleteRide ();
+        void DeleteRide (int? id);
 
         /// <summary>
         /// Delete ride resource by ID
@@ -80,8 +81,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteRideWithHttpInfo ();
+        ApiResponse<Object> DeleteRideWithHttpInfo (int? id);
         /// <summary>
         /// Edit a ride by ID
         /// </summary>
@@ -89,6 +91,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride in the resource collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -100,7 +103,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns></returns>
-        void EditRide (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
+        void EditRide (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
 
         /// <summary>
         /// Edit a ride by ID
@@ -109,6 +112,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride in the resource collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -120,7 +124,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> EditRideWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
+        ApiResponse<Object> EditRideWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
         /// <summary>
         /// Get ride by ID
         /// </summary>
@@ -128,8 +132,9 @@ namespace Org.OpenAPITools.Api
         /// Get a ride at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>InlineResponse2003</returns>
-        InlineResponse2003 GetRide ();
+        InlineResponse2003 GetRide (int? id);
 
         /// <summary>
         /// Get ride by ID
@@ -138,8 +143,9 @@ namespace Org.OpenAPITools.Api
         /// Get a ride at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>ApiResponse of InlineResponse2003</returns>
-        ApiResponse<InlineResponse2003> GetRideWithHttpInfo ();
+        ApiResponse<InlineResponse2003> GetRideWithHttpInfo (int? id);
         /// <summary>
         /// List rides at Walt Disney World
         /// </summary>
@@ -207,8 +213,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteRideAsync ();
+        System.Threading.Tasks.Task DeleteRideAsync (int? id);
 
         /// <summary>
         /// Delete ride resource by ID
@@ -217,8 +224,9 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRideAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRideAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Edit a ride by ID
         /// </summary>
@@ -226,6 +234,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride in the resource collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -237,7 +246,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task EditRideAsync (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
+        System.Threading.Tasks.Task EditRideAsync (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
 
         /// <summary>
         /// Edit a ride by ID
@@ -246,6 +255,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride in the resource collection by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -257,7 +267,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> EditRideAsyncWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditRideAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null);
         /// <summary>
         /// Get ride by ID
         /// </summary>
@@ -265,8 +275,9 @@ namespace Org.OpenAPITools.Api
         /// Get a ride at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of InlineResponse2003</returns>
-        System.Threading.Tasks.Task<InlineResponse2003> GetRideAsync ();
+        System.Threading.Tasks.Task<InlineResponse2003> GetRideAsync (int? id);
 
         /// <summary>
         /// Get ride by ID
@@ -275,8 +286,9 @@ namespace Org.OpenAPITools.Api
         /// Get a ride at Walt Disney World by ID
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of ApiResponse (InlineResponse2003)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> GetRideAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> GetRideAsyncWithHttpInfo (int? id);
         /// <summary>
         /// List rides at Walt Disney World
         /// </summary>
@@ -579,19 +591,24 @@ namespace Org.OpenAPITools.Api
         /// Delete ride resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns></returns>
-        public void DeleteRide ()
+        public void DeleteRide (int? id)
         {
-             DeleteRideWithHttpInfo();
+             DeleteRideWithHttpInfo(id);
         }
 
         /// <summary>
         /// Delete ride resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteRideWithHttpInfo ()
+        public ApiResponse<Object> DeleteRideWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RidesApi->DeleteRide");
 
             var localVarPath = "/rides/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -613,6 +630,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -637,10 +655,11 @@ namespace Org.OpenAPITools.Api
         /// Delete ride resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteRideAsync ()
+        public async System.Threading.Tasks.Task DeleteRideAsync (int? id)
         {
-             await DeleteRideAsyncWithHttpInfo();
+             await DeleteRideAsyncWithHttpInfo(id);
 
         }
 
@@ -648,9 +667,13 @@ namespace Org.OpenAPITools.Api
         /// Delete ride resource by ID 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRideAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteRideAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RidesApi->DeleteRide");
 
             var localVarPath = "/rides/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -672,6 +695,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -696,6 +720,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride by ID Edit a ride in the resource collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -707,15 +732,16 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns></returns>
-        public void EditRide (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
+        public void EditRide (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
         {
-             EditRideWithHttpInfo(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
+             EditRideWithHttpInfo(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
         }
 
         /// <summary>
         /// Edit a ride by ID Edit a ride in the resource collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -727,8 +753,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> EditRideWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
+        public ApiResponse<Object> EditRideWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RidesApi->EditRide");
 
             var localVarPath = "/rides/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -751,6 +780,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (openingYear != null) localVarFormParams.Add("openingYear", this.Configuration.ApiClient.ParameterToString(openingYear)); // form parameter
@@ -785,6 +815,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride by ID Edit a ride in the resource collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -796,9 +827,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task EditRideAsync (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
+        public async System.Threading.Tasks.Task EditRideAsync (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
         {
-             await EditRideAsyncWithHttpInfo(name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
+             await EditRideAsyncWithHttpInfo(id, name, parkId, openingYear, rideType, rideVehicle, interactiveQueue, giftStoreFinish, singleRider, ridePhoto, heightRestriction);
 
         }
 
@@ -806,6 +837,7 @@ namespace Org.OpenAPITools.Api
         /// Edit a ride by ID Edit a ride in the resource collection by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <param name="name"> (optional)</param>
         /// <param name="parkId"> (optional)</param>
         /// <param name="openingYear"> (optional)</param>
@@ -817,8 +849,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="ridePhoto"> (optional)</param>
         /// <param name="heightRestriction"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditRideAsyncWithHttpInfo (string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditRideAsyncWithHttpInfo (int? id, string name = null, int? parkId = null, int? openingYear = null, string rideType = null, string rideVehicle = null, bool? interactiveQueue = null, bool? giftStoreFinish = null, int? singleRider = null, int? ridePhoto = null, int? heightRestriction = null)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RidesApi->EditRide");
 
             var localVarPath = "/rides/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -841,6 +876,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (name != null) localVarFormParams.Add("name", this.Configuration.ApiClient.ParameterToString(name)); // form parameter
             if (parkId != null) localVarFormParams.Add("parkId", this.Configuration.ApiClient.ParameterToString(parkId)); // form parameter
             if (openingYear != null) localVarFormParams.Add("openingYear", this.Configuration.ApiClient.ParameterToString(openingYear)); // form parameter
@@ -875,10 +911,11 @@ namespace Org.OpenAPITools.Api
         /// Get ride by ID Get a ride at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>InlineResponse2003</returns>
-        public InlineResponse2003 GetRide ()
+        public InlineResponse2003 GetRide (int? id)
         {
-             ApiResponse<InlineResponse2003> localVarResponse = GetRideWithHttpInfo();
+             ApiResponse<InlineResponse2003> localVarResponse = GetRideWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -886,9 +923,13 @@ namespace Org.OpenAPITools.Api
         /// Get ride by ID Get a ride at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>ApiResponse of InlineResponse2003</returns>
-        public ApiResponse< InlineResponse2003 > GetRideWithHttpInfo ()
+        public ApiResponse< InlineResponse2003 > GetRideWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RidesApi->GetRide");
 
             var localVarPath = "/rides/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -911,6 +952,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request
@@ -935,10 +977,11 @@ namespace Org.OpenAPITools.Api
         /// Get ride by ID Get a ride at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of InlineResponse2003</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2003> GetRideAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse2003> GetRideAsync (int? id)
         {
-             ApiResponse<InlineResponse2003> localVarResponse = await GetRideAsyncWithHttpInfo();
+             ApiResponse<InlineResponse2003> localVarResponse = await GetRideAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -947,9 +990,13 @@ namespace Org.OpenAPITools.Api
         /// Get ride by ID Get a ride at Walt Disney World by ID
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The ID of the ride</param>
         /// <returns>Task of ApiResponse (InlineResponse2003)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> GetRideAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> GetRideAsyncWithHttpInfo (int? id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling RidesApi->GetRide");
 
             var localVarPath = "/rides/{id}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -972,6 +1019,7 @@ namespace Org.OpenAPITools.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
 
             // make the HTTP request

@@ -121,7 +121,7 @@ api.createPark(opts, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://homestead.test/api*
+All URIs are relative to *https://disapi.co/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
