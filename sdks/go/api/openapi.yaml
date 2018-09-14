@@ -1,0 +1,1147 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@disapi.io
+    name: Developer Support
+    url: disapi.co/support
+  description: An api that encompasses the Walt Disney World Resort parks, rides, resorts, and restaurants. This API follows the OpenAPI standard.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: Walt Disney World API
+  version: 0.1.0
+servers:
+- description: Testing
+  url: http://homestead.test/api
+- url: https://disapi.co/api
+tags:
+- description: Endpoints for getting and working with the parks
+  name: parks
+- description: Endpoints for getting and working with the resorts
+  name: resorts
+- description: Endpoints for getting and working with the restaurants
+  name: restaurants
+- description: Endpoints for getting and working with the rides
+  name: rides
+paths:
+  /resorts:
+    get:
+      description: Get a list of resorts at Walt Disney World
+      operationId: getResorts
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resortsArray:
+                  $ref: '#/components/examples/ResortsResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: A list a resorts at Walt Disney World
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: List resorts at Walt Disney World
+      tags:
+      - resorts
+    post:
+      description: Create a new resort resource for the Walt Disney World Resort
+      operationId: createResort
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResortForm'
+      responses:
+        201:
+          description: Created'
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource could not be found
+      summary: Create a new resort resource
+      tags:
+      - resorts
+  /resorts/{id}:
+    delete:
+      operationId: deleteResort
+      responses:
+        204:
+          description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+      summary: Delete resort resource by ID
+      tags:
+      - resorts
+    get:
+      description: Get a specific resort resource by ID
+      operationId: getResort
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResortForm'
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resortArray:
+                  $ref: '#/components/examples/ResortResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+          description: A singular resort resource by ID
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource could not be found
+      summary: List a specific resort resource by ID
+      tags:
+      - resorts
+    put:
+      description: Find and edit a specific resort resource by its ID
+      operationId: editResort
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResortForm'
+      responses:
+        200:
+          description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource could not be found
+      summary: Edit a specific resort resource by ID
+      tags:
+      - resorts
+  /rides:
+    get:
+      description: |
+        Get a list of rides at all Walt Disney World Parks
+      operationId: getRides
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ridesArray:
+                  $ref: '#/components/examples/RidesResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+          description: A list a rides
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: The requested resources could not be found
+      summary: List rides at Walt Disney World
+      tags:
+      - rides
+    post:
+      description: Create a new ride resource for the Walt Disney World Resort
+      operationId: createRides
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RideForm'
+      responses:
+        201:
+          description: OK
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: Create a new ride resource
+      tags:
+      - rides
+  /rides/{id}:
+    delete:
+      operationId: deleteRide
+      responses:
+        204:
+          description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+      summary: Delete ride resource by ID
+      tags:
+      - rides
+    get:
+      description: Get a ride at Walt Disney World by ID
+      operationId: getRide
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ridesArray:
+                  $ref: '#/components/examples/RideResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+          description: A singluar ride resource by ID
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+      summary: Get ride by ID
+      tags:
+      - rides
+    put:
+      description: Edit a ride in the resource collection by ID
+      operationId: editRide
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RideForm'
+      responses:
+        201:
+          description: OK
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: Edit a ride by ID
+      tags:
+      - rides
+  /restaurants:
+    get:
+      description: Get a list of restaurants at all parks
+      operationId: getRestaurants
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                restaurantsArray:
+                  $ref: '#/components/examples/RestaurantsResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+          description: A list a restaurant resources
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: List restaurants at Walt Disney World
+      tags:
+      - restaurants
+    post:
+      description: Create a new restaurnat resource at Walt Disney World
+      operationId: createRestaurant
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RestaurantForm'
+      responses:
+        201:
+          description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: Create a new restaurant resource
+      tags:
+      - restaurants
+  /restaurants/{id}:
+    delete:
+      description: Remove a resource from the restaurants collection by ID
+      operationId: deleteRestaurant
+      responses:
+        204:
+          description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: The resource could not be found.
+      summary: Remove a resource from the restaurants collection
+      tags:
+      - restaurants
+    get:
+      description: Get a single restaurant resource by ID
+      operationId: getRestaurant
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                restaurantArray:
+                  $ref: '#/components/examples/RestaurantResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_5'
+          description: A singular restaurant resource
+        400:
+          description: The request you made could not be fulfilled right now
+        404:
+          description: Resource Not Found
+      summary: List a single restaurant resource from the collection by ID
+      tags:
+      - restaurants
+    put:
+      description: Edit a restaurant by ID
+      operationId: editRestaurant
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RestaurantForm'
+      responses:
+        201:
+          description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: Edit a single restaurant resource in the collection by ID
+      tags:
+      - restaurants
+  /parks:
+    get:
+      description: Get a list of all parks at Walt Disney World
+      operationId: getParks
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                parksArray:
+                  $ref: '#/components/examples/ParksResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_6'
+          description: A list a parks at Walt Disney World
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: List all parks at Walt Disney World
+      tags:
+      - parks
+    post:
+      description: Create a new park at Walt Disney World
+      operationId: createPark
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ParkForm'
+      responses:
+        201:
+          description: Created
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: Create a new park resource in the collection
+      tags:
+      - parks
+  /parks/{id}:
+    delete:
+      description: Remove a resource from the collection by ID
+      operationId: deletePark
+      responses:
+        204:
+          description: No Content
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+      summary: Remove a resource from the collection
+      tags:
+      - parks
+    get:
+      description: Get a park at Walt Disney World by ID
+      operationId: getPark
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                parkArray:
+                  $ref: '#/components/examples/ParkResponse'
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+          description: A park at Walt Disney World by ID
+        400:
+          description: The request you made could not be fulfilled right now.
+        404:
+          description: Resource Not Found
+      summary: List a park by ID
+      tags:
+      - parks
+    put:
+      description: Edit a park resource by an ID
+      operationId: editPark
+      responses:
+        200:
+          description: OK
+          headers:
+            location:
+              $ref: '#/components/headers/Location'
+        400:
+          description: The request you made could not be fulfilled right now.
+      summary: Edit a resource by ID
+      tags:
+      - parks
+components:
+  examples:
+    ResortsResponse:
+      summary: An example response of resorts resource at Walt Disney World
+      value:
+        data:
+        - id: 1
+          name: All-Star Movies Resort
+          parkId: 4
+        - id: 2
+          name: All-Star Music Resort
+          parkId: 4
+        - id: 3
+          name: All-Star Sports Resort
+          parkId: 4
+    ResortResponse:
+      summary: An example response of a resort resource at Walt Disney World
+      value:
+        data:
+        - id: 1
+          name: All-Star Movies Resort
+          parkId: 4
+          resortType: Value,
+          transportationOptions:
+          - Bus
+          category: Music,
+          numOfRooms: 1604,
+          quickServiceRestaurants: true,
+          tableServiceRestaurants: false,
+          giftShop: true,
+          arcade: true,
+          pool: true
+    RidesResponse:
+      summary: An example response of rides resources at Walt Disney World
+      value:
+        data:
+        - id: 1
+          name: Walt Disney World Railroad
+        - id: 2
+          name: Jungle Cruise
+        - id: 3
+          name: The Magic Carpets of Aladdin
+    RideResponse:
+      summary: An example response of a ride
+      value:
+        data:
+        - id: 1
+          name: Walt Disney World Railroad
+          yearOpened: 1971
+          rideType: Transport
+          rideVehicle: Train
+          interactiveQueue: false
+          ridePhoto: false
+          singleRider: false
+          heightRestriction: false
+        - id: 2
+          name: Aladdin's Magic Carpets
+          yearOpened: 1971
+          rideType: Transport
+          rideVehicle: Train
+          interactiveQueue: false
+          ridePhoto: false
+          singleRider: false
+          heightRestriction: false
+    RestaurantsResponse:
+      summary: An example response of restaurants at Walt Disney World
+      value:
+        data:
+        - id: 1
+          name: Aloha Isle
+        - id: 2
+          name: Auntie Gravity's Galactic Goodies
+        - id: 3
+          name: Be Our Guest Restaurant
+    RestaurantResponse:
+      summary: An example response of a restaurant
+      value:
+        data:
+        - id: 1
+          name: Aloha Isle,
+          quickService: true,
+          tableService: false,
+          alcohol: false,
+          diningPlan: true,
+          mealTypes:
+          - Snacks
+          foodTypes:
+          - Snacks
+          - Dole Whip
+        - id: 2
+          name: Auntie Gravity's Galactic Goodies
+          parkId: 1
+          quickService: true
+          tableService: false
+          alcohol: false
+          diningPlan: true
+          mealTypes:
+          - Snacks
+          foodTypes:
+          - Snacks
+          - Ice Cream
+    ParksResponse:
+      summary: An exmaple response of parks at Walt Disney World
+      value:
+        data:
+        - id: 1
+          name: Magic Kingdom
+        - id: 2
+          name: Epcot
+        - id: 3
+          name: Hollywood Studios
+        - id: 4
+          name: Animal Kingdom
+    ParkResponse:
+      summary: An exmaple response of a park at Walt Disney World
+      value:
+        data:
+        - id: 1
+          name: Magic Kingdom
+          centralAttraction: Cinderella's Castle
+          yearOpened: 1971
+          rideCount: 42
+          restaurantCount: 31
+          size: 107
+          resortCount: 6
+          fireworks: 1
+  headers:
+    Location:
+      description: The location of the newly created resource
+      explode: false
+      schema:
+        type: string
+      style: simple
+  links:
+    ParkRides:
+      description: |
+        Using the id of the park can, you can get its rides
+        by ising it as the `id` parameter in `GET /parks/{id}/rides`
+      operationId: getParkRides
+      parameters:
+        id: $response.body#/data/0/id
+    ParkRestaurants:
+      description: |
+        Using the id of the park can, you can get its restaurants
+        by using it as the `id` parameter in `GET /parks/{id}/restaurants`
+      operationId: getParkRestaurants
+      parameters:
+        id: $response.body#/data/0/id
+  parameters:
+    restaurantId:
+      description: The ID of the restaurant
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        format: int32
+        type: integer
+      style: simple
+    resortId:
+      description: The ID of the resort
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        format: int32
+        type: integer
+      style: simple
+    rideId:
+      description: The ID of the ride
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        format: int32
+        type: integer
+      style: simple
+    parkId:
+      description: The ID of the park
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        format: int32
+        type: integer
+      style: simple
+  responses:
+    RidesResponse:
+      content:
+        application/json:
+          examples:
+            ridesArray:
+              $ref: '#/components/examples/RidesResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_2'
+      description: A list a rides
+    RideResponse:
+      content:
+        application/json:
+          examples:
+            ridesArray:
+              $ref: '#/components/examples/RideResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_3'
+      description: A singluar ride resource by ID
+    ResortsResponse:
+      content:
+        application/json:
+          examples:
+            resortsArray:
+              $ref: '#/components/examples/ResortsResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200'
+      description: A list a resorts at Walt Disney World
+    ResortResponse:
+      content:
+        application/json:
+          examples:
+            resortArray:
+              $ref: '#/components/examples/ResortResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_1'
+      description: A singular resort resource by ID
+    RestaurantsResponse:
+      content:
+        application/json:
+          examples:
+            restaurantsArray:
+              $ref: '#/components/examples/RestaurantsResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_4'
+      description: A list a restaurant resources
+    RestaurantResponse:
+      content:
+        application/json:
+          examples:
+            restaurantArray:
+              $ref: '#/components/examples/RestaurantResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_5'
+      description: A singular restaurant resource
+    ParksResponse:
+      content:
+        application/json:
+          examples:
+            parksArray:
+              $ref: '#/components/examples/ParksResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_6'
+      description: A list a parks at Walt Disney World
+    ParkResponse:
+      content:
+        application/json:
+          examples:
+            parkArray:
+              $ref: '#/components/examples/ParkResponse'
+          schema:
+            $ref: '#/components/schemas/inline_response_200_7'
+      description: A park at Walt Disney World by ID
+  schemas:
+    Rides:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    Ride:
+      example:
+        openingYear: 6
+        rideVehicle: rideVehicle
+        rideType: rideType
+        giftStoreFinish: true
+        heightRestriction: 5
+        interactiveQueue: true
+        name: name
+        singleRider: 1
+        parkId: 0
+        ridePhoto: 5
+      properties:
+        name:
+          type: string
+        parkId:
+          format: int32
+          type: integer
+        openingYear:
+          format: int32
+          type: integer
+        rideType:
+          type: string
+        rideVehicle:
+          type: string
+        interactiveQueue:
+          type: boolean
+        giftStoreFinish:
+          type: boolean
+        singleRider:
+          format: int32
+          type: integer
+        ridePhoto:
+          format: int32
+          type: integer
+        heightRestriction:
+          format: int32
+          type: integer
+      type: object
+    RideForm:
+      properties:
+        name:
+          type: string
+        parkId:
+          format: int32
+          type: integer
+        openingYear:
+          format: int32
+          type: integer
+        rideType:
+          type: string
+        rideVehicle:
+          type: string
+        interactiveQueue:
+          type: boolean
+        giftStoreFinish:
+          type: boolean
+        singleRider:
+          format: int32
+          type: integer
+        ridePhoto:
+          format: int32
+          type: integer
+        heightRestriction:
+          format: int32
+          type: integer
+      required:
+      - name parkId openingYear rideType rideVehicle interactiveQueue giftShopFinish singleRider ridePhoto heightRestriction
+      type: object
+    Resorts:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    Resort:
+      example:
+        tableServiceRestaurants: true
+        name: name
+        pool: true
+        quickServiceRestaurants: true
+        giftShop: true
+        id: id
+        arcade: true
+        category: category
+        numOfRooms: 6
+        transportOptions:
+        - transportOptions
+        - transportOptions
+        parkId: 0
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        parkId:
+          format: int32
+          type: integer
+        transportOptions:
+          items:
+            type: string
+          type: array
+        category:
+          type: string
+        numOfRooms:
+          format: int32
+          type: integer
+        quickServiceRestaurants:
+          type: boolean
+        tableServiceRestaurants:
+          type: boolean
+        giftShop:
+          type: boolean
+        arcade:
+          type: boolean
+        pool:
+          type: boolean
+      type: object
+    ResortForm:
+      properties:
+        name:
+          type: string
+        parkId:
+          format: int32
+          type: integer
+        openingYear:
+          format: int32
+          type: integer
+        resortType:
+          type: string
+        transportOptions:
+          type: string
+        category:
+          type: string
+        numOfRooms:
+          format: int32
+          type: integer
+        quickServiceRestaurants:
+          type: boolean
+        tableServiceRestaurants:
+          type: boolean
+        giftShop:
+          type: boolean
+        arcade:
+          type: boolean
+        pool:
+          type: boolean
+      required:
+      - name parkId resortType transportOptions category numOfRooms quickServiceRestaurants tableServiceRestaurants giftShop arcade pool
+      type: object
+    Parks:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    Park:
+      example:
+        resortCount: 5
+        yearOpened: yearOpened
+        centralAttraction: centralAttraction
+        size: 1
+        rideCount: 0
+        name: name
+        restaurantCount: 6
+        id: id
+        fireworks: true
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        centralAttraction:
+          type: string
+        yearOpened:
+          type: string
+        rideCount:
+          format: int32
+          type: integer
+        restaurantCount:
+          format: int32
+          type: integer
+        size:
+          format: int32
+          type: integer
+        resortCount:
+          format: int32
+          type: integer
+        fireworks:
+          type: boolean
+      type: object
+    ParkForm:
+      properties:
+        name:
+          type: string
+        centralAttraction:
+          type: string
+        yearOpened:
+          format: int32
+          type: integer
+        rideCount:
+          format: int32
+          type: integer
+        restaurantCount:
+          format: int32
+          type: integer
+        resortCount:
+          format: int32
+          type: integer
+        size:
+          format: int32
+          type: integer
+        fireworks:
+          type: boolean
+      required:
+      - name centralAttraction yearOpened rideCount restaurantCount resortCount size fireworks
+      type: object
+    Restaurants:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    Restaurant:
+      example:
+        alcohol: true
+        tableService: true
+        diningPlan: true
+        name: name
+        quickService: true
+        id: id
+        mealTypes:
+        - mealTypes
+        - mealTypes
+        foodTypes:
+        - foodTypes
+        - foodTypes
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quickService:
+          type: boolean
+        tableService:
+          type: boolean
+        alcohol:
+          type: boolean
+        diningPlan:
+          type: boolean
+        mealTypes:
+          items:
+            type: string
+          type: array
+        foodTypes:
+          items:
+            type: string
+          type: array
+      type: object
+    RestaurantForm:
+      properties:
+        name:
+          type: string
+        parkId:
+          format: int32
+          type: integer
+        quickService:
+          type: boolean
+        tableService:
+          type: boolean
+        alcohol:
+          type: boolean
+        diningPlan:
+          type: boolean
+        mealTypes:
+          items:
+            type: string
+          type: array
+        foodTypes:
+          items:
+            type: string
+          type: array
+      required:
+      - name parkId quickService tableService alcohol diningPlan mealTypes foodTypes
+      type: object
+    inline_response_200:
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Resorts'
+          type: array
+      type: object
+    inline_response_200_1:
+      example:
+        data:
+        - tableServiceRestaurants: true
+          name: name
+          pool: true
+          quickServiceRestaurants: true
+          giftShop: true
+          id: id
+          arcade: true
+          category: category
+          numOfRooms: 6
+          transportOptions:
+          - transportOptions
+          - transportOptions
+          parkId: 0
+        - tableServiceRestaurants: true
+          name: name
+          pool: true
+          quickServiceRestaurants: true
+          giftShop: true
+          id: id
+          arcade: true
+          category: category
+          numOfRooms: 6
+          transportOptions:
+          - transportOptions
+          - transportOptions
+          parkId: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Resort'
+          type: array
+      type: object
+    inline_response_200_2:
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Rides'
+          minLength: 1
+          type: array
+      type: object
+    inline_response_200_3:
+      example:
+        data:
+        - openingYear: 6
+          rideVehicle: rideVehicle
+          rideType: rideType
+          giftStoreFinish: true
+          heightRestriction: 5
+          interactiveQueue: true
+          name: name
+          singleRider: 1
+          parkId: 0
+          ridePhoto: 5
+        - openingYear: 6
+          rideVehicle: rideVehicle
+          rideType: rideType
+          giftStoreFinish: true
+          heightRestriction: 5
+          interactiveQueue: true
+          name: name
+          singleRider: 1
+          parkId: 0
+          ridePhoto: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Ride'
+          minLength: 1
+          type: array
+      type: object
+    inline_response_200_4:
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Restaurants'
+          minLength: 1
+          type: array
+      type: object
+    inline_response_200_5:
+      example:
+        data:
+        - alcohol: true
+          tableService: true
+          diningPlan: true
+          name: name
+          quickService: true
+          id: id
+          mealTypes:
+          - mealTypes
+          - mealTypes
+          foodTypes:
+          - foodTypes
+          - foodTypes
+        - alcohol: true
+          tableService: true
+          diningPlan: true
+          name: name
+          quickService: true
+          id: id
+          mealTypes:
+          - mealTypes
+          - mealTypes
+          foodTypes:
+          - foodTypes
+          - foodTypes
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Restaurant'
+          minLength: 1
+          type: array
+      type: object
+    inline_response_200_6:
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Parks'
+          minLength: 1
+          type: array
+      type: object
+    inline_response_200_7:
+      example:
+        data:
+        - resortCount: 5
+          yearOpened: yearOpened
+          centralAttraction: centralAttraction
+          size: 1
+          rideCount: 0
+          name: name
+          restaurantCount: 6
+          id: id
+          fireworks: true
+        - resortCount: 5
+          yearOpened: yearOpened
+          centralAttraction: centralAttraction
+          size: 1
+          rideCount: 0
+          name: name
+          restaurantCount: 6
+          id: id
+          fireworks: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Park'
+          minLength: 1
+          type: array
+      type: object

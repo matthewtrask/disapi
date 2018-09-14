@@ -1,0 +1,21 @@
+{
+  "name": "walt_disney_world_api",
+  "version": "0.1.0",
+  "description": "An_api_that_encompasses_the_Walt_Disney_World_Resort_parks_rides_resorts_and_restaurants__This_API_follows_the_OpenAPI_standard_",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "superagent": "3.7.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}
