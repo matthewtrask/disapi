@@ -20,7 +20,7 @@ before_script:
   - php artisan migrate
   - php artisan db:seed
   - npm install sync-exec
-  - yarn install
+  - yarn add
 
 script:
 - vendor/bin/phpunit
