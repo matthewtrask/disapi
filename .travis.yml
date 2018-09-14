@@ -19,6 +19,7 @@ before_script:
   - php artisan migrate --env=testing
   - php artisan migrate
   - php artisan db:seed
+  - npm install sync-exec
   - yarn install
 
 script:
