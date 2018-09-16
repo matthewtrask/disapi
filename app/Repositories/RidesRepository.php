@@ -9,6 +9,7 @@ use App\Models\Ride;
 use App\Models\RideDetail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class RidesRepository
 {
@@ -87,8 +88,8 @@ class RidesRepository
         return $this->ride->delete();
     }
 
-    public function filterByParkId(int $parkId) : Collection
+    public function filterByParkId(int $parkId) : LengthAwarePaginator
     {
-        $this->ride->byParkId($parkId)->get();
+        return $this->ride->byParkId($parkId)->paginate();
     }
 }

@@ -11,10 +11,10 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://disapi.co/api
-  description: Production Server
-- url: http://localhost/api
-  description: Local Server
+  - url: https://disapi.co/api
+    escription: Production Server
+  - url: http://localhost/api
+    description: Local Server
 
 tags:
   - name: parks
@@ -36,6 +36,11 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/ResortsResponse'
+        301:
+          description: The resource has been moved
+          headers: 
+            location: 
+              $ref: '#/components/headers/Location'
         400:
           description: The request you made could not be fulfilled right now.
         418:
@@ -57,7 +62,7 @@ paths:
               $ref: '#/components/schemas/ResortForm'
       responses:
         201:
-          description: Created'
+          description: Created
           headers:
             location:
               $ref: '#/components/headers/Location'
@@ -321,6 +326,8 @@ paths:
           description: The request you made could not be fulfilled right now
         404:
           description: Resource Not Found
+        405:
+          description: Method Not Allowed
         418:
           description: I am a teapot.
         451:
@@ -775,7 +782,7 @@ components:
     Location:
       description: The location of the newly created resource
       schema:
-        type: string
+        type: string    
   responses:
     RidesResponse:
       description: A list a rides
