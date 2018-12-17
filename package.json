@@ -19,7 +19,8 @@
         "lodash": "^4.17.4",
         "popper.js": "^1.12",
         "speccy": "^0.8.0",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "vuex": "^3.0.1"
     },
     "dependencies": {
         "redoc": "^2.0.0-alpha.37",

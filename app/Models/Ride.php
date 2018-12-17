@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Model\Park;
+use App\Models\Media\RideImage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -71,5 +73,10 @@ class Ride extends Model
     public function scopeByParkId(Builder $query, int $parkId) : Builder
     {
         return $query->where('park_id', '=', $parkId);
+    }
+
+    public function images() : HasMany
+    {
+        return $this->hasMany(RideImage::class, 'ride_id', 'id');
     }
 }

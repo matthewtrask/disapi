@@ -36,7 +36,7 @@ class ParkDetail extends Model
         return (string) $this->id;
     }
 
-    public function getCentralAttraction() : string
+    public function getCentralAttraction() : ? string
     {
         return $this->central_attraction;
     }

@@ -12,7 +12,7 @@ info:
     url: https://opensource.org/licenses/MIT
 servers:
   - url: https://disapi.co/api
-    escription: Production Server
+    description: Production Server
   - url: http://localhost/api
     description: Local Server
 
@@ -242,9 +242,9 @@ paths:
         400:
           description: The request you made could not be fulfilled right now.
         418:
-           description: I am a teapot.
+          description: I am a teapot.
         451:
-           description: Censored for legal reasons.
+          description: Censored for legal reasons.
         500:
           description: The server could not handle the request right now.
     delete:
@@ -638,6 +638,8 @@ components:
           type: string
         name:
           type: string
+        image:
+          type: string
     Park:
       type: object
       properties:
@@ -1008,16 +1010,20 @@ components:
         data:
           - id: 1
             name: Magic Kingdom
+            image: https://s3.amazonaws.com/disney-api/magic-kingdom.jpg
           - id: 2
             name: Epcot
+            image: https://s3.amazonaws.com/disney-api/epcot.jpg
           - id: 3
             name: Hollywood Studios
+            image: https://s3.amazonaws.com/disney-api/hollywood-studios.jpg
           - id: 4
             name: Animal Kingdom
+            image: https://s3.amazonaws.com/disney-api/animal-kingdom.jpg
     ParkResponse:
       summary: An exmaple response of a park at Walt Disney World
       value:
-        data:
+          data:
           - id: 1
             name: Magic Kingdom
             centralAttraction: Cinderella's Castle

@@ -71,10 +71,10 @@ class ParksRepository
 
     public function destroy(int $id) : bool
     {
-        $this->park->find($id);
+        $park = $this->park->find($id);
 
-        $this->park->detail->delete();
+        $park->detail->delete();
 
-        return $this->park->delete();
+        return $park->delete();
     }
 }

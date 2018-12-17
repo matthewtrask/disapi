@@ -56,6 +56,9 @@ abstract class ApiController extends Controller
                     'url'  => 'https://opensource.org/licenses/MIT',
                 ],
             ],
+            'jsonapi' => [
+                'version' => '1.0'
+            ]
         ];
     }
 

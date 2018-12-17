@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Model\Park;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -60,5 +61,10 @@ class Restaurant extends Model
     public function getShowRelationship() : bool
     {
         return $this->showRelationship;
+    }
+
+    public function images() : HasMany
+    {
+        return $this->hasMany(RestaurantImage::class, 'restaurant_id', 'id');
     }
 }

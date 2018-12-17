@@ -36,13 +36,13 @@ class ResponseFactory
             ->setContent($object->getId());
     }
 
-    public function createResourceEditedResponse(Object $object, string $type) : Response
+    public function createResourceEditedResponse(Object $object, string $endpoint) : Response
     {
         return $this->createResponse()
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->header('accept-encoding', ConstantService::ACCEPT_CONTENT)
-            ->header('location', sprintf(ConstantService::API_ENDPOINT, $type, $object->getId()))
+            ->header('location', sprintf(ConstantService::API_ENDPOINT, $endpoint, $object->getId()))
             ->setDate(new DateTime())
             ->setStatusCode(200)
             ->setContent($object);

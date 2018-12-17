@@ -8,6 +8,7 @@ use App\Model\Park;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -23,6 +24,11 @@ class Resort extends Model
     public function park() : BelongsTo
     {
         return $this->belongsTo(Park::class, 'park_id', 'id');
+    }
+
+    public function images() : HasMany
+    {
+
     }
 
     public function getName() : string

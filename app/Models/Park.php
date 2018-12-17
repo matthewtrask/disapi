@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use App\Models\Media\ParkImage;
 use App\Models\Resort;
 use App\Models\Restaurant;
 use App\Models\Ride;
@@ -43,6 +44,11 @@ class Park extends Model
         return $this->hasMany(Resort::class, 'park_id', 'id');
     }
 
+    public function images() : HasMany
+    {
+        return $this->hasMany(ParkImage::class, 'park_id', 'id');
+    }
+
     public function getId() : string
     {
         return (string) $this->id;
@@ -51,6 +57,21 @@ class Park extends Model
     public function getName() : string
     {
         return $this->name;
+    }
+
+    public function setName(string $name) : void
+    {
+        $this->name = $name;
+    }
+
+    public function getDescription() : string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description) : void
+    {
+        $this->description = $description;
     }
 
     public function setShowRelationship(bool $showRelationships) : void
@@ -63,8 +84,13 @@ class Park extends Model
         return $this->showRelationship;
     }
 
-    public function setName(string $name) : void
+    public function getPrimaryImage() : ParkImage
     {
-        $this->name = $name;
+        return $this->images->first();
+    }
+
+    public function getPrimaryImageUrl() : string
+    {
+        return $this->getPrimaryImage()->getUrl();
     }
 }

@@ -46,13 +46,13 @@ class ConstantService
 
     public const API_ENDPOINT = 'https://disapi.co/api/%s/%s';
 
-    public const PARKS_ENDPOINT = '/api/parks';
+    public const PARKS_ENDPOINT = 'parks';
 
-    public const RIDES_ENDPONT = '/api/rides';
+    public const RIDES_ENDPONT = 'rides';
 
-    public const RESTAURANTS_ENDPOINT = '/api/restaurants';
+    public const RESTAURANTS_ENDPOINT = 'restaurants';
 
-    public const RESORTS_ENDPONT = '/api/resorts';
+    public const RESORTS_ENDPONT = 'resorts';
 
     public const GET_ACTION = 'get';
 
