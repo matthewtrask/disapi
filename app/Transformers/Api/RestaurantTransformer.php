@@ -26,11 +26,6 @@ class RestaurantTransformer extends TransformerAbstract
             'diningPlan'    => $restaurant->detail->getDiningPlan(),
             'mealTypes'     => $restaurant->detail->getMealTypes(),
             'foodTypes'     => $restaurant->detail->getFoodTypes(),
-            'links' => [
-                'rel' => 'self',
-                'href' => '/api/restaurants/{id}',
-                'self' => '/api/restaurants/' . $restaurant->getId(),
-            ],
         ];
     }
 

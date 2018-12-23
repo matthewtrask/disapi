@@ -56,8 +56,8 @@ class RidesController extends ApiController
 
         $manager = $this->createManager();
 
-        if ($request->query('includes') === 'park') {
-            $manager->parseIncludes('park');
+        if ($request->query('includes')) {
+            $manager->parseIncludes($request->query('includes'));
         }
 
         $resource = new Item($ride, new RideTransformer(), 'Rides');

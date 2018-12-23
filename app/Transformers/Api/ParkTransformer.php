@@ -12,7 +12,12 @@ use League\Fractal\TransformerAbstract;
 class ParkTransformer extends TransformerAbstract
 {
     /** @var object[] */
-    protected $availableIncludes = ['rides'];
+    protected $availableIncludes = [
+        'rides',
+        'restaurants',
+        'images',
+        'resorts',
+    ];
 
     /** @return Item[] */
     public function transform(Park $park) : array
@@ -20,6 +25,7 @@ class ParkTransformer extends TransformerAbstract
         return [
             'id'                => $park->getId(),
             'name'              => $park->getName(),
+            'description'       => $park->getDescription(),
             'centralAttraction' => $park->detail->getCentralAttraction(),
             'yearOpened'        => $park->detail->getOpeningYear(),
             'rideCount'         => $park->detail->getRideCount(),
@@ -27,11 +33,6 @@ class ParkTransformer extends TransformerAbstract
             'size'              => $park->detail->getSize(),
             'resortCount'       => $park->detail->getResortCount(),
             'fireworks'         => $park->detail->getFireworks(),
-            'links' => [
-                'rel' => 'self',
-                'href' => '/api/parks/{id}',
-                'self' => '/api/parks/' . $park->getId(),
-            ],
         ];
     }
 
@@ -42,5 +43,32 @@ class ParkTransformer extends TransformerAbstract
         }
 
         return $this->collection($park->rides, new RidesTransformer(), 'rides');
+    }
+
+    protected function includeImages(Park $park) : ResourceInterface
+    {
+        if (! $park->images) {
+            return $this->null();
+        }
+
+        return $this->collection($park->images, new ImageTransformer(), 'images');
+    }
+
+    protected function includeRestaurants(Park $park) : ResourceInterface
+    {
+        if (! $park->restaurants) {
+            return $this->null();
+        }
+
+        return $this->collection($park->restaurants, new RestaurantTransformer(), 'restaurants');
+    }
+
+    public function includeResorts(Park $park) : ResourceInterface
+    {
+        if (! $park->resorts) {
+            return $this->null();
+        }
+
+        return $this->collection($park->resorts, new ResortTransformer(), 'resorts');
     }
 }

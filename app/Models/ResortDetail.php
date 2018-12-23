@@ -66,26 +66,26 @@ class ResortDetail extends Model
 
     public function getQuickServiceRestaurants() : bool
     {
-        return $this->quick_service_restaurants;
+        return (bool) $this->quick_service_restaurants;
     }
 
     public function getTableServiceRestaurants() : bool
     {
-        return $this->table_service_restaurants;
+        return (bool) $this->table_service_restaurants;
     }
 
     public function getGiftShop() : bool
     {
-        return $this->gift_shop;
+        return (bool) $this->gift_shop;
     }
 
     public function getArcade() : bool
     {
-        return $this->arcade;
+        return (bool) $this->arcade;
     }
 
     public function getPool() : bool
     {
-        return $this->pool;
+        return (bool) $this->pool;
     }
 }

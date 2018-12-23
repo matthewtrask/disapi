@@ -6,12 +6,16 @@ namespace App\Transformers\Api;
 
 use App\Models\Ride;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\TransformerAbstract;
 
 class RideTransformer extends TransformerAbstract
 {
     /** @var object[] */
-    protected $availableIncludes = ['park'];
+    protected $availableIncludes = [
+        'park',
+        'images'
+    ];
 
     /** @return Collection[] */
     public function transform(Ride $ride) : array
@@ -28,21 +32,24 @@ class RideTransformer extends TransformerAbstract
             'singleRider'       => $ride->detail->getSingleRider(),
             'ridePhoto'         => $ride->detail->getRidePhoto(),
             'heightRestriction' => $ride->detail->getHeightRestriction(),
-            'links' => [
-                'rel' => 'self',
-                'href' => '/api/rides/{id}',
-                'self' => '/api/rides/' . $ride->getId(),
-                'park' => '/api/parks/' . $ride->getParkId(),
-            ],
         ];
     }
 
-    public function includePark(Ride $ride) : object
+    public function includePark(Ride $ride) : ResourceInterface
     {
         if (! $ride->park) {
             return $this->null();
         }
 
         return $this->item($ride->park, new ParkTransformer(), 'park');
+    }
+
+    protected function includeImages(Ride $ride) : ResourceInterface
+    {
+        if (! $ride->images) {
+            return $this->null();
+        }
+
+        return $this->collection($ride->images, new ImageTransformer(), 'images');
     }
 }

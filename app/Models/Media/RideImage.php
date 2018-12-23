@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RideImage extends Image
 {
+    private const AWS_URL = 'rides/';
+
     public function getId() : int
     {
         return $this->id;
@@ -17,12 +19,12 @@ class RideImage extends Image
 
     public function getParkId(): int
     {
-        // TODO: Implement getParkId() method.
+        return $this->park_id;
     }
 
     public function setParkId(int $parkId): void
     {
-        // TODO: Implement setParkId() method.
+        $this->park_id = $parkId;
     }
 
     public function getRideId() : int
@@ -37,7 +39,7 @@ class RideImage extends Image
 
     public function getUrl(): string
     {
-        return $this->url;
+        return self::AWS_URL . $this->url;
     }
 
     public function setUrl(string $url): void

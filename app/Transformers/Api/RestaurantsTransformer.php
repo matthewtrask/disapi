@@ -20,11 +20,6 @@ class RestaurantsTransformer extends TransformerAbstract
             'id'        => $restaurant->getId(),
             'name'      => $restaurant->getName(),
             'parkId'    => $restaurant->getParkId(),
-            'links'     => [
-                'rel'  => 'self',
-                'href' => '/api/restaurants',
-                'self' => '/api/restaurants/' . $restaurant->getId(),
-            ],
         ];
     }
 }

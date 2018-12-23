@@ -20,12 +20,6 @@ class RidesTransformer extends TransformerAbstract
             'id'        => $ride->getId(),
             'name'      => $ride->getName(),
             'parkId'    => $ride->getParkId(),
-            'links'     => [
-                'rel'  => 'self',
-                'href' => '/api/rides/{id}',
-                'self' => '/api/rides/' . $ride->getId(),
-                'park' => '/api/parks/' . $ride->getParkId(),
-            ],
         ];
     }
 }

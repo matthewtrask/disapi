@@ -19,11 +19,6 @@ class ResortsTransformer extends TransformerAbstract
         return [
             'id'     => $resort->getId(),
             'name'   => $resort->getName(),
-            'links'  => [
-                'rel'  => 'self',
-                'href' => '/api/resorts',
-                'self' => '/api/resorts/' . $resort->getId(),
-            ],
         ];
     }
 

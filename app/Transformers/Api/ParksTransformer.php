@@ -13,6 +13,8 @@ class ParksTransformer extends TransformerAbstract
 {
     private const AWS_URL = 'https://s3.amazonaws.com/disney-api/';
 
+    private const AWS_DIR = 'parks/';
+
     /** @var object[] */
     protected $availableIncludes = [
         'details',
@@ -28,11 +30,7 @@ class ParksTransformer extends TransformerAbstract
             'name'          => $park->getName(),
             'description'   => $park->getDescription(),
             'image'         => self::AWS_URL . $park->getPrimaryImageUrl(),
-            'links'  => [
-                'rel'  => 'self',
-                'href' => '/api/parks',
-                'self' => '/api/parks/' . $park->getId(),
-            ],
+
         ];
     }
 

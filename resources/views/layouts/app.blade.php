@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script>
@@ -29,18 +29,18 @@
     <div id="app">
         <nav class="bg-white px-8 pt-2 shadow-md">
             <div class="-mb-px flex justify-center">
-                <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
+                <router-link :to="{ path: 'rides' }" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
                     Rides
-                </a>
-                <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
+                </router-link>
+                <router-link :to="{ path: 'restaurants' }" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8">
                     Restaurants
-                </a>
-                <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
+                </router-link>
+                <router-link :to="{ path: 'parks' }" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
                     Parks
-                </a>
-                <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3" href="#">
+                </router-link>
+                <router-link :to="{ path: 'resorts' }" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3" href="#">
                     Resorts
-                </a>
+                </router-link>
             </div>
         </nav>
         <main class="py-4">
