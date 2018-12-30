@@ -14,7 +14,7 @@ abstract class Image extends Model
 
     public abstract function setParkId(int $parkId) : void;
 
-    public abstract function getUrl() : string;
+    public abstract function getUrl() : ? string;
 
     public abstract function setUrl(string $url) : void;
 

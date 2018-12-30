@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace App\Transformers\Api;
 
 use App\Model\Park;
+use App\Services\ConstantService;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
 class ParksTransformer extends TransformerAbstract
 {
-    private const AWS_URL = 'https://s3.amazonaws.com/disney-api/';
-
-    private const AWS_DIR = 'parks/';
-
     /** @var object[] */
     protected $availableIncludes = [
         'details',
@@ -29,7 +26,8 @@ class ParksTransformer extends TransformerAbstract
             'id'            => $park->getId(),
             'name'          => $park->getName(),
             'description'   => $park->getDescription(),
-            'image'         => self::AWS_URL . $park->getPrimaryImageUrl(),
+            'image'         => ConstantService::AWS_URL . $park->getPrimaryImageUrl(),
+            'slug'          => $park->getSlug(),
 
         ];
     }

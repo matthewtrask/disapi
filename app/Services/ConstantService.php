@@ -61,4 +61,8 @@ class ConstantService
     public const PUT_ACTION = 'put';
 
     public const DELETE_ACTION = 'delete';
+
+    public const AWS_URL = 'https://s3.amazonaws.com/disney-api/';
+
+    public const USER_TYPE = 'users';
 }

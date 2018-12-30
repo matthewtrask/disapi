@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ResortImage extends Image
 {
+    private const AWS_DIR = 'resorts/';
+
     public function getId(): int
     {
         return $this->id;
@@ -32,7 +34,7 @@ class ResortImage extends Image
 
     public function getUrl(): string
     {
-        return $this->url;
+        return self::AWS_DIR . $this->url;
     }
 
     public function setUrl(string $url): void

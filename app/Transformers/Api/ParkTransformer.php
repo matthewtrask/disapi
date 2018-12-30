@@ -33,6 +33,8 @@ class ParkTransformer extends TransformerAbstract
             'size'              => $park->detail->getSize(),
             'resortCount'       => $park->detail->getResortCount(),
             'fireworks'         => $park->detail->getFireworks(),
+            'rideDescription'   => $park->detail->getRideDescription(),
+            'resortDescription' => $park->detail->getResortDescription(),
         ];
     }
 
@@ -60,7 +62,7 @@ class ParkTransformer extends TransformerAbstract
             return $this->null();
         }
 
-        return $this->collection($park->restaurants, new RestaurantTransformer(), 'restaurants');
+        return $this->collection($park->restaurants, new RestaurantsTransformer(), 'restaurants');
     }
 
     public function includeResorts(Park $park) : ResourceInterface
@@ -69,6 +71,6 @@ class ParkTransformer extends TransformerAbstract
             return $this->null();
         }
 
-        return $this->collection($park->resorts, new ResortTransformer(), 'resorts');
+        return $this->collection($park->resorts, new ResortsTransformer(), 'resorts');
     }
 }

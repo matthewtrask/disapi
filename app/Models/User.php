@@ -7,10 +7,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes;
 
     /** @var string[] */
     protected $fillable = [
@@ -26,6 +27,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function getId() : int
+    {
+        return $this->id;
+    }
+
     public function setEmail(string $email) : void
     {
         $this->email = $email;
@@ -39,5 +45,20 @@ class User extends Authenticatable
     public function setToken(string $token) : void
     {
         $this->token = $token;
+    }
+
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
+
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
     }
 }

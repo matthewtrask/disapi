@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,9 +11,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/user', function () {
+    // authenticated user. Use User::find() to get the user from db by id
+    return auth()->user();
+})->middleware('auth:api');
 
 Route::get('parks', ['uses' => 'Api\ParksController@index']);
 Route::get('parks/{id}', ['uses' => 'Api\ParksController@fetch'])->where('id', '[0-9]+');
@@ -47,3 +46,4 @@ Route::get('parks/{id}/rides', ['uses' => 'Api\ParkRidesController@fetch'])->whe
 Route::get('parks/{id}/restaurants', ['uses' => 'Api\ParkRestaurantsController@fetch'])->where('id', '[0-9]+');
 
 Route::post('users', ['uses' => 'Api\UsersController@create']);
+Route::post('users/register', ['uses' => 'Api\Auth\RegisterController@create']);

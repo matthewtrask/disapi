@@ -25,7 +25,7 @@ class UsersController extends ApiController
 
         $token = md5($email);
 
-        $this->usersRepository->create($email, $token);
+        $this->usersRepository->createUserToken($email, $token);
 
         return $this->userCreatedResponse($token);
     }

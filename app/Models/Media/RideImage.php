@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RideImage extends Image
 {
-    private const AWS_URL = 'rides/';
+    private const AWS_DIR = 'rides/';
+
+    protected $table = 'ride_images';
 
     public function getId() : int
     {
@@ -37,17 +39,17 @@ class RideImage extends Image
         $this->ride_id = $rideId;
     }
 
-    public function getUrl(): string
+    public function getUrl() : string
     {
-        return self::AWS_URL . $this->url;
+        return self::AWS_DIR . $this->url;
     }
 
-    public function setUrl(string $url): void
+    public function setUrl(string $url) : void
     {
         $this->url = $url;
     }
 
-    public function getTags(): array
+    public function getTags() : array
     {
         return explode(',', $this->tags);
     }

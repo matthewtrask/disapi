@@ -29,11 +29,6 @@ class ResortTransformer extends TransformerAbstract
             'giftShop'                  => $resort->detail->getGiftShop(),
             'arcade'                    => $resort->detail->getArcade(),
             'pool'                      => $resort->detail->getPool(),
-            'links'  => [
-                'rel'  => 'self',
-                'href' => '/api/resorts',
-                'self' => '/api/resorts/' . $resort->getId(),
-            ],
         ];
     }
 

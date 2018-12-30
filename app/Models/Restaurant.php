@@ -43,7 +43,7 @@ class Restaurant extends Model
         $this->name = $name;
     }
 
-    public function getParkId() : string
+    public function getParkId() : ? string
     {
         return (string) $this->park_id;
     }

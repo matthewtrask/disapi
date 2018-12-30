@@ -5,41 +5,34 @@
     <div>
         <div class="pt-4">
             <div v-if="park">
+                <div>
+                    <div class="bg-grey-lightest border border-grey-light text-grey-dark px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">
+                            <p class="italic"><small><router-link :to="{name: 'home' }">Home</router-link> | <router-link :to="{ name: 'parks' }">Parks</router-link></small></p>
+                        </span>
+                    </div>
+                </div>
                 <div class="flex">
                     <div class="flex-1 text-grey-darker px-4 py-2 m-2">
-                        <div>
-                            <p><small>Home | Parks</small></p>
-                        </div>
-                        <div>
-                            <h2 class="tracking-wide font-sans font-light text-3xl pt-2 pb-4"> {{ park.attributes.name }}</h2>
-                            <p class="tracking-wide font-sans font-light float-right">{{ park.attributes.description }}</p>
-                        </div>
-                        <div>
-                            <ul class="list-reset pt-24">
-                                <li class="pb-2">
-                                    <p class="tracking-wide font-sans font-light"><i class="fa fa-calendar pr-2 w-6" aria-hidden="true"></i> Year Opened: {{ park.attributes.yearOpened }}</p>
-                                    </li>
-                                <li class="pb-2">
-                                    <p class="tracking-wide font-sans font-light"><i class="fa fa-map-o pr-2 w-6" aria-hidden="true"></i> Park Size: {{ park.attributes.size }} acres</p>
-                                    </li>
-                                <li class="pb-2">
-                                    <p class="tracking-wide font-sans font-light"><i class="fa fa-rocket pr-2 w-6" aria-hidden="true"></i> Ride Count: {{ park.attributes.rideCount }}</p>
-                                    </li>
-                                <li class="pb-2">
-                                    <p class="tracking-wide font-sans font-light"><i class="fa fa-bed pr-2 w-6" aria-hidden="true"></i> Resort Count: {{ park.attributes.resortCount }}</p>
-                                </li>
-                                <li class="pb-2">
-                                    <p class="tracking-wide font-sans font-light"><i class="fa fa-cutlery pr-2 w-6" aria-hidden="true"></i> Resort Count: {{ park.attributes.restaurantCount }}</p>
-                                </li>
-                                <li>
-                                    <p class="tracking-wide font-sans font-light"><i class="fa fa-bolt pr-2 w-6" aria-hidden="true"></i> Fireworks: {{ park.attributes.fireworks ? 'Yes' : 'No' }}</p>
-                                </li>
-                            </ul>
-                        </div>
+                        <parks-partial :park="park"></parks-partial>
                     </div>
                     <div class="flex-1 text-grey-darker text-center px-4 py-2 m-2">
                         <div class="shadow-md">
                             <img :src="images[0].attributes.url" alt="">
+                        </div>
+                    </div>
+                </div>
+                <rides-partial :selectedRides="selectedRides" :park="park"></rides-partial>
+                <div v-if="resorts.length > 1">
+
+                    <resorts-partial :selectedResorts="selectedResorts" :park="park"></resorts-partial>
+                </div>
+                <div v-else>
+                    <div class="flex flex-wrap">
+                        <div class="flex-1 text-grey-darker px-4 py-2 m-2">
+                            <h2 class="tracking-wide font-sans font-light text-3xl pt-2 pb-4"> Resorts</h2>
+                            <p class="tracking-wide font-sans font-light text-1xl pt-2 pb-4">{{ park.attributes.name }} does not have any resorts linked to it currently, but we know Disney is always planning something awesome!</p>
+                            <p class="tracking-wide font-sans font-light text-1xl pt-2 pb-4">To explore all the resorts Walt Disney World has, <router-link :to="{ name: 'resorts' }">click here</router-link></p>
                         </div>
                     </div>
                 </div>
@@ -49,7 +42,11 @@
 </template>
 <script>
   import axios from 'axios';
-  import { Park } from '../js/data/Park';
+  import { shuffle, take } from 'lodash';
+  import ParksPartial from './Partials/ParksPartial.vue';
+  import RidesPartial from './Partials/RidesPartial.vue';
+  import ResortsPartial from './Partials/ResortsPartial.vue';
+  import RestaurantsPartial from './Partials/RestaurantsPartial.vue';
 
   export default {
     created() {
@@ -67,6 +64,20 @@
         resorts: [],
         restaurants: [],
       };
+    },
+
+    computed: {
+      selectedRides() {
+        const rides = shuffle(this.rides);
+
+        return take(rides, 4)
+      },
+
+      selectedResorts() {
+        const resorts = shuffle(this.resorts);
+
+        return take(resorts, 4);
+      }
     },
 
     methods: {
@@ -96,6 +107,11 @@
       }
     },
 
-    components: {},
+    components: {
+      ParksPartial,
+      RidesPartial,
+      ResortsPartial,
+      RestaurantsPartial,
+    },
   };
 </script>

@@ -24,7 +24,7 @@ class ResponseFactory
             ->setContent($data);
     }
 
-    public function createResourceCreatedResponse(Object $object, string $type) : Response
+    public function createResourceCreatedResponse(object $object, string $type) : Response
     {
         return $this->createResponse()
             ->header('accept', ConstantService::ACCEPT_TYPE)
@@ -74,6 +74,21 @@ class ResponseFactory
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->setDate(new DateTime())
             ->setContent($token);
+    }
+
+    public function createResourceNotCreatedResponse(string $resource) : Response
+    {
+        return $this->createResponse()
+            ->setStatusCode(400)
+            ->header('accept', ConstantService::ACCEPT_TYPE)
+            ->header('content-type', ConstantService::CONTENT_TYPE)
+            ->setDate(new DateTime())
+            ->setContent(
+                sprintf(
+                    'The resource %s could not be created.',
+                    $resource
+                )
+            );
     }
 
     private function createResponse() : Response

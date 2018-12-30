@@ -71,6 +71,26 @@ class ParkDetail extends Model
         return $this->fireworks;
     }
 
+    public function setRideDescription(string $description) : void
+    {
+        $this->ride_description = $description;
+    }
+
+    public function getRideDescription() : string
+    {
+        return $this->ride_description;
+    }
+
+    public function setResortDescription(string $description) : void
+    {
+        $this->resort_description = $description;
+    }
+
+    public function getResortDescription() : string
+    {
+        return $this->resort_description;
+    }
+
     public function scopeByParkId(Builder $query, int $id) : Builder
     {
         return $query->where(self::PARK_ID, '=', $id);

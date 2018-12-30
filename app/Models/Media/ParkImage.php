@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ParkImage extends Image
 {
-    private const AWS_URL = 'parks/';
+    private const AWS_DIR = 'parks/';
 
     public function getId(): int
     {
@@ -26,7 +26,7 @@ class ParkImage extends Image
 
     public function getUrl() : string
     {
-        return self::AWS_URL . $this->url;
+        return self::AWS_DIR . $this->url;
     }
 
     public function setUrl(string $url): void

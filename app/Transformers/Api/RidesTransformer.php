@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Transformers\Api;
 
 use App\Models\Ride;
+use App\Services\ConstantService;
 use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
@@ -16,10 +17,11 @@ class RidesTransformer extends TransformerAbstract
     public function transform(Ride $ride) : array
     {
         return [
-            'type'      => self::RIDE_TYPE,
-            'id'        => $ride->getId(),
-            'name'      => $ride->getName(),
-            'parkId'    => $ride->getParkId(),
+            'type'          => self::RIDE_TYPE,
+            'id'            => $ride->getId(),
+            'name'          => $ride->getName(),
+            'parkId'        => $ride->getParkId(),
+            'primaryImage'  => ConstantService::AWS_URL . $ride->getPrimaryImageUrl(),
         ];
     }
 }

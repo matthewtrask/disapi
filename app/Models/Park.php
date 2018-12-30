@@ -93,4 +93,14 @@ class Park extends Model
     {
         return $this->getPrimaryImage()->getUrl();
     }
+
+    public function getSlug() : string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug) : void
+    {
+        $this->slug = $slug;
+    }
 }

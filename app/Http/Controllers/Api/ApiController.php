@@ -88,6 +88,11 @@ abstract class ApiController extends Controller
         return $this->responseFactory->createUserCreatedResponse($token);
     }
 
+    protected function resourceNotCreatedResponse(string $resource) : Response
+    {
+        return $this->responseFactory->createResourceNotCreatedResponse($resource);
+    }
+
     protected function logAction(string $token, string $endpoint, string $action, bool $success, string $error = null) : void
     {
         event(new UserHitEndpoint(
