@@ -48,6 +48,7 @@
     },
 
     mounted() {
+      this.parkSlug = this.park.attributes.slug;
       this.updateUrl();
     },
 
@@ -81,7 +82,6 @@
       getPark() {
         axios.get(`/api/parks/${this.$route.params.id}?includes=images,rides,restaurants,resorts`).then(response => {
           this.park = response.data.data;
-          this.parkSlug = response.data.data.attributes.slug;
           response.data.included.map(res => {
             if (res.type === 'rides') {
               this.rides.push(res);

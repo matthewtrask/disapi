@@ -31,6 +31,7 @@ script:
 - npm run lint
 - vendor/bin/phpcdp app
 - vendor/bin/phpmd app text cleancode codesize unusedcode naming
+- vendor/bin/cigar -u http://localhost
 
 services:
   - mysql
