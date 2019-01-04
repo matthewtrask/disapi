@@ -1,42 +1,45 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "speccy": "./node_modules/.bin/speccy"
-    },
-    "devDependencies": {
-        "axios": "^0.18",
-        "bootstrap": "^4.0.0",
-        "cross-env": "^5.1",
-        "eslint": "^5.11.1",
-        "eslint-config-airbnb": "17.1.0",
-        "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-jsx-a11y": "^6.1.1",
-        "eslint-plugin-react": "^7.11.0",
-        "jest": "^23.6.0",
-        "jquery": "^3.2",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.4",
-        "popper.js": "^1.12",
-        "prettier": "^1.15.3",
-        "speccy": "^0.8.0",
-        "vue": "^2.5.7",
-        "vuex": "^3.0.1"
-    },
-    "dependencies": {
-        "add": "^2.0.6",
-        "redoc": "^2.0.0-alpha.37",
-        "tailwindcss": "^0.6.4",
-        "vue-meta": "^1.5.8",
-        "vue-resource": "^1.5.1",
-        "vue-router": "^3.0.1",
-        "yarn": "^1.12.3"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "speccy": "./node_modules/.bin/speccy",
+    "lint": "./node_modules/.bin/eslint resources/assets/js resources/assets/templates",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "axios": "^0.18",
+    "bootstrap": "^4.0.0",
+    "cross-env": "^5.1",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "jest": "^23.6.0",
+    "jquery": "^3.2",
+    "laravel-mix": "^2.0",
+    "lodash": "^4.17.4",
+    "popper.js": "^1.12",
+    "prettier": "^1.15.3",
+    "speccy": "^0.8.0",
+    "vue": "^2.5.7",
+    "vuex": "^3.0.1"
+  },
+  "dependencies": {
+    "add": "^2.0.6",
+    "redoc": "^2.0.0-alpha.37",
+    "tailwindcss": "^0.6.4",
+    "vue-meta": "^1.5.8",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vue-wysiwyg": "^1.7.2",
+    "yarn": "^1.12.3"
+  }
 }

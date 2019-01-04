@@ -32,7 +32,7 @@ class RidesController extends ApiController
     public function index() : Response
     {
         $rides      = $this->ridesRepository->get();
-        $collection = $rides->getCollection();
+        $collection = $rides->getCollection()->random(10);
         $manager    = $this->createManager();
 
         $resources = new Collection($collection, new RidesTransformer(), 'Rides');

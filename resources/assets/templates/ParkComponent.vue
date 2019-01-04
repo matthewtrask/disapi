@@ -5,16 +5,10 @@
     <div>
         <div class="pt-4">
             <div v-if="park">
-                <div>
-                    <div class="bg-grey-lightest border border-grey-light text-grey-dark px-4 py-3 rounded relative" role="alert">
-                        <span class="block sm:inline">
-                            <p class="italic"><small><router-link :to="{name: 'home' }">Home</router-link> | <router-link :to="{ name: 'parks' }">Parks</router-link></small></p>
-                        </span>
-                    </div>
-                </div>
+                <breadcrumb-component :previousPage="previousPage"></breadcrumb-component>
                 <div class="flex">
                     <div class="flex-1 text-grey-darker px-4 py-2 m-2">
-                        <parks-partial :park="park"></parks-partial>
+                        <park-partial :park="park"></park-partial>
                     </div>
                     <div class="flex-1 text-grey-darker text-center px-4 py-2 m-2">
                         <div class="shadow-md">
@@ -24,7 +18,6 @@
                 </div>
                 <rides-partial :selectedRides="selectedRides" :park="park"></rides-partial>
                 <div v-if="resorts.length > 1">
-
                     <resorts-partial :selectedResorts="selectedResorts" :park="park"></resorts-partial>
                 </div>
                 <div v-else>
@@ -43,17 +36,19 @@
 <script>
   import axios from 'axios';
   import { shuffle, take } from 'lodash';
-  import ParksPartial from './Partials/ParksPartial.vue';
-  import RidesPartial from './Partials/RidesPartial.vue';
-  import ResortsPartial from './Partials/ResortsPartial.vue';
-  import RestaurantsPartial from './Partials/RestaurantsPartial.vue';
+  import ParkPartial from './Partials/Parks/ParkPartial.vue';
+  import RidesPartial from './Partials/Rides/RidesPartial.vue';
+  import ResortsPartial from './Partials/Resorts/ResortsPartial.vue';
+  import RestaurantsPartial from './Partials/Restaurants/RestaurantsPartial.vue';
+  import BreadcrumbComponent from './Components/Breadcrumb.vue';
 
   export default {
     created() {
+      this.getPark();
     },
 
     mounted() {
-      this.getPark();
+      this.updateUrl();
     },
 
     data() {
@@ -63,6 +58,8 @@
         rides: [],
         resorts: [],
         restaurants: [],
+        previousPage: 'Parks',
+        parkSlug: '',
       };
     },
 
@@ -84,6 +81,7 @@
       getPark() {
         axios.get(`/api/parks/${this.$route.params.id}?includes=images,rides,restaurants,resorts`).then(response => {
           this.park = response.data.data;
+          this.parkSlug = response.data.data.attributes.slug;
           response.data.included.map(res => {
             if (res.type === 'rides') {
               this.rides.push(res);
@@ -104,14 +102,19 @@
         }).catch(err => {
           console.log(err);
         });
+      },
+
+      updateUrl() {
+        window.location = history.replaceState({urlPath: this.$route.params.id}, null, this.parkSlug)
       }
     },
 
     components: {
-      ParksPartial,
+      ParkPartial,
       RidesPartial,
       ResortsPartial,
       RestaurantsPartial,
+      BreadcrumbComponent,
     },
   };
 </script>

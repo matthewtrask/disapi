@@ -81,6 +81,16 @@ class Ride extends Model
         return $this->getPrimaryImage()->getUrl();
     }
 
+    public function getDescription() : ? string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description) : void
+    {
+        $this->description = $description;
+    }
+
     public function scopeByParkId(Builder $query, int $parkId) : Builder
     {
         return $query->where('park_id', '=', $parkId);

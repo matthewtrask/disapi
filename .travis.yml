@@ -4,6 +4,7 @@ dist: precise
 
 php:
   - 7.2
+  - 7.3
   - nightly
 
 before_script:
@@ -27,7 +28,8 @@ script:
 - vendor/bin/phpcs --standard=Doctrine app/ --colors
 - vendor/bin/phpstan analyse app tests
 - npm run speccy lint specs/openapi.yml
-- vendor/bin/phpcdp ap
+- npm run lint
+- vendor/bin/phpcdp app
 - vendor/bin/phpmd app text cleancode codesize unusedcode naming
 
 services:

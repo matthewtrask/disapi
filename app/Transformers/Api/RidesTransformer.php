@@ -22,6 +22,7 @@ class RidesTransformer extends TransformerAbstract
             'name'          => $ride->getName(),
             'parkId'        => $ride->getParkId(),
             'primaryImage'  => ConstantService::AWS_URL . $ride->getPrimaryImageUrl(),
+            'description'   => $ride->getDescription(),
         ];
     }
 }

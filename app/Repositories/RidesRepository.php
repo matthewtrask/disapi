@@ -23,7 +23,7 @@ class RidesRepository
 
     public function get() : LengthAwarePaginator
     {
-        return$this->ride->paginate(25);
+        return$this->ride->paginate(10);
     }
 
     public function fetch(string $id) : ?Ride

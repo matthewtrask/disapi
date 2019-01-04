@@ -25,6 +25,7 @@ class ParkTransformer extends TransformerAbstract
         return [
             'id'                => $park->getId(),
             'name'              => $park->getName(),
+            'slug'              => $park->getSlug(),
             'description'       => $park->getDescription(),
             'centralAttraction' => $park->detail->getCentralAttraction(),
             'yearOpened'        => $park->detail->getOpeningYear(),

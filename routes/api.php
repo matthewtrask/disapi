@@ -46,4 +46,4 @@ Route::get('parks/{id}/rides', ['uses' => 'Api\ParkRidesController@fetch'])->whe
 Route::get('parks/{id}/restaurants', ['uses' => 'Api\ParkRestaurantsController@fetch'])->where('id', '[0-9]+');
 
 Route::post('users', ['uses' => 'Api\UsersController@create']);
-Route::post('users/register', ['uses' => 'Api\Auth\RegisterController@create']);
+Route::post('register', ['uses' => 'Api\Auth\RegisterController@create']);

@@ -76,17 +76,17 @@ class ResponseFactory
             ->setContent($token);
     }
 
-    public function createResourceNotCreatedResponse(string $resource) : Response
+    public function createResourceNotCreatedResponse(string $message) : Response
     {
         return $this->createResponse()
-            ->setStatusCode(400)
+            ->setStatusCode(422)
             ->header('accept', ConstantService::ACCEPT_TYPE)
             ->header('content-type', ConstantService::CONTENT_TYPE)
             ->setDate(new DateTime())
             ->setContent(
                 sprintf(
-                    'The resource %s could not be created.',
-                    $resource
+                    '%s',
+                    $message
                 )
             );
     }

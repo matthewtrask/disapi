@@ -34,7 +34,7 @@ class RegisterController extends ApiController
 
             return $this->resourceCreatedResponse($user, ConstantService::USER_TYPE);
         } catch(UserNotCreatedException $e) {
-            return $this->resourceNotCreatedResponse($request->getEmail);
+            return $this->resourceNotCreatedResponse($e->getMessage());
         }
     }
 }
