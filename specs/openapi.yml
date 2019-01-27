@@ -640,6 +640,10 @@ components:
           type: string
         image:
           type: string
+        description:
+          type: string
+        slug:
+          type: string
     Park:
       type: object
       properties:
@@ -661,6 +665,10 @@ components:
           type: integer
         fireworks:
           type: boolean
+        rideDescription:
+          type: string
+        resortDescription:
+          type: string
     ParkForm:
       type: object
       required:
@@ -672,6 +680,8 @@ components:
           resortCount
           size
           fireworks
+          rideDescription
+          resortDescription
       properties:
         name:
           type: string
@@ -689,6 +699,10 @@ components:
           type: integer
         fireworks:
           type: boolean
+        rideDescription:
+          type: string
+        resortDescription:
+          type: string
     Restaurants:
       type: object
       properties:
@@ -1011,6 +1025,8 @@ components:
           - id: 1
             name: Magic Kingdom
             image: https://s3.amazonaws.com/disney-api/magic-kingdom.jpg
+            description: lorem ipsum
+            slug: magic-kingdom
           - id: 2
             name: Epcot
             image: https://s3.amazonaws.com/disney-api/epcot.jpg
