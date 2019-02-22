@@ -34,6 +34,7 @@
     "vuex": "^3.0.1"
   },
   "dependencies": {
+    "@stoplight/spectral": "^1.0.2",
     "add": "^2.0.6",
     "redoc": "^2.0.0-alpha.37",
     "tailwindcss": "^0.6.4",

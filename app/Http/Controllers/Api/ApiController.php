@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Events\UserHitEndpoint;
 use App\Factories\ResponseFactory;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use League\Fractal\Manager;
 use League\Fractal\Serializer\JsonApiSerializer;
@@ -60,6 +61,11 @@ abstract class ApiController extends Controller
                 'version' => '1.0'
             ]
         ];
+    }
+
+    protected function getResourceCount(Request $request) : int
+    {
+        return $request->request->has('count') ? (int) $request->request->get('count') : 5;
     }
 
     /** @param object[] $data */

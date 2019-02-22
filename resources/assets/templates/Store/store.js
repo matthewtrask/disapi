@@ -71,7 +71,7 @@ export default new Vuex.Store({
               data.token = response.data.token;
             });
 
-            commit('auth_success', token, user);
+            commit('auth_success', { token, user });
             resolve(resp)
           })
           .catch(err => {

@@ -32,7 +32,8 @@ class ResortsController extends ApiController
 
     public function index(Request $request) : Response
     {
-        $resorts = $this->resortsRepository->get();
+        $count = $this->getResourceCount($request);
+        $resorts = $this->resortsRepository->get($count);
         $collection = $resorts->getCollection();
 
         $manager = $this->createManager();

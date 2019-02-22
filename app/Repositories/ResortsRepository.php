@@ -18,9 +18,9 @@ class ResortsRepository
         $this->resort = $resort;
     }
 
-    public function get() : LengthAwarePaginator
+    public function get(int $count) : LengthAwarePaginator
     {
-        return $this->resort->paginate(5);
+        return $this->resort->paginate($count);
     }
 
     public function find(int $id) : Resort

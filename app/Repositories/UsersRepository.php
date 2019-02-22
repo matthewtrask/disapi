@@ -12,10 +12,10 @@ class UsersRepository
     public function createUser(string $email, string $name, string $password)  : User
     {
         $user = User::create([
-            'name'     => $name,
-            'email'    => $email,
-            'password' => bcrypt($password),
-            'token' => md5($email.$name)
+            'name'      => $name,
+            'email'     => $email,
+            'password'  => bcrypt($password),
+            'token'     => md5($email.$name)
         ]);
 
         if (!$user) {

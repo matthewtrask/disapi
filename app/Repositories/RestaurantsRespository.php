@@ -19,9 +19,9 @@ class RestaurantsRespository
         $this->restaurant = $restaurant;
     }
 
-    public function get() : LengthAwarePaginator
+    public function get(int $count) : LengthAwarePaginator
     {
-        return $this->restaurant->paginate(25);
+        return $this->restaurant->paginate($count);
     }
 
     public function fetch(int $id) : ?Restaurant
