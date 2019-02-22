@@ -29,9 +29,10 @@ class RidesController extends ApiController
         $this->ridesRepository = $ridesRepository;
     }
 
-    public function index() : Response
+    public function index(Request $request) : Response
     {
-        $rides      = $this->ridesRepository->get();
+        $count = $this->getResourceCount($request);
+        $rides      = $this->ridesRepository->get($count);
         $collection = $rides->getCollection()->random(10);
         $manager    = $this->createManager();
 

@@ -21,9 +21,9 @@ class RidesRepository
         $this->ride = $ride;
     }
 
-    public function get() : LengthAwarePaginator
+    public function get(int $count) : LengthAwarePaginator
     {
-        return$this->ride->paginate(10);
+        return$this->ride->paginate($count);
     }
 
     public function fetch(string $id) : ?Ride

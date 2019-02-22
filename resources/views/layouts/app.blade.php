@@ -44,7 +44,9 @@
             </div>
         </nav>
         <main class="py-4">
-            @yield('content')
+            <div class="container mx-auto">
+                <router-view></router-view>
+            </div>
         </main>
     </div>
 </body>

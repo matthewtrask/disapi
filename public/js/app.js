@@ -40116,7 +40116,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['previousPage']
+  props: ['previousPage'],
+
+  filters: {
+    lowerCase: function lowerCase(value) {
+      return value.toLowerCase();
+    }
+  }
 });
 
 /***/ }),
@@ -40149,7 +40155,11 @@ var render = function() {
                   _vm.previousPage
                     ? _c(
                         "router-link",
-                        { attrs: { to: { name: _vm.previousPage } } },
+                        {
+                          attrs: {
+                            to: { name: _vm.previousPage | _vm.lowerCase }
+                          }
+                        },
                         [_vm._v(_vm._s(_vm.previousPage))]
                       )
                     : _vm._e()
@@ -41529,20 +41539,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {},
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.getRides();
+  },
   data: function data() {
     return {
-      previousPage: 'Admin'
+      previousPage: 'Admin',
+      rides: [],
+      pagination: []
     };
   },
 
 
-  methods: {},
+  methods: {
+    getRides: function getRides() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/rides').then(function (response) {
+        _this.rides = response.data.data;
+      }).catch(function (error) {
+        console.error(error);
+      });
+    }
+  },
 
   components: {
     Breadcrumb: __WEBPACK_IMPORTED_MODULE_1__Components_Breadcrumb_vue___default.a
@@ -41557,17 +41587,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("breadcrumb", { attrs: { previousPage: _vm.previousPage } }),
+  return _c("div", [
+    _c("div", { staticClass: "flex sm:block" }, [
+      _c(
+        "div",
+        { staticClass: "flex-1 w-full" },
+        [_c("breadcrumb", { attrs: { previousPage: _vm.previousPage } })],
+        1
+      ),
       _vm._v(" "),
-      _c("h2", [_vm._v("Rides")])
-    ],
-    1
-  )
+      _vm._m(0)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-1 text-grey-darker pt-4 w-full" }, [
+      _c("h2", { staticClass: "tracking-wide font-sans text-3xl pb-4" }, [
+        _vm._v("Rides")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

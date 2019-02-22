@@ -28,9 +28,11 @@ class RestaurantsController extends ApiController
         $this->restaurantsRepository = $restaurantsRespository;
     }
 
-    public function index() : Response
+    public function index(Request $request) : Response
     {
-        $restaurants = $this->restaurantsRepository->get();
+        $resourceCount = $this->getResourceCount($request);
+
+        $restaurants = $this->restaurantsRepository->get($resourceCount);
         $collection  = $restaurants->getCollection();
         $manager     = $this->createManager();
 

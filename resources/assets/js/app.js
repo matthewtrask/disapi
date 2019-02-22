@@ -1,6 +1,3 @@
-
-window._ = require('lodash');
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
@@ -26,7 +23,7 @@ window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 if (token) {
-  window.axios.defaults.headers.common['Authorization'] = token;
+  window.axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
 router.beforeEach((to, from, next) => {
