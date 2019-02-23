@@ -99,6 +99,11 @@ abstract class ApiController extends Controller
         return $this->responseFactory->createResourceNotCreatedResponse($message);
     }
 
+    protected function resourceDeletedResponse() : Response
+    {
+        return $this->responseFactory->createResourceDeletedResponse();
+    }
+
     protected function logAction(string $token, string $endpoint, string $action, bool $success, string $error = null) : void
     {
         event(new UserHitEndpoint(
@@ -108,10 +113,5 @@ abstract class ApiController extends Controller
             $success,
             $error
         ));
-    }
-
-    protected function resourceDeletedResponse() : Response
-    {
-        return $this->responseFactory->createResourceDeletedResponse();
     }
 }
