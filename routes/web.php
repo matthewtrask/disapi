@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/docs', function () {
+    return view('docs.index');
+});
+
 Route::get('/{vue_capture?}', function () {
     return view('home');
 })->where('vue_capture', '[\/\w\.-]*');

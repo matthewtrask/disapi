@@ -1,0 +1,49 @@
+checks:
+    php:
+        fix_use_statements:
+            remove_unused: true
+            preserve_multiple: false
+            preserve_blanklines: false
+            order_alphabetically: true
+        duplication: true
+        deprecated_code_usage: true
+        code_rating: true
+        classes_in_camel_caps: true
+        use_self_instead_of_fqcn: true
+        uppercase_constants: true
+        unused_variables: true
+        single_namespace_per_use: true
+        security_vulnerabilities: true
+        return_doc_comments: true
+        require_scope_for_properties: true
+        require_scope_for_methods: true
+        require_php_tag_first: true
+        psr2_class_declaration: true
+        psr2_switch_declaration: true
+        php5_style_constructor: true
+        avoid_closing_tag: true
+        avoid_duplicate_types: true
+        avoid_fixme_comments: true
+        avoid_multiple_statements_on_same_line: true
+        avoid_usage_of_logical_operators: true
+        avoid_useless_overridden_methods: true
+        blank_line_after_namespace_declaration: true
+        catch_class_exists: true
+        closure_use_not_conflicting: true
+        param_doc_comment_if_not_inferrable: true
+        function_in_camel_caps: true
+
+filter:
+    excluded_paths:
+        - 'bin/*'
+        - 'test/*'
+        - 'tests/*'
+
+tools:
+    php_code_sniffer:
+        config:
+            standard: "PSR2"
+    php_cs_fixer:
+        config: { level: psr2 }
+    external_code_coverage:
+        timeout: 600

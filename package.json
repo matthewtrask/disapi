@@ -36,7 +36,6 @@
   "dependencies": {
     "@stoplight/spectral": "^1.0.2",
     "add": "^2.0.6",
-    "redoc": "^2.0.0-alpha.37",
     "tailwindcss": "^0.6.4",
     "vue-meta": "^1.5.8",
     "vue-resource": "^1.5.1",
