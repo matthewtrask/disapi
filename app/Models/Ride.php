@@ -96,6 +96,11 @@ class Ride extends Model
         return $query->where('park_id', '=', $parkId);
     }
 
+    public function scopeByRideId(Builder $query, int $rideId) : Builder
+    {
+        return $query->where('id', '=', $rideId);
+    }
+
     public function images() : ? HasMany
     {
         return $this->hasMany(RideImage::class, 'ride_id', 'id');

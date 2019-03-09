@@ -42,8 +42,15 @@ Route::put('restaurants/{id}', ['uses' => 'Api\RestaurantsController@edit'])->wh
 Route::delete('restaurants/{id}', ['uses' => 'Api\RestaurantsController@destroy'])->where('id', '[0-9]+');
 
 
-Route::get('parks/{id}/rides', ['uses' => 'Api\ParkRidesController@fetch'])->where('id', '[0-9]+');
-Route::get('parks/{id}/restaurants', ['uses' => 'Api\ParkRestaurantsController@fetch'])->where('id', '[0-9]+');
+Route::get('parks/{id}/rides', ['uses' => 'Api\ParkRidesController@index'])->where('id', '[0-9]+');
+Route::get('parks/{id}/rides/{rideId}', ['uses' => 'Api\ParkRidesController@fetch'])->where(['id', '[0-9]+'], ['rideId', '[0-9]+']);
+Route::get('parks/{id}/restaurants', ['uses' => 'Api\ParkRestaurantsController@index'])->where('id', '[0-9]+');
+Route::get('parks/{id}/restaurants/{restaurantId}', ['uses' => 'Api\ParkRestaurantsController@fetch'])->where(['id', '[0-9]+'], ['restaurantId', '[0-9]+']);
+Route::get('parks/{id}/resorts', ['uses' => 'Api\ParkResortsController@index'])->where('id', '[0-9]+');
+Route::get('parks/{id}/resorts/{resortId}', ['uses' => 'Api\ParkResortsController@fetch'])->where(['id', '[0-9]+'], ['resortId', '[0-9]+']);
+
+Route::get('rides/{id}/parks', ['uses' => 'Api\RidesParkController@index'])->where('id', '[0-9]+');
+Route::get('rides/{id}/restaurants', ['uses' => 'Api\RidesRestaurantsController@index'])->where('id', '[0-9]+');
 
 Route::post('users', ['uses' => 'Api\UsersController@create']);
 Route::post('register', ['uses' => 'Api\Auth\RegisterController@create']);

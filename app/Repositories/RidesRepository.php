@@ -88,8 +88,13 @@ class RidesRepository
         return $this->ride->delete();
     }
 
-    public function filterByParkId(int $parkId) : LengthAwarePaginator
+    public function getRidesForPark(int $parkId, int $count) : LengthAwarePaginator
     {
-        return $this->ride->byParkId($parkId)->paginate();
+        return $this->ride->byParkId($parkId)->paginate($count);
+    }
+
+    public function fetchRideForPark(int $parkId, int $rideId) : Collection
+    {
+        return $this->ride->byParkId($parkId)->byRideId($rideId)->get();
     }
 }
