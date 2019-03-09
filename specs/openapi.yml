@@ -1,7 +1,9 @@
 openapi: "3.0.1"
 info:
   title: "Walt Disney World API"
-  description: An api that encompasses the Walt Disney World Resort parks, rides, resorts, and restaurants. This API follows the OpenAPI standard.
+  description: |
+    An API that encompasses the Walt Disney World Resort's parks, rides, resorts, and restaurants.
+    This API follows the OpenAPI standard.
   version: "0.1.0"
   contact:
     name: Developer Support
@@ -15,16 +17,19 @@ servers:
     description: Production Server
   - url: http://localhost/api
     description: Local Server
-
 tags:
   - name: parks
-    description: Endpoints for getting and working with the parks
+    description: |
+      Endpoints for getting and working with the parks
   - name: resorts
-    description: Endpoints for getting and working with the resorts
+    description: |
+      Endpoints for getting and working with the resorts
   - name: restaurants
-    description: Endpoints for getting and working with the restaurants
+    description: |
+      Endpoints for getting and working with the restaurants
   - name: rides
-    description: Endpoints for getting and working with the rides
+    description: |
+      Endpoints for getting and working with the rides
 paths:
   /resorts:
     get:
@@ -770,8 +775,10 @@ components:
       name: id
       in: path
       required: true
+      exmaple: 1
       schema:
         type: integer
+        pattern: '/[^0-9]/'
       description: The ID of the restaurant
     resortId:
       name: id
@@ -779,6 +786,7 @@ components:
       required: true
       schema:
         type: integer
+        pattern: '/[^0-9]/'
       description: The ID of the resort
     rideId:
       name: id
@@ -786,6 +794,7 @@ components:
       required: true
       schema:
         type: integer
+        pattern: '/[^0-9]/'
       description: The ID of the ride
     parkId:
       name: id
@@ -793,6 +802,7 @@ components:
       required: true
       schema:
         type: integer
+        pattern: '/[^0-9]/'
       description: The ID of the park
   headers:
     Location:
@@ -1024,18 +1034,28 @@ components:
         data:
           - id: 1
             name: Magic Kingdom
-            image: https://s3.amazonaws.com/disney-api/magic-kingdom.jpg
+            image: |
+              https://s3.amazonaws.com/disney-api/magic-kingdom.jpg
             description: lorem ipsum
             slug: magic-kingdom
           - id: 2
             name: Epcot
-            image: https://s3.amazonaws.com/disney-api/epcot.jpg
+            image: |
+              https://s3.amazonaws.com/disney-api/epcot.jpg
+            description: lorem ipsum
+            slug: epcot
           - id: 3
             name: Hollywood Studios
-            image: https://s3.amazonaws.com/disney-api/hollywood-studios.jpg
+            image: |
+              https://s3.amazonaws.com/disney-api/hollywood-studios.jpg
+            description: lorem ipsum
+            slug: hollywood-studios
           - id: 4
             name: Animal Kingdom
-            image: https://s3.amazonaws.com/disney-api/animal-kingdom.jpg
+            image: |
+              https://s3.amazonaws.com/disney-api/animal-kingdom.jpg
+            description: lorem ipsum
+            slug: animal-kingdom
     ParkResponse:
       summary: An exmaple response of a park at Walt Disney World
       value:

@@ -9,10 +9,12 @@ use App\Http\Controllers\Api\ApiController;
 use App\Repositories\RidesRepository;
 use App\Services\ConstantService;
 use App\Transformers\Api\RidesTransformer;
+use App\Transformers\Api\RideTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use League\Fractal\Resource\Item;
 
 class ParkRidesController extends ApiController
 {
@@ -25,10 +27,12 @@ class ParkRidesController extends ApiController
         $this->ridesRepository = $ridesRepository;
     }
 
-    public function fetch(Request $request) : Response
+    public function index(Request $request) : Response
     {
         // this will be paginated
-        $rides = $this->ridesRepository->filterByParkId((int) $request->id);
+        $count      = $this->getResourceCount($request);
+        $rides      = $this->ridesRepository->getRidesForPark((int) $request->id, $count);
+        $collection = $rides->getCollection();
 
         if (! $rides) {
             return $this->resourceNotFoundResponse(
@@ -40,7 +44,7 @@ class ParkRidesController extends ApiController
         $manager = $this->createManager();
 
         $resources = new Collection(
-            $rides, 
+            $collection,
             new RidesTransformer(), 
             ConstantService::RIDE
         );
@@ -49,6 +53,33 @@ class ParkRidesController extends ApiController
         $resources->setPaginator(new IlluminatePaginatorAdapter($rides));
 
         $data = $manager->createData($resources)->toArray();
+        $etag = $this->createEtag($data);
+
+        return $this->resourcesFoundResponse($data, $etag);
+    }
+
+    public function fetch(Request $request) : Response
+    {
+        $data = $this->ridesRepository->fetchRideForPark((int) $request->id, (int) $request->rideId);
+
+        $ride = $data->map(function ($ride) {
+            return $ride;
+        });
+
+        if (! $ride) {
+            return $this->resourceNotFoundResponse(
+                $request->parkId,
+                ConstantService::RIDE
+            );
+        }
+
+        $manager = $this->createManager();
+
+        $item = new Item($ride, new RideTransformer(), ConstantService::RIDE);
+
+        $item->setMeta($this->createMetaData());
+
+        $data = $manager->createData($item)->toArray();
         $etag = $this->createEtag($data);
 
         return $this->resourcesFoundResponse($data, $etag);
