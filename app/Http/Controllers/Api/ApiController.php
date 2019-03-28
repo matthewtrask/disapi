@@ -16,7 +16,7 @@ use function md5;
 
 abstract class ApiController extends Controller
 {
-    private const BASE_URL = 'https://disapi.co';
+    private const BASE_URL = 'https://disapi.co/api';
 
     /** @var ResponseFactory */
     protected $responseFactory;
